@@ -122,9 +122,23 @@
 <li>采用兼容API的EchoServer</li>
 <li>并发服务器设计之多进程模型</li>
 <li>并发服务器设计之多线程模型</li>
-<li>并发服务器设计之</li>
+<li>并发服务器设计之IO多路复用模型</li>
 </ul>
-<h2 id="最简单的EchoServer"><a href="#最简单的EchoServer" class="headerlink" title="最简单的EchoServer"></a>最简单的EchoServer</h2>
+<h2 id="最简单的EchoServer"><a href="#最简单的EchoServer" class="headerlink" title="最简单的EchoServer"></a>最简单的EchoServer</h2><h3 id="socket"><a href="#socket" class="headerlink" title="socket"></a>socket</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/socket.h&gt;</div><div class="line">int socket(int domain, int type, int protocol);</div><div class="line">Returns file descriptor on success, or –1 on error</div></pre></td></tr></table></figure>
+<p>domain 可以是AF_UNIX、AF_INET、AF_INET6中的一种，分别表示通过内核、IPV4连接的主机、IPV6连接的主机进行通讯，Unix域(AF_INET)只能在相同的主机上进行通讯。上面各种域对这样不同的地址结构。<br>type 可以是SOCK_STREAM、SOCK_DGRAM或者SOCK_RAW中的一种。</p>
+<h3 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/socket.h&gt;</div><div class="line">int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);</div><div class="line">Returns 0 on success, or –1 on error</div></pre></td></tr></table></figure>
+<p>sockfd是通过socket调用创建的socket文件描述符， struct sockaddr 是通用地址结构，因为socket()中创建的域类型可能有不同的种类，这里需要能够接受不同的地址类型比如(sockaddr_un,sockaddr_in,sockaddr_in6)。</p>
+<h3 id="listen"><a href="#listen" class="headerlink" title="listen"></a>listen</h3><p>流式的SOCKET分为主动被动两种，简单来讲connect操作的SOCKET成为主动的大家，而通过listen操作的SOCKET可以被动的接入。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nclude &lt;sys/socket.h&gt;</div><div class="line">int listen(int sockfd, int backlog);</div><div class="line">Returns 0 on success, or –1 on error</div></pre></td></tr></table></figure></p>
+<p>backlog 的主要作用是控制内核记录未决连接的数量。<strong>未决连接</strong>是客户端已经发生connect操作，但是服务端因为忙于其他处理而尚未accept操作。</p>
+<h3 id="accept"><a href="#accept" class="headerlink" title="accept"></a>accept</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/socket.h&gt;</div><div class="line">int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);</div><div class="line">Returns file descriptor on success, or –1 on error</div></pre></td></tr></table></figure>
+<p>accept系统调用会接受一个接入连接，如果在调用accept()时候不存在未决连接，那么则该调用会阻塞到有连接请求为止。</p>
+<h3 id="source-code"><a href="#source-code" class="headerlink" title="source code"></a>source code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;sys/socket.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;netinet/in.h&gt;</div><div class="line">#include &lt;arpa/inet.h&gt;</div><div class="line">#include &lt;unistd.h&gt;</div><div class="line">#include &lt;string.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;fcntl.h&gt;</div><div class="line">#include &lt;sys/shm.h&gt;</div><div class="line"></div><div class="line">#define MYPORT  8887</div><div class="line">#define QUEUE   20</div><div class="line">#define BUFFER_SIZE 1024</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">    ///定义sockfd</div><div class="line">    int server_sockfd = socket(AF_INET,SOCK_STREAM, 0);</div><div class="line">    ///定义sockaddr_in</div><div class="line">    struct sockaddr_in server_sockaddr;</div><div class="line">    server_sockaddr.sin_family = AF_INET;</div><div class="line">    server_sockaddr.sin_port = htons(MYPORT);</div><div class="line">    server_sockaddr.sin_addr.s_addr = htonl(INADDR_ANY);</div><div class="line">    ///bind，成功返回0，出错返回-1</div><div class="line">    if(bind(server_sockfd,(struct sockaddr *)&amp;server_sockaddr,sizeof(server_sockaddr))==-1)</div><div class="line">    &#123;</div><div class="line">        perror(&quot;bind&quot;);</div><div class="line">        exit(1);</div><div class="line">    &#125;</div><div class="line">    ///listen，成功返回0，出错返回-1</div><div class="line">    if(listen(server_sockfd,QUEUE) == -1)</div><div class="line">    &#123;</div><div class="line">        perror(&quot;listen&quot;);</div><div class="line">        exit(1);</div><div class="line">    &#125;</div><div class="line">    ///客户端套接字</div><div class="line">    char buffer[BUFFER_SIZE];</div><div class="line">    struct sockaddr_in client_addr;</div><div class="line">    socklen_t length = sizeof(client_addr);</div><div class="line">    ///成功返回非负描述字，出错返回-1</div><div class="line">    int conn = accept(server_sockfd, (struct sockaddr*)&amp;client_addr, &amp;length);</div><div class="line">    if(conn&lt;0)</div><div class="line">    &#123;</div><div class="line">        perror(&quot;connect&quot;);</div><div class="line">        exit(1);</div><div class="line">    &#125;</div><div class="line">    while(1)</div><div class="line">    &#123;</div><div class="line">        memset(buffer,0,sizeof(buffer));</div><div class="line">        int len = recv(conn, buffer, sizeof(buffer),0);</div><div class="line">        if(strcmp(buffer,&quot;exit\n&quot;)==0)</div><div class="line">            break;</div><div class="line">        fputs(buffer, stdout);</div><div class="line">        send(conn, buffer, len, 0);</div><div class="line">    &#125;</div><div class="line">    close(conn);</div><div class="line">    close(server_sockfd);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="采用兼容API的EchoServer"><a href="#采用兼容API的EchoServer" class="headerlink" title="采用兼容API的EchoServer"></a>采用兼容API的EchoServer</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h2 id="并发服务器设计之多进程模型"><a href="#并发服务器设计之多进程模型" class="headerlink" title="并发服务器设计之多进程模型"></a>并发服务器设计之多进程模型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h2 id="并发服务器设计之多线程模型"><a href="#并发服务器设计之多线程模型" class="headerlink" title="并发服务器设计之多线程模型"></a>并发服务器设计之多线程模型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h2 id="并发服务器设计之其他模型-异步IO-协程模型"><a href="#并发服务器设计之其他模型-异步IO-协程模型" class="headerlink" title="并发服务器设计之其他模型(异步IO/协程模型)"></a>并发服务器设计之其他模型(异步IO/协程模型)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+
 	
 	</div>
 </div>
@@ -260,41 +274,41 @@
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
-		
-			<li><a href="/tags/Socket/">Socket<span>1</span></a></li>
-		
-			<li><a href="/tags/Q-A/">Q&amp;A<span>2</span></a></li>
-		
-			<li><a href="/tags/竞赛/">竞赛<span>3</span></a></li>
+			<li><a href="/tags/English/">English<span>1</span></a></li>
 		
 			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
 		
-			<li><a href="/tags/highlight/">highlight<span>1</span></a></li>
-		
-			<li><a href="/tags/tensorflow/">tensorflow<span>2</span></a></li>
-		
-			<li><a href="/tags/plugins/">plugins<span>2</span></a></li>
-		
-			<li><a href="/tags/基础/">基础<span>1</span></a></li>
+			<li><a href="/tags/Flink/">Flink<span>1</span></a></li>
 		
 			<li><a href="/tags/Spark-Streaming/">Spark Streaming<span>1</span></a></li>
 		
+			<li><a href="/tags/Spark/">Spark<span>4</span></a></li>
+		
 			<li><a href="/tags/简体/">简体<span>1</span></a></li>
 		
-			<li><a href="/tags/English/">English<span>1</span></a></li>
+			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
 		
-			<li><a href="/tags/Python/">Python<span>1</span></a></li>
-		
-			<li><a href="/tags/Scala/">Scala<span>3</span></a></li>
+			<li><a href="/tags/highlight/">highlight<span>1</span></a></li>
 		
 			<li><a href="/tags/Spark-Scala-Streaming/">Spark Scala Streaming<span>1</span></a></li>
 		
-			<li><a href="/tags/Spark/">Spark<span>4</span></a></li>
+			<li><a href="/tags/Q-A/">Q&amp;A<span>2</span></a></li>
 		
 			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
 		
-			<li><a href="/tags/Flink/">Flink<span>1</span></a></li>
+			<li><a href="/tags/基础/">基础<span>1</span></a></li>
+		
+			<li><a href="/tags/Socket/">Socket<span>1</span></a></li>
+		
+			<li><a href="/tags/plugins/">plugins<span>2</span></a></li>
+		
+			<li><a href="/tags/竞赛/">竞赛<span>3</span></a></li>
+		
+			<li><a href="/tags/Scala/">Scala<span>3</span></a></li>
+		
+			<li><a href="/tags/tensorflow/">tensorflow<span>2</span></a></li>
+		
+			<li><a href="/tags/Python/">Python<span>1</span></a></li>
 		
 		 
 		</ul>
