@@ -155,20 +155,6 @@
   </entry>
   
   <entry>
-    <title>tags</title>
-    <link href="http://zhangshengshan.github.io/2017/02/14/tags/"/>
-    <id>http://zhangshengshan.github.io/2017/02/14/tags/</id>
-    <published>2017-02-14T05:31:12.000Z</published>
-    <updated>2017-02-15T08:06:57.000Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Homebrew_config_for_mac</title>
     <link href="http://zhangshengshan.github.io/2017/02/11/Homebrew-config-for-mac/"/>
     <id>http://zhangshengshan.github.io/2017/02/11/Homebrew-config-for-mac/</id>
@@ -653,6 +639,31 @@ asdfasdfasdfafsaf</div>
     
       <category term="Spark" scheme="http://zhangshengshan.github.io/categories/Spark/"/>
     
+    
+  </entry>
+  
+  <entry>
+    <title>SparkStreamLearning</title>
+    <link href="http://zhangshengshan.github.io/2016/11/28/SparkStreamLearning/"/>
+    <id>http://zhangshengshan.github.io/2016/11/28/SparkStreamLearning/</id>
+    <published>2016-11-28T05:16:15.000Z</published>
+    <updated>2017-02-15T08:08:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="input-source"><a href="#input-source" class="headerlink" title="input source"></a>input source</h1><p>kafka<br>akka</p>
+<h1 id="output"><a href="#output" class="headerlink" title="output"></a>output</h1><p>redis<br>kafka<br>elasticSearch<br>hive<br>mySql</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;input-source&quot;&gt;&lt;a href=&quot;#input-source&quot; class=&quot;headerlink&quot; title=&quot;input source&quot;&gt;&lt;/a&gt;input source&lt;/h1&gt;&lt;p&gt;kafka&lt;br&gt;akka&lt;/p&gt;
+&lt;h1 id=&quot;outp
+    
+    </summary>
+    
+      <category term="Spark" scheme="http://zhangshengshan.github.io/categories/Spark/"/>
+    
+    
+      <category term="Spark Scala Streaming" scheme="http://zhangshengshan.github.io/tags/Spark-Scala-Streaming/"/>
     
   </entry>
   
