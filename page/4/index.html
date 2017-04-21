@@ -111,6 +111,33 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2016-07-13 </div>
+			<div class="article-title"><a href="/2016/07/13/过拟合的原因/" >过拟合的原因</a></div>						
+		</h3>
+	
+
+
+			  <div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="过拟合产生原因"><a href="#过拟合产生原因" class="headerlink" title="过拟合产生原因"></a>过拟合产生原因</h1><h2 id="观测数据存在误差"><a href="#观测数据存在误差" class="headerlink" title="观测数据存在误差"></a>观测数据存在误差</h2><p>用于训练的样本数据，即观测数据因为各种个样的原因，总会产生误差。如果选择的假设过分追求能够完美解释观测数据（对于回归问题，可能是拟合曲线“穿过”所有的样本点，或者类似于均方误差过小），都有可能造成过拟合的现象。造成这种现象的根本原因在于，拟合曲线把误差也完美的学习了。</p>
+<h2 id="产生样本因素很多，但是实际可能只有小部分提取出来"><a href="#产生样本因素很多，但是实际可能只有小部分提取出来" class="headerlink" title="产生样本因素很多，但是实际可能只有小部分提取出来"></a>产生样本因素很多，但是实际可能只有小部分提取出来</h2><p>影响产生观测数据的因素有很多，但是现实中可能仅提取几个和结果相关度很高的因素来进行分析。这个时候观察数据会倾向于围绕你的有限模型的预测结果呈正态分布，于是你实际观察到的结果就是这个正态分布的随机取样，这个取样很可能受到其余因素的影响偏离你的模型所预测的中心，这个时候便不能贪心不足地试图通过改变模型来“完美”匹配数据，因为那些使结果偏离你的预测的贡献因素不是你这个有限模型里面含有的因素所能概括的，硬要打肿脸充胖子只能导致不实际的模型。</p>
+<h2 id="奥卡姆剃刀法则"><a href="#奥卡姆剃刀法则" class="headerlink" title="奥卡姆剃刀法则"></a>奥卡姆剃刀法则</h2><p>$$<br>p\left( h|D\right )   = p\left( h\right ) p\left( D|h\right )<br>$$<br>高卡姆剃刀法则的含义是如果存在多个假设和观察一致，则应当选择最简单的那一个。最简单的假设意味着$\left( h\right)$较大，而与观测一致，意味着似然数值较大，即$p\left( D|h\right )$较大。</p>
+<p>奥卡姆剃刀法则青睐于先验概率，认为先验较大的模型有较大的优势；最大似然法则认为似然大的模型具有较大的优势；而贝叶斯法则则认为二者乘积决定模型的选择问题。</p>
+<h2 id="贝叶斯奥卡姆剃刀"><a href="#贝叶斯奥卡姆剃刀" class="headerlink" title="贝叶斯奥卡姆剃刀"></a>贝叶斯奥卡姆剃刀</h2><p>上面的奥卡姆剃刀法则描述的是传统的剃刀法则，主要指先验概率$\left( h\right)$,而贝叶斯法奥卡姆剃刀法其实和似然$p\left( D|h\right )$上面，即该法则主要衡量的因素是似然本身出现的概率大小。 </p>
+
+	
+	</div>
+</div>
+
+           
+		
+           
+			  
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2016-04-25 </div>
 			<div class="article-title"><a href="/2016/04/25/SPARK的宽依赖和窄依赖/" >SPARK的宽依赖和窄依赖</a></div>						
 		</h3>
@@ -334,38 +361,6 @@
 
            
 		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2013-12-25 </div>
-			<div class="article-title"><a href="/2013/12/25/simplified-chinese-test/" title="观音心经 - 般若波罗蜜多心经。">简体中文测试</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-           
-              <div class="thumbnail"><a href="/2013/12/25/simplified-chinese-test/"><img src="/hexo-theme-freemind/images/xinjing/pusa2.jpg" alt="简体中文测试"  class="nofancybox"></a>
-           
-		</div>
-	
-	
-		<p>观自在菩萨，行深般若波罗蜜多时，照见五蕴皆空，度一切苦厄。</p>
-<p>舍利子，色不异空，空不异色；色即是空，空即是色。受、想、行、识，亦复如是。</p>
-<p>舍利子，是诸法空相，不生不灭，不垢不净，不增不减，是故空中无色，无受、想、行、识；无眼、耳、鼻、舌、身、意；无色、声、香、味、触、法；无眼界，乃至无意识界；无无明，亦无无明尽；乃至无老死，亦无老死尽。无苦、集、灭、道，无智亦无得，以无所得故。</p>
-<p>菩提萨埵(<code>duǒ</code>)，依般若波罗蜜多故，心无罣碍(<code>guà ài</code>)。无罣碍，故无有恐怖，远离颠倒梦想，究竟涅盘。三世诸佛，依般若波罗蜜多故，得阿耨多罗三藐三菩提。
-		<!-- only display read_more button if there's more to display -->
-		<a type="button" href="/2013/12/25/simplified-chinese-test/#more" class="btn btn-default more">Read More</a>
-	
-	</div>
-</div>
-
-           
-		
 
 		</div>
 
@@ -382,7 +377,7 @@
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
 
 		
-          <li class="next disabled"><a>Next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+		   <li class="next"> <a href="/page/5/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a> </li>          
         
 	
 </ul>
@@ -447,41 +442,43 @@
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
-		
-			<li><a href="/tags/Q-A/">Q&amp;A<span>2</span></a></li>
-		
-			<li><a href="/tags/Spark-Scala-Streaming/">Spark Scala Streaming<span>1</span></a></li>
-		
-			<li><a href="/tags/English/">English<span>1</span></a></li>
-		
 			<li><a href="/tags/plugins/">plugins<span>2</span></a></li>
-		
-			<li><a href="/tags/Socket/">Socket<span>1</span></a></li>
-		
-			<li><a href="/tags/简体/">简体<span>1</span></a></li>
-		
-			<li><a href="/tags/基础/">基础<span>1</span></a></li>
-		
-			<li><a href="/tags/Spark-Streaming/">Spark Streaming<span>1</span></a></li>
-		
-			<li><a href="/tags/Scala/">Scala<span>3</span></a></li>
-		
-			<li><a href="/tags/highlight/">highlight<span>1</span></a></li>
-		
-			<li><a href="/tags/Python/">Python<span>1</span></a></li>
-		
-			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
-		
-			<li><a href="/tags/Flink/">Flink<span>1</span></a></li>
-		
-			<li><a href="/tags/竞赛/">竞赛<span>3</span></a></li>
-		
-			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
 		
 			<li><a href="/tags/Spark/">Spark<span>5</span></a></li>
 		
+			<li><a href="/tags/highlight/">highlight<span>1</span></a></li>
+		
+			<li><a href="/tags/Flink/">Flink<span>1</span></a></li>
+		
+			<li><a href="/tags/基础/">基础<span>1</span></a></li>
+		
+			<li><a href="/tags/Spark-Scala-Streaming/">Spark Scala Streaming<span>1</span></a></li>
+		
+			<li><a href="/tags/竞赛/">竞赛<span>3</span></a></li>
+		
+			<li><a href="/tags/Socket/">Socket<span>1</span></a></li>
+		
+			<li><a href="/tags/Scala/">Scala<span>3</span></a></li>
+		
+			<li><a href="/tags/Spark-Streaming/">Spark Streaming<span>1</span></a></li>
+		
+			<li><a href="/tags/CNN/">CNN<span>1</span></a></li>
+		
+			<li><a href="/tags/English/">English<span>1</span></a></li>
+		
+			<li><a href="/tags/Q-A/">Q&amp;A<span>2</span></a></li>
+		
+			<li><a href="/tags/Python/">Python<span>1</span></a></li>
+		
+			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
+		
 			<li><a href="/tags/tensorflow/">tensorflow<span>3</span></a></li>
+		
+			<li><a href="/tags/简体/">简体<span>1</span></a></li>
+		
+			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
+		
+			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
 		
 		 
 		</ul>
@@ -493,6 +490,10 @@
 <div class="widget">
   <h4>Recent Posts</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2017/04/20/A-Beginner-s-Guide-To-Understanding-Convolutional-Neural-Networks/" ><i class="fa fa-file-o"></i>A Beginner&#39;s Guide To Under...</a>
+      </li>
     
       <li>
         <a href="/2017/04/18/DeepLearningCnn/" ><i class="fa fa-file-o"></i>DeepLearningCnn</a>
@@ -508,10 +509,6 @@
     
       <li>
         <a href="/2017/02/15/EchoServer服务器/" ><i class="fa fa-file-o"></i>EchoServer服务器</a>
-      </li>
-    
-      <li>
-        <a href="/2017/02/11/Homebrew-config-for-mac/" ><i class="fa fa-file-o"></i>Homebrew_config_for_mac</a>
       </li>
     
   </ul>
