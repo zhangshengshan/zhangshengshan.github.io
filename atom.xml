@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangshengshan.github.io/"/>
-  <updated>2017-04-21T05:22:35.000Z</updated>
+  <updated>2017-04-21T05:28:22.000Z</updated>
   <id>http://zhangshengshan.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://zhangshengshan.github.io/2017/04/20/A-Beginner-s-Guide-To-Understanding-Convolutional-Neural-Networks/"/>
     <id>http://zhangshengshan.github.io/2017/04/20/A-Beginner-s-Guide-To-Understanding-Convolutional-Neural-Networks/</id>
     <published>2017-04-20T13:09:57.000Z</published>
-    <updated>2017-04-21T05:22:35.000Z</updated>
+    <updated>2017-04-21T05:28:22.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="A-Beginner’s-Guide-To-Understanding-Convolutional-Neural-Networks"><a href="#A-Beginner’s-Guide-To-Understanding-Convolutional-Neural-Networks" class="headerlink" title="A Beginner’s Guide To Understanding Convolutional Neural Networks"></a>A Beginner’s Guide To Understanding Convolutional Neural Networks</h1><p><img src="https://adeshpande3.github.io/assets/Cover.png" alt=""></p>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><blockquote>
@@ -28,7 +28,7 @@
 <p>  However, the classic, and arguably most popular, use case of these networks is for image processing. Within image processing, let’s take a look at how to use these CNNs for image classification.<br>  不过最经典最流行的神经网络的应用还是图像识别。接下来我们会一起看一下CNN在在图像识别领域的应用。</p>
 </blockquote>
 <h2 id="The-Problem-Space"><a href="#The-Problem-Space" class="headerlink" title="The Problem Space"></a>The Problem Space</h2><blockquote>
-<p>Image classification is the task of taking an input image and outputting a class (a cat, dog, etc) or a probability of classes that best describes the image. For humans, this task of recognition is one of the first skills we learn from the moment we are born and is one that comes naturally and effortlessly as adults. Without even thinking twice, we’re able to quickly and seamlessly identify the environment we are in as well as the objects that surround us. When we see an image or just when we look at the world around us, most of the time we are able to immediately characterize the scene and give each object a label, all without even consciously noticing. These skills of being able to quickly recognize patterns, generalize from prior knowledge, and adapt to different image environments are ones that we do not share with our fellow machines.</p>
+<p>Image classification is the task of taking an input image and outputting a class (a cat, dog, etc) or a probability of classes that best describes the image. For humans, this task of recognition is one of the first skills we learn from the moment we are born and is one that comes naturally and effortlessly as adults. Without even thinking twice, we’re able to quickly and seamlessly identify the environment we are in as well as the objects that surround us. When we see an image or just when we look at the world around us, most of the time we are able to immediately characterize the scene and give each object a label, all without even consciously noticing. These skills of being able to quickly recognize patterns, generalize from prior knowledge, and adapt to different image environments are ones that we do not share with our fellow machines.<br>图像分类旨在根据输入图片输出所属类别（如猫，狗，等）,或者从概率的角度判断该图片最有可能属于什么类别。对于人类而言，这是与生具来的能力而且和成人所差无几。</p>
 </blockquote>
 <p><img src="https://adeshpande3.github.io/assets/Corgi3.png" alt=""></p>
 <h2 id="Inputs-and-Outputs"><a href="#Inputs-and-Outputs" class="headerlink" title="Inputs and Outputs"></a>Inputs and Outputs</h2><blockquote>
