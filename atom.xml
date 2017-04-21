@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangshengshan.github.io/"/>
-  <updated>2017-04-20T15:39:38.000Z</updated>
+  <updated>2017-04-21T05:18:16.000Z</updated>
   <id>http://zhangshengshan.github.io/</id>
   
   <author>
@@ -20,11 +20,11 @@
     <link href="http://zhangshengshan.github.io/2017/04/20/A-Beginner-s-Guide-To-Understanding-Convolutional-Neural-Networks/"/>
     <id>http://zhangshengshan.github.io/2017/04/20/A-Beginner-s-Guide-To-Understanding-Convolutional-Neural-Networks/</id>
     <published>2017-04-20T13:09:57.000Z</published>
-    <updated>2017-04-20T15:39:38.000Z</updated>
+    <updated>2017-04-21T05:18:16.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="A-Beginner’s-Guide-To-Understanding-Convolutional-Neural-Networks"><a href="#A-Beginner’s-Guide-To-Understanding-Convolutional-Neural-Networks" class="headerlink" title="A Beginner’s Guide To Understanding Convolutional Neural Networks"></a>A Beginner’s Guide To Understanding Convolutional Neural Networks</h1><p><img src="https://adeshpande3.github.io/assets/Cover.png" alt=""></p>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><blockquote>
-<p>Convolutional neural networks. Sounds like a weird combination of biology and math with a little CS sprinkled in, but these networks have been some of the most influential innovations in the field of computer vision. 2012 was the first year that neural nets grew to prominence as Alex Krizhevsky used them to win that year’s ImageNet competition (basically, the annual Olympics of computer vision), dropping the classification error record from 26% to 15%, an astounding improvement at the time.Ever since then, a host of companies have been using deep learning at the core of their services. Facebook uses neural nets for their automatic tagging algorithms, Google for their photo search, Amazon for their product recommendations, Pinterest for their home feed personalization, and Instagram for their search infrastructure.<br>卷积神经网络听起来像一个奇怪的结合生物学和数学与一点点CS洒在，但这些网络已经在计算机视觉领域的一些最有影响力的创新。2012，神经网上升到突出Alex Krizhevsky用他们赢得了当年的ImageNet竞赛的第一年（基本上，计算机视觉的年奥运会），降低分类错误记录从26%到15%，当时一个惊人的进步。从那时起，许多公司已经在他们的服务核心采用深层学习。脸谱网使用他们的自动标注算法的神经网络，谷歌的图片搜索，亚马逊的产品推荐，Pinterest他们家的饲料的个性化，并为他们的搜索基础Instagram。<br><img src="https://adeshpande3.github.io/assets/Companies.png" alt=""></p>
+<p>Convolutional neural networks. Sounds like a weird combination of biology and math with a little CS sprinkled in, but these networks have been some of the most influential innovations in the field of computer vision. 2012 was the first year that neural nets grew to prominence as Alex Krizhevsky used them to win that year’s ImageNet competition (basically, the annual Olympics of computer vision), dropping the classification error record from 26% to 15%, an astounding improvement at the time.Ever since then, a host of companies have been using deep learning at the core of their services. Facebook uses neural nets for their automatic tagging algorithms, Google for their photo search, Amazon for their product recommendations, Pinterest for their home feed personalization, and Instagram for their search infrastructure.<br>顾名思义，卷积神经网络结合了生物科学、数学还有一点点的计算机科学，在计算机视觉领域取得的创新性成就让人刮目相看。 2012年，卷神经网络声名鹊起。伴随着Alex Krizhevsky用卷积神经网络在拥有一年一度的“计算机视觉奥运会”之称的ImageNet竞赛上取得了分类错误率从26%降低到15%惊人的成就，卷神经网络（CNN）声名鹊起。从那时起，许多著名的科技公司已经在他们核心业务上采用深层学习技术。 例如，Facebook利用神经网络自动标注，谷歌利用他们进行图片搜索，亚马逊的产品推荐，Pinterest的个性化订阅，以及Instagram的搜索基础服务。<br><img src="https://adeshpande3.github.io/assets/Companies.png" alt=""></p>
 <p>  However, the classic, and arguably most popular, use case of these networks is for image processing. Within image processing, let’s take a look at how to use these CNNs for image classification.</p>
 </blockquote>
 <h2 id="The-Problem-Space"><a href="#The-Problem-Space" class="headerlink" title="The Problem Space"></a>The Problem Space</h2><blockquote>
