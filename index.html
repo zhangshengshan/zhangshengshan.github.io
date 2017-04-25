@@ -162,6 +162,14 @@
             
 		
             
+		
+            
+		
+            
+		
+            
+		
+            
 			  
 	
 	<!-- display as entry -->	
@@ -184,14 +192,6 @@
 	</div>
 </div>
 
-            
-		
-            
-		
-            
-		
-            
-		
             
 		
             
@@ -242,7 +242,7 @@
 <p>计算机把一幅图片理解为像素值数组，根据解析度和图片的尺寸，一副图片可能会被表示为32 <em> 32 </em> 3的多维数组(3表示RGB值)。重申一下，假如存在一副JPG格式大小为480 <em> 480 的图像。对应的数组的纬度将会是480 </em> 480 * 3. 每个元素取值范围是0-255, 描述了该像素点的情况。这些数组中的元素对于人类虽然没有什么用处，但是计算机却只能得到这些基本信息。但计算机看到这些数值组成的数组的时候，计算机会输出一些列概率值，分别描述了图片属于对应类别的可能性。</p>
 </blockquote>
 <h2 id="What-We-Want-the-Computer-to-Do"><a href="#What-We-Want-the-Computer-to-Do" class="headerlink" title="What We Want the Computer to Do"></a>What We Want the Computer to Do</h2><blockquote>
-<p>Now that we know the problem as well as the inputs and outputs, let’s think about how to approach this. What we want the computer to do is to be able to differentiate between all the images it’s given and figure out the unique features that make a dog a dog or that make a cat a cat. This is the process that goes on in our minds subconsciously as well. When we look at a picture of a dog, we can classify it as such if the picture has identifiable features such as paws or 4 legs. In a similar way, the computer is able perform image classification by looking for low level features such as edges and curves, and then building up to more abstract concepts through a series of convolutional layers. This is a general overview of what a CNN does. Let’s get into the specifics.</p>
+<p>Now that we know the problem as well as the inputs and outputs, let’s think about how to approach this. What we want the computer to do is to be able to differentiate between all the images it’s given and figure out the unique features that make a dog a dog or that make a cat a cat. This is the process that goes on in our minds subconsciously as well. When we look at a picture of a dog, we can classify it as such if the picture has identifiable features such as paws or 4 legs. In a similar way, the computer is able perform image classification by looking for low level features such as edges and curves, and then building up to more abstract concepts through a series of convolutional layers. This is a general overview of what a CNN does. Let’s get into the specifics.<br>既然我们了解了图像识别分类的定义和计算机看到的输入和输出，我们再来想想一下人类如何做到的。 计算机分类图片和识别出类别本质上的特征这样的过程对于人类几乎是不假思索即可完成的。人类看到狗的时候，我们可以轻易的辨别狗的特征，比如爪子和四条腿。类似地，计算机也可以识别到比较低层次地特征比如边缘或者曲线， 然后通过一系列卷积层构建出层次较高的、抽象的特征。这就是CNN的基本思路。下面让我们深入地探究CNN的一些细节。</p>
 </blockquote>
 <h2 id="Biological-Connection"><a href="#Biological-Connection" class="headerlink" title="Biological Connection"></a>Biological Connection</h2><blockquote>
 <p>But first, a little background. When you first heard of the term convolutional neural networks, you may have thought of something related to neuroscience or biology, and you would be right. Sort of. CNNs do take a biological inspiration from the visual cortex. The visual cortex has small regions of cells that are sensitive to specific regions of the visual field. This idea was expanded upon by a fascinating experiment by Hubel and Wiesel in 1962 (Video) where they showed that some individual neuronal cells in the brain responded (or fired) only in the presence of edges of a certain orientation. For example, some neurons fired when exposed to vertical edges and some when shown horizontal or diagonal edges. Hubel and Wiesel found out that all of these neurons were organized in a columnar architecture and that together, they were able to produce visual perception. This idea of specialized components inside of a system having specific tasks (the neuronal cells in the visual cortex looking for specific characteristics) is one that machines use as well, and is the basis behind CNNs.</p>
@@ -711,43 +711,43 @@ asdfasdfasdfafsaf</div>
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Spark/">Spark<span>5</span></a></li>
-		
-			<li><a href="/tags/基础/">基础<span>1</span></a></li>
-		
 			<li><a href="/tags/CNN/">CNN<span>1</span></a></li>
-		
-			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
-		
-			<li><a href="/tags/English/">English<span>1</span></a></li>
-		
-			<li><a href="/tags/Spark-Scala-Streaming/">Spark Scala Streaming<span>1</span></a></li>
-		
-			<li><a href="/tags/Scala/">Scala<span>3</span></a></li>
-		
-			<li><a href="/tags/Spark-Streaming/">Spark Streaming<span>1</span></a></li>
-		
-			<li><a href="/tags/plugins/">plugins<span>2</span></a></li>
-		
-			<li><a href="/tags/Socket/">Socket<span>1</span></a></li>
-		
-			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
-		
-			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
-		
-			<li><a href="/tags/tensorflow/">tensorflow<span>3</span></a></li>
 		
 			<li><a href="/tags/简体/">简体<span>1</span></a></li>
 		
-			<li><a href="/tags/Q-A/">Q&amp;A<span>2</span></a></li>
-		
 			<li><a href="/tags/Flink/">Flink<span>1</span></a></li>
+		
+			<li><a href="/tags/tensorflow/">tensorflow<span>3</span></a></li>
+		
+			<li><a href="/tags/English/">English<span>1</span></a></li>
+		
+			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
+		
+			<li><a href="/tags/highlight/">highlight<span>1</span></a></li>
+		
+			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
+		
+			<li><a href="/tags/Spark/">Spark<span>5</span></a></li>
+		
+			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
+		
+			<li><a href="/tags/基础/">基础<span>1</span></a></li>
+		
+			<li><a href="/tags/Spark-Streaming/">Spark Streaming<span>1</span></a></li>
+		
+			<li><a href="/tags/Socket/">Socket<span>1</span></a></li>
+		
+			<li><a href="/tags/Spark-Scala-Streaming/">Spark Scala Streaming<span>1</span></a></li>
 		
 			<li><a href="/tags/竞赛/">竞赛<span>3</span></a></li>
 		
+			<li><a href="/tags/Q-A/">Q&amp;A<span>2</span></a></li>
+		
+			<li><a href="/tags/plugins/">plugins<span>2</span></a></li>
+		
 			<li><a href="/tags/Python/">Python<span>1</span></a></li>
 		
-			<li><a href="/tags/highlight/">highlight<span>1</span></a></li>
+			<li><a href="/tags/Scala/">Scala<span>3</span></a></li>
 		
 		 
 		</ul>
