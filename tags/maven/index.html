@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>tensorflow | Zhangshengshan&#39;s Blog</title>
+  <title>maven | Zhangshengshan&#39;s Blog</title>
   <meta name="author" content="Zhang ShengShan">
   
   
@@ -88,7 +88,7 @@
 
 <!-- title -->
 <div class="page-header page-header-inverse ">
-  <h1 class="archive-title-category title title-inverse ">tensorflow</h1>
+  <h1 class="archive-title-tag title title-inverse ">maven</h1>
 </div>
 
 <div class="row page">
@@ -101,69 +101,27 @@
 
       
 
-      <div class="mypage">
-	  
-	    	
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2017-01-04 </div>
-			<div class="article-title"><a href="/2017/01/04/Deep-MNIST-for-Experts/" >Deep MNIST for Experts</a></div>						
-		</h3>
-	
+	  <div class="archive">
+		
+		
+		
+			
+			
+			<h4 class="archive-ul" data-toggle="collapse" data-target="#2017">2017<b class="caret"></b></h4>
+			<ul id="2017" class="collapse in">
+			
+		
+		<li class="listing-item">
+		<span class="date_class"> 2017-06-21 </span> &raquo;
+		
+		   <span class="title"><a href="/2017/06/21/ReleasePackageToSonatypeRepo/" >ReleasePackageToSonatypeRepo</a></span>
+		
+		</li>			
+		
+		</ul>
+		</div>
 
-
-	    	<div class="entry">
-  <div class="row">
-	
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">from tensorflow.examples.tutorials.mnist import input_data</div><div class="line">mnist = input_data.read_data_sets(&apos;MNIST_data&apos;, one_hot=True)</div><div class="line"></div><div class="line">import tensorflow as tf</div><div class="line">sess = tf.InteractiveSession()</div><div class="line"></div><div class="line"></div><div class="line">#None 表示这里可能存在很多个样本, 784=28*28表示共有784个像素点</div><div class="line">#y_表示与x对应的label, 由于采用的是one_hot编码的所以是10维</div><div class="line">x = tf.placeholder(tf.float32, shape=[None, 784])</div><div class="line">y_ = tf.placeholder(tf.float32, shape=[None, 10])</div><div class="line"></div><div class="line"></div><div class="line">W = tf.Variable(tf.zeros([784,10]))</div><div class="line">b = tf.Variable(tf.zeros([10]))</div><div class="line"></div><div class="line"></div><div class="line">sess.run(tf.global_variables_initializer())</div><div class="line"># 假设 有X个样本，那么 (X*784) * (784*10) = (X*10) </div><div class="line">y = tf.matmul(x,W) + b</div><div class="line"></div><div class="line"></div><div class="line">cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(y, y_))</div></pre></td></tr></table></figure>
-
-	
-	</div>
-</div>
-
-	  
-	    	
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2016-12-28 </div>
-			<div class="article-title"><a href="/2016/12/28/install-tensorflow/" >install tensorflow</a></div>						
-		</h3>
-	
-
-
-	    	<div class="entry">
-  <div class="row">
-	
-	
-		<p>anaconda 提供了python科学计算的环境，为各种python软件包安装和管理提供了遍历，按照官方文档的方式即可以安装tensorflow. </p>
-<h2 id="创建tensorflow的虚拟环境"><a href="#创建tensorflow的虚拟环境" class="headerlink" title="创建tensorflow的虚拟环境"></a>创建tensorflow的虚拟环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">conda create -n tensorflow python=3.5</div></pre></td></tr></table></figure>
-<h2 id="安装tensorflow"><a href="#安装tensorflow" class="headerlink" title="安装tensorflow"></a>安装tensorflow</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ source activate tensorflow</div><div class="line">(tensorflow)$  # Your prompt should change</div><div class="line"></div><div class="line"># Linux/Mac OS X, Python 2.7/3.4/3.5, CPU only:</div><div class="line">(tensorflow)$ conda install -c conda-forge tensorflow</div></pre></td></tr></table></figure>
-<p>如果网络状况不好，那么可以采用pip安装。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ source activate tensorflow</div><div class="line">(tensorflow)$  # Your prompt should change</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.12.0-py3-none-any.whl</div></pre></td></tr></table></figure>
-<p><strong>请注意这里不能采用pip3安装，因为anaconda环境中pip3安装是有问题的</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install --ignore-installed --upgrade $TF_BINARY_URL</div></pre></td></tr></table></figure></p>
-<h2 id="测试是否安装成功"><a href="#测试是否安装成功" class="headerlink" title="测试是否安装成功"></a>测试是否安装成功</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import tensorflow as tf</div><div class="line">print(tf.__versioin__)</div></pre></td></tr></table></figure>
-
-	
-	</div>
-</div>
-
-	  
-      </div>
-	  <div>
-	    <center>
-	    <div class="pagination">
-<ul class="pagination">
-	 
-</ul>
-</div>
-
-        </center>
-	    </div>	
-      
+       
 
 </div> <!-- col-md-9/col-md-12 -->
 
@@ -219,45 +177,45 @@
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/简体/">简体<span>1</span></a></li>
+			<li><a href="/tags/Q-A/">Q&amp;A<span>2</span></a></li>
 		
-			<li><a href="/tags/maven/">maven<span>1</span></a></li>
-		
-			<li><a href="/tags/Socket/">Socket<span>1</span></a></li>
-		
-			<li><a href="/tags/tensorflow/">tensorflow<span>3</span></a></li>
-		
-			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
-		
-			<li><a href="/tags/Python/">Python<span>1</span></a></li>
+			<li><a href="/tags/CNN/">CNN<span>1</span></a></li>
 		
 			<li><a href="/tags/Flink/">Flink<span>1</span></a></li>
-		
-			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
-		
-			<li><a href="/tags/English/">English<span>1</span></a></li>
-		
-			<li><a href="/tags/基础/">基础<span>1</span></a></li>
 		
 			<li><a href="/tags/Spark-Scala-Streaming/">Spark Scala Streaming<span>1</span></a></li>
 		
 			<li><a href="/tags/Spark/">Spark<span>5</span></a></li>
 		
-			<li><a href="/tags/plugins/">plugins<span>2</span></a></li>
-		
-			<li><a href="/tags/CNN/">CNN<span>1</span></a></li>
+			<li><a href="/tags/基础/">基础<span>1</span></a></li>
 		
 			<li><a href="/tags/竞赛/">竞赛<span>3</span></a></li>
 		
-			<li><a href="/tags/Spark-Streaming/">Spark Streaming<span>1</span></a></li>
+			<li><a href="/tags/maven/">maven<span>1</span></a></li>
 		
-			<li><a href="/tags/highlight/">highlight<span>1</span></a></li>
+			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
+		
+			<li><a href="/tags/English/">English<span>1</span></a></li>
+		
+			<li><a href="/tags/plugins/">plugins<span>2</span></a></li>
+		
+			<li><a href="/tags/简体/">简体<span>1</span></a></li>
+		
+			<li><a href="/tags/Spark-Streaming/">Spark Streaming<span>1</span></a></li>
 		
 			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
 		
+			<li><a href="/tags/tensorflow/">tensorflow<span>3</span></a></li>
+		
+			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
+		
+			<li><a href="/tags/Python/">Python<span>1</span></a></li>
+		
 			<li><a href="/tags/Scala/">Scala<span>3</span></a></li>
 		
-			<li><a href="/tags/Q-A/">Q&amp;A<span>2</span></a></li>
+			<li><a href="/tags/highlight/">highlight<span>1</span></a></li>
+		
+			<li><a href="/tags/Socket/">Socket<span>1</span></a></li>
 		
 		 
 		</ul>
