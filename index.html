@@ -166,6 +166,8 @@
             
 		
             
+		
+            
 			  
 	
 	<!-- display as entry -->	
@@ -216,9 +218,95 @@
 		
             
 		
+            
+		
+            
+		
         
         <!-- render other articles -->
         
+           
+			  
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2018-02-13 </div>
+			<div class="article-title"><a href="/2018/02/13/GitKeepSameWithUpStream/" >GitKeepSameWithUpStream</a></div>						
+		</h3>
+	
+
+
+			  <div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="How-to-Keep-same-with-upstream"><a href="#How-to-Keep-same-with-upstream" class="headerlink" title="How to Keep same with upstream"></a>How to Keep same with upstream</h1><h2 id="Configuring-a-remote-for-a-fork"><a href="#Configuring-a-remote-for-a-fork" class="headerlink" title="Configuring a remote for a fork"></a>Configuring a remote for a fork</h2><p>check current remote repository<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote -v</div></pre></td></tr></table></figure></p>
+<p>Specify a new remote upstream repository that will be synced with the fork.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add upstream https://github.com/tensorflow/tensorflow.git</div></pre></td></tr></table></figure></p>
+<p>check again<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote -v</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git fetch upstream</div><div class="line">git checkout master</div><div class="line">git merge upstream/master</div></pre></td></tr></table></figure>
+
+	
+	</div>
+</div>
+
+           
+		
+           
+			  
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2017-09-18 </div>
+			<div class="article-title"><a href="/2017/09/18/UpperBound/" >UpperBound</a></div>						
+		</h3>
+	
+
+
+			  <div class="entry">
+  <div class="row">
+	
+	
+		<p>While upper type bounds limit a type to a subtype of another type, lower type bounds declare a type to be a supertype of another type. The term B &gt;: A expresses that the type parameter B or the abstract type B refer to a supertype of type A. In most cases, A will be the type parameter of the class and B will be the type parameter of a method.</p>
+<p>Here is an example where this is useful:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">trait Node[+B] &#123;</div><div class="line">  def prepend(elem: B): Unit</div><div class="line">&#125;</div><div class="line"></div><div class="line">case class ListNode[+B](h: B, t: Node[B]) extends Node[B] &#123;</div><div class="line">  def prepend(elem: B) = ListNode[B](elem, this)</div><div class="line">  def head: B = h</div><div class="line">  def tail = t</div><div class="line">&#125;</div><div class="line"></div><div class="line">case class Nil[+B]() extends Node[B] &#123;</div><div class="line">  def prepend(elem: B) = ListNode[B](elem, this)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>This program implements a singly-linked list. Nil represents an empty element (i.e. an empty list). class ListNode is a node which contains an element of type B (head) and a reference to the rest of the list (tail). The class Node and its subtypes are covariant because we have +B.</p>
+<p>However, this program does not compile because the parameter elem in prepend is of type B, which we declared covariant. This doesn’t work because functions are contravariant in their parameter types and covariant in their result types.</p>
+<p>To fix this, we need to flip the variance of the type of the parameter elem in prepend. We do this by introducing a new type parameter U that has B as a lower type bound.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">trait Node[+B] &#123;</div><div class="line">  def prepend[U &gt;: B](elem: U)</div><div class="line">&#125;</div><div class="line"></div><div class="line">case class ListNode[+B](h: B, t: Node[B]) extends Node[B] &#123;</div><div class="line">  def prepend[U &gt;: B](elem: U) = ListNode[U](elem, this)</div><div class="line">  def head: B = h</div><div class="line">  def tail = t</div><div class="line">&#125;</div><div class="line"></div><div class="line">case class Nil[+B]() extends Node[B] &#123;</div><div class="line">  def prepend[U &gt;: B](elem: U) = ListNode[U](elem, this)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Now we can do the following:</p>
+<p>trait Mammal<br>case class AfricanSwallow() extends Mammal<br>case class EuropeanSwallow() extends Mammal</p>
+<p>val africanSwallowList= ListNode<a href="AfricanSwallow(">AfricanSwallow</a>, Nil())<br>val mammalList: Node[Mammal] = africanSwallowList<br>mammalList.prepend(new EuropeanSwallow)</p>
+<p>The Node[Mammal] can be assigned the africanSwallowList but then accept EuropeanSwallows.</p>
+
+	
+	</div>
+</div>
+
+           
+		
+           
+			  
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2017-09-10 </div>
+			<div class="article-title"><a href="/2017/09/10/函数式编程/" >函数式编程</a></div>						
+		</h3>
+	
+
+
+			  <div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h1><p>最早接触函数式编程是公司的一位实习生同学介绍的概念，当时在他在PYTHON解释行上</p>
+
+	
+	</div>
+</div>
+
+           
+		
            
 			  
 	
@@ -473,154 +561,6 @@
 
            
 		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2017-02-15 </div>
-			<div class="article-title"><a href="/2017/02/15/EchoServer服务器/" >EchoServer服务器</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-	
-		<h1 id="EchoServer服务器设计"><a href="#EchoServer服务器设计" class="headerlink" title="EchoServer服务器设计"></a>EchoServer服务器设计</h1><h2 id="提纲"><a href="#提纲" class="headerlink" title="提纲"></a>提纲</h2><ul>
-<li>最简单的EchoServer</li>
-<li>采用兼容API的EchoServer</li>
-<li>并发服务器设计之多进程模型</li>
-<li>并发服务器设计之多线程模型</li>
-<li>并发服务器设计之IO多路复用模型</li>
-</ul>
-<h2 id="最简单的EchoServer"><a href="#最简单的EchoServer" class="headerlink" title="最简单的EchoServer"></a>最简单的EchoServer</h2><h3 id="socket"><a href="#socket" class="headerlink" title="socket"></a>socket</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/socket.h&gt;</div><div class="line">int socket(int domain, int type, int protocol);</div><div class="line">Returns file descriptor on success, or –1 on error</div></pre></td></tr></table></figure>
-<p>domain 可以是AF_UNIX、AF_INET、AF_INET6中的一种，分别表示通过内核、IPV4连接的主机、IPV6连接的主机进行通讯，Unix域(AF_INET)只能在相同的主机上进行通讯。上面各种域对这样不同的地址结构。<br>type 可以是SOCK_STREAM、SOCK_DGRAM或者SOCK_RAW中的一种。</p>
-<h3 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/socket.h&gt;</div><div class="line">int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);</div><div class="line">Returns 0 on success, or –1 on error</div></pre></td></tr></table></figure>
-<p>sockfd是通过socket调用创建的socket文件描述符， struct sockaddr 是通用地址结构，因为socket()中创建的域类型可能有不同的种类，这里需要能够接受不同的地址类型比如(sockaddr_un,sockaddr_in,sockaddr_in6)。</p>
-<h3 id="listen"><a href="#listen" class="headerlink" title="listen"></a>listen</h3><p>流式的SOCKET分为主动被动两种，简单来讲connect操作的SOCKET成为主动的大家，而通过listen操作的SOCKET可以被动的接入。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nclude &lt;sys/socket.h&gt;</div><div class="line">int listen(int sockfd, int backlog);</div><div class="line">Returns 0 on success, or –1 on error</div></pre></td></tr></table></figure></p>
-<p>backlog 的主要作用是控制内核记录未决连接的数量。<strong>未决连接</strong>是客户端已经发生connect操作，但是服务端因为忙于其他处理而尚未accept操作。</p>
-<h3 id="accept"><a href="#accept" class="headerlink" title="accept"></a>accept</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/socket.h&gt;</div><div class="line">int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);</div><div class="line">Returns file descriptor on success, or –1 on error</div></pre></td></tr></table></figure>
-<p>accept系统调用会接受一个接入连接，如果在调用accept()时候不存在未决连接，那么则该调用会阻塞到有连接请求为止。</p>
-<h3 id="最简单EchoServer服务器的示例代码"><a href="#最简单EchoServer服务器的示例代码" class="headerlink" title="最简单EchoServer服务器的示例代码"></a>最简单EchoServer服务器的示例代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/types.h&gt;</div><div class="line">#include &lt;sys/socket.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;netinet/in.h&gt;</div><div class="line">#include &lt;arpa/inet.h&gt;</div><div class="line">#include &lt;unistd.h&gt;</div><div class="line">#include &lt;string.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;fcntl.h&gt;</div><div class="line">#include &lt;sys/shm.h&gt;</div><div class="line"></div><div class="line">#define MYPORT  8887</div><div class="line">#define QUEUE   20</div><div class="line">#define BUFFER_SIZE 1024</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">    ///定义sockfd</div><div class="line">    int server_sockfd = socket(AF_INET,SOCK_STREAM, 0);</div><div class="line">    ///定义sockaddr_in</div><div class="line">    struct sockaddr_in server_sockaddr;</div><div class="line">    server_sockaddr.sin_family = AF_INET;</div><div class="line">    server_sockaddr.sin_port = htons(MYPORT);</div><div class="line">    server_sockaddr.sin_addr.s_addr = htonl(INADDR_ANY);</div><div class="line">    ///bind，成功返回0，出错返回-1</div><div class="line">    if(bind(server_sockfd,(struct sockaddr *)&amp;server_sockaddr,sizeof(server_sockaddr))==-1)</div><div class="line">    &#123;</div><div class="line">        perror(&quot;bind&quot;);</div><div class="line">        exit(1);</div><div class="line">    &#125;</div><div class="line">    ///listen，成功返回0，出错返回-1</div><div class="line">    if(listen(server_sockfd,QUEUE) == -1)</div><div class="line">    &#123;</div><div class="line">        perror(&quot;listen&quot;);</div><div class="line">        exit(1);</div><div class="line">    &#125;</div><div class="line">    ///客户端套接字</div><div class="line">    char buffer[BUFFER_SIZE];</div><div class="line">    struct sockaddr_in client_addr;</div><div class="line">    socklen_t length = sizeof(client_addr);</div><div class="line">    ///成功返回非负描述字，出错返回-1</div><div class="line">    int conn = accept(server_sockfd, (struct sockaddr*)&amp;client_addr, &amp;length);</div><div class="line">    if(conn&lt;0)</div><div class="line">    &#123;</div><div class="line">        perror(&quot;connect&quot;);</div><div class="line">        exit(1);</div><div class="line">    &#125;</div><div class="line">    while(1)</div><div class="line">    &#123;</div><div class="line">        memset(buffer,0,sizeof(buffer));</div><div class="line">        int len = recv(conn, buffer, sizeof(buffer),0);</div><div class="line">        if(strcmp(buffer,&quot;exit\n&quot;)==0)</div><div class="line">            break;</div><div class="line">        fputs(buffer, stdout);</div><div class="line">        send(conn, buffer, len, 0);</div><div class="line">    &#125;</div><div class="line">    close(conn);</div><div class="line">    close(server_sockfd);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="稍微复杂一点的EchoServer"><a href="#稍微复杂一点的EchoServer" class="headerlink" title="稍微复杂一点的EchoServer"></a>稍微复杂一点的EchoServer</h2><p>网上大部分的网络编程服务器教程或者文章给出的最简单的示例，基本上都和上面的代码差不多。上面的代码可以进一步完善。这些改进主要是采用名称来替代IP地址和端口号。（下面的代码，来自于《Linux/Unix系统编程手册》）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div></pre></td><td class="code"><pre><div class="line">#define _BSD_SOURCE             /* To get definitions of NI_MAXHOST and NI_MAXSERV from &lt;netdb.h&gt; */</div><div class="line">#include &lt;netdb.h&gt;</div><div class="line">#include &quot;is_seqnum.h&quot;</div><div class="line">#define BACKLOG 50</div><div class="line">int main(int argc, char *argv[])</div><div class="line">&#123;</div><div class="line">    uint32_t seqNum;</div><div class="line">    char reqLenStr[INT_LEN];            /* Length of requested sequence */</div><div class="line">    char seqNumStr[INT_LEN];            /* Start of granted sequence */</div><div class="line">    struct sockaddr_storage claddr;</div><div class="line">    int lfd, cfd, optval, reqLen;</div><div class="line">    socklen_t addrlen;</div><div class="line">    struct addrinfo hints;</div><div class="line">    struct addrinfo *result, *rp;</div><div class="line">#define ADDRSTRLEN (NI_MAXHOST + NI_MAXSERV + 10)</div><div class="line">    char addrStr[ADDRSTRLEN];</div><div class="line">    char host[NI_MAXHOST];</div><div class="line">    char service[NI_MAXSERV];</div><div class="line"></div><div class="line">    if (argc &gt; 1 &amp;&amp; strcmp(argv[1], &quot;--help&quot;) == 0)</div><div class="line">        usageErr(&quot;%s [init-seq-num]\n&quot;, argv[0]);</div><div class="line"></div><div class="line">    seqNum = (argc &gt; 1) ? getInt(argv[1], 0, &quot;init-seq-num&quot;) : 0;</div><div class="line"></div><div class="line">    /* Ignore the SIGPIPE signal, so that we find out about broken connection errors via a failure from write(). */</div><div class="line"></div><div class="line">    if (signal(SIGPIPE, SIG_IGN) == SIG_ERR)    errExit(&quot;signal&quot;);</div><div class="line"></div><div class="line">    /* Call getaddrinfo() to obtain a list of addresses that we can try binding to */</div><div class="line"></div><div class="line">    memset(&amp;hints, 0, sizeof(struct addrinfo));</div><div class="line">    hints.ai_canonname = NULL;</div><div class="line">    hints.ai_addr = NULL;</div><div class="line">    hints.ai_next = NULL;</div><div class="line">    hints.ai_socktype = SOCK_STREAM;</div><div class="line">    hints.ai_family = AF_UNSPEC;        /* Allows IPv4 or IPv6 */</div><div class="line">    // 这里指定了AI_PASSIVE 创建的socket会被绑定在通配地址上, 结果就是当服务程序运行在多宿主机的情况下</div><div class="line">    // ，服务器可以处理发送到任意一个网络地址的请求。</div><div class="line">    hints.ai_flags = AI_PASSIVE | AI_NUMERICSERV;</div><div class="line">                        /* Wildcard IP address; service name is numeric */</div><div class="line"></div><div class="line">    if (getaddrinfo(NULL, PORT_NUM, &amp;hints, &amp;result) != 0)</div><div class="line">        errExit(&quot;getaddrinfo&quot;);</div><div class="line"></div><div class="line">    /* Walk through returned list until we find an address structure</div><div class="line">       that can be used to successfully create and bind a socket */</div><div class="line"></div><div class="line">    optval = 1;</div><div class="line">    for (rp = result; rp != NULL; rp = rp-&gt;ai_next) &#123;</div><div class="line">        lfd = socket(rp-&gt;ai_family, rp-&gt;ai_socktype, rp-&gt;ai_protocol);</div><div class="line">        if (lfd == -1)</div><div class="line">            continue;                   /* On error, try next address */</div><div class="line"></div><div class="line">        if (setsockopt(lfd, SOL_SOCKET, SO_REUSEADDR, &amp;optval, sizeof(optval))</div><div class="line">                == -1)</div><div class="line">             errExit(&quot;setsockopt&quot;);</div><div class="line"></div><div class="line">        if (bind(lfd, rp-&gt;ai_addr, rp-&gt;ai_addrlen) == 0)</div><div class="line">            break;                      /* Success */</div><div class="line"></div><div class="line">        /* bind() failed: close this socket and try next address */</div><div class="line">        close(lfd);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if (rp == NULL)</div><div class="line">        fatal(&quot;Could not bind socket to any address&quot;);</div><div class="line"></div><div class="line">    if (listen(lfd, BACKLOG) == -1)</div><div class="line">        errExit(&quot;listen&quot;);</div><div class="line"></div><div class="line">    /* freeaddrinfo的作用是释放getaddrinfo为result动态分配的内存 */</div><div class="line">    freeaddrinfo(result);</div><div class="line"></div><div class="line">    for (;;) &#123;                  /* Handle clients iteratively */</div><div class="line"></div><div class="line">        /* Accept a client connection, obtaining client&apos;s address */</div><div class="line"></div><div class="line">        addrlen = sizeof(struct sockaddr_storage);</div><div class="line">        cfd = accept(lfd, (struct sockaddr *) &amp;claddr, &amp;addrlen);</div><div class="line">        if (cfd == -1) &#123;</div><div class="line">            errMsg(&quot;accept&quot;);</div><div class="line">            continue;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (getnameinfo((struct sockaddr *) &amp;claddr, addrlen,</div><div class="line">                    host, NI_MAXHOST, service, NI_MAXSERV, 0) == 0)</div><div class="line">            snprintf(addrStr, ADDRSTRLEN, &quot;(%s, %s)&quot;, host, service);</div><div class="line">        else</div><div class="line">            snprintf(addrStr, ADDRSTRLEN, &quot;(?UNKNOWN?)&quot;);</div><div class="line">        printf(&quot;Connection from %s\n&quot;, addrStr);</div><div class="line"></div><div class="line">        /* Read client request, send sequence number back */</div><div class="line"></div><div class="line">        if (readLine(cfd, reqLenStr, INT_LEN) &lt;= 0) &#123;</div><div class="line">            close(cfd);</div><div class="line">            continue;                   /* Failed read; skip request */</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        reqLen = atoi(reqLenStr);</div><div class="line">        if (reqLen &lt;= 0) &#123;              /* Watch for misbehaving clients */</div><div class="line">            close(cfd);</div><div class="line">            continue;                   /* Bad request; skip it */</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        snprintf(seqNumStr, INT_LEN, &quot;%d\n&quot;, seqNum);</div><div class="line">        if (write(cfd, seqNumStr, strlen(seqNumStr)) != strlen(seqNumStr))</div><div class="line">            fprintf(stderr, &quot;Error on write&quot;);</div><div class="line"></div><div class="line">        seqNum += reqLen;               /* Update sequence number */</div><div class="line"></div><div class="line">        if (close(cfd) == -1)           /* Close connection */</div><div class="line">            errMsg(&quot;close&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="getaddrinfo系统调用解析"><a href="#getaddrinfo系统调用解析" class="headerlink" title="getaddrinfo系统调用解析"></a>getaddrinfo系统调用解析</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#include &lt;sys/socket.h&gt;</div><div class="line">#include &lt;netdb.h&gt;</div><div class="line">int getaddrinfo(const char *host, const char *service,</div><div class="line">const struct addrinfo *hints, struct addrinfo **result);</div><div class="line">Returns 0 on success, or nonzero on error</div></pre></td></tr></table></figure>
-<ul>
-<li>host可以是主机名称或者字符串形式的IP地址</li>
-<li>service可以是服务名称或者端口号</li>
-<li>hints参数规定了result参数返回的socket地址的标准。</li>
-<li>result参数是getaddrinfo自动分配的addrinfo链表。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">struct addrinfo &#123;</div><div class="line">int ai_flags; /* Input flags (AI_* constants) */</div><div class="line">int ai_family; /* Address family */</div><div class="line">int ai_socktype; /* Type: SOCK_STREAM, SOCK_DGRAM */</div><div class="line">int ai_protocol; /* Socket protocol */</div><div class="line">size_t ai_addrlen; /* Size of structure pointed to by ai_addr */</div><div class="line">char *ai_canonname; /* Canonical name of host */</div><div class="line">struct sockaddr *ai_addr; /* Pointer to socket address structure */</div><div class="line">struct addrinfo *ai_next; /* Next structure in linked list */</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>hints参数只能设置 ai_flags，ai_family, ai_socktype, ai_protocol四个字段。hints.ai_family可以指定AF_INET或者AF_INET6, 或者设置为AF_UNSPEC. hints.ai_socktype指定socket类型，可以为SOCK_STREAM或者SOCK_DGRAM，如果设置为0则表示可以接受任何类型的socket. hints.ai_flags控制getaddrinfo的行为。AI_PASSIVE表示返回被动方式的地址结构。此时host设置为NULL，通过result返回的socket地址结构将会包含通配IP地址（即INADDR_DAY或者IN6ADDR_ANY_INIT）。如果没有设置AI_PASSIVE则返回的地址结构将会将可以被用为connect() 和sendto()。</p>
-<p>SO_REUSEADDR 是TCP服务器一般情况下都要设置这个选项。这里仅仅关注其最简单的一种用途：避免当服务器重启的时候，尝试将套接字关联在当前TCP节点相关联的端口上的时候出现EADDRRINUSE（地址已使用）的错误。</p>
-<h2 id="并发服务器设计之多进程模型"><a href="#并发服务器设计之多进程模型" class="headerlink" title="并发服务器设计之多进程模型"></a>并发服务器设计之多进程模型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-<h2 id="并发服务器设计之多线程模型"><a href="#并发服务器设计之多线程模型" class="headerlink" title="并发服务器设计之多线程模型"></a>并发服务器设计之多线程模型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-<h2 id="并发服务器设计之其他模型-异步IO-协程模型"><a href="#并发服务器设计之其他模型-异步IO-协程模型" class="headerlink" title="并发服务器设计之其他模型(异步IO/协程模型)"></a>并发服务器设计之其他模型(异步IO/协程模型)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-
-	
-	</div>
-</div>
-
-           
-		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2017-02-11 </div>
-			<div class="article-title"><a href="/2017/02/11/Homebrew-config-for-mac/" >Homebrew_config_for_mac</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-	
-		<p>MAC 上面的brew速度非常慢，尝试如下方式可以加速homebrew安装软件的速度</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">cd &quot;$(brew --repo)&quot;</div><div class="line">git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git</div><div class="line"></div><div class="line">cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;</div><div class="line">git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git</div><div class="line"></div><div class="line">brew update</div></pre></td></tr></table></figure>
-
-	
-	</div>
-</div>
-
-           
-		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2017-01-25 </div>
-			<div class="article-title"><a href="/2017/01/25/test/" >test</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-	
-		<h1 id="aa"><a href="#aa" class="headerlink" title="aa"></a>aa</h1><h2 id="bb"><a href="#bb" class="headerlink" title="bb"></a>bb</h2><ul>
-<li>asdf</li>
-<li>asdf</li>
-<li>asdf</li>
-<li>asdf</li>
-<li>asdf</li>
-</ul>
-<h2 id="cc"><a href="#cc" class="headerlink" title="cc"></a>cc</h2><h3 id="ccc"><a href="#ccc" class="headerlink" title="ccc"></a>ccc</h3><p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
-<p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-<p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-<p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-<p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
-<p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
-<a class="btn btn-default" href="http://hahack.com" target="_blank" rel="external">hahack</a>
-<a class="btn btn-primary" href="http://hahack.com" target="_blank" rel="external">hahack</a>
-<a class="btn btn-success" href="http://hahack.com" target="_blank" rel="external">hahack</a>
-<a class="btn btn-warning" href="http://hahack.com" target="_blank" rel="external">hahack</a>
-<a class="btn btn-danger" href="http://hahack.com" target="_blank" rel="external">hahack</a>
-<a class="btn btn-info" href="http://www.baidu.com" target="_blank" rel="external">baidu</a>
-<span class="label label-default">default</span>
-<span class="label label-warning">warinng</span>
-<span class="label label-success">success</span>
-<span class="label label-danger">danger</span>
-<span class="label label-primary">primary</span>
-<span class="label label-info">info</span>
-<p class="text-info">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa </p>
-<p class="text-info">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa </p>
-<a class="btn btn-default" href="http://hahack.com" target="_blank" rel="external">asdfasdfasdfasdf</a>
-<a class="btn btn-success" href="http://hahack.com" target="_blank" rel="external">text</a>
-<a class="btn btn-default" href="http://github.com" target="_blank" rel="external">asdfasdfasdf</a>
-<div class="alert alert-info"><i class="fa fa-info"></i>  asdfasdfassfdsfssfasdf
-adsfasdfadsfasfadsfafdasfd
-asdfasdfasdfafsaf</div>
-<div class="alert alert-info"><i class="fa fa-info"></i>  asdfasdfasdfassdf</div>
-<div class="alert alert-info"><i class="fa fa-info"></i>  asdfasdfasdfassdf</div>
-<div class="alert alert-info"><i class="fa fa-info"></i>  asdfasdfasdfassdf</div>
-<div class="alert alert-info"><i class="fa fa-info"></i>  asdfasdfasdfassdf</div>
-<div class="alert alert-info"><i class="fa fa-info"></i>  asdfasdfasdfassdf</div>
-<p><img src="https://adeshpande3.github.io/assets/Cover.png" alt="avatar"></p>
-<h1 id="asdf"><a href="#asdf" class="headerlink" title="asdf"></a>asdf</h1><p><a href="http://www.baidu.com" target="_blank" rel="external">asdf</a>]</p>
-<ul>
-<li>asdf</li>
-<li>asdf</li>
-<li>asdf</li>
-<li>as</li>
-<li>dfa</li>
-<li>sdf</li>
-<li>asdf<br>-</li>
-</ul>
-
-	
-	</div>
-</div>
-
-           
-		
 
 		</div>
 
@@ -702,48 +642,48 @@ asdfasdfasdfafsaf</div>
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Python/">Python<span>1</span></a></li>
-		
-			<li><a href="/tags/highlight/">highlight<span>1</span></a></li>
-		
-			<li><a href="/tags/English/">English<span>1</span></a></li>
-		
-			<li><a href="/tags/Scala/">Scala<span>3</span></a></li>
+			<li><a href="/tags/scala/">scala<span>1</span></a></li>
 		
 			<li><a href="/tags/基础/">基础<span>1</span></a></li>
 		
-			<li><a href="/tags/plugins/">plugins<span>2</span></a></li>
-		
-			<li><a href="/tags/简体/">简体<span>1</span></a></li>
-		
-			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
-		
-			<li><a href="/tags/maven/">maven<span>1</span></a></li>
-		
-			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
+			<li><a href="/tags/tensorflow/">tensorflow<span>3</span></a></li>
 		
 			<li><a href="/tags/Spark-Scala-Streaming/">Spark Scala Streaming<span>1</span></a></li>
 		
-			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
-		
-			<li><a href="/tags/tensorflow/">tensorflow<span>3</span></a></li>
-		
-			<li><a href="/tags/竞赛/">竞赛<span>3</span></a></li>
-		
-			<li><a href="/tags/Flink/">Flink<span>1</span></a></li>
-		
 			<li><a href="/tags/Q-A/">Q&amp;A<span>2</span></a></li>
 		
-			<li><a href="/tags/scala/">scala<span>1</span></a></li>
+			<li><a href="/tags/plugins/">plugins<span>2</span></a></li>
 		
 			<li><a href="/tags/Spark/">Spark<span>5</span></a></li>
 		
-			<li><a href="/tags/Socket/">Socket<span>1</span></a></li>
+			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
+		
+			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
+		
+			<li><a href="/tags/maven/">maven<span>1</span></a></li>
+		
+			<li><a href="/tags/Scala/">Scala<span>4</span></a></li>
+		
+			<li><a href="/tags/highlight/">highlight<span>1</span></a></li>
+		
+			<li><a href="/tags/简体/">简体<span>1</span></a></li>
+		
+			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
+		
+			<li><a href="/tags/Spark-Streaming/">Spark Streaming<span>1</span></a></li>
+		
+			<li><a href="/tags/git/">git<span>1</span></a></li>
+		
+			<li><a href="/tags/竞赛/">竞赛<span>3</span></a></li>
+		
+			<li><a href="/tags/English/">English<span>1</span></a></li>
+		
+			<li><a href="/tags/Python/">Python<span>1</span></a></li>
 		
 			<li><a href="/tags/CNN/">CNN<span>1</span></a></li>
 		
 		
-		   <li><a href="/tags">...<span>21</span></a></li>
+		   <li><a href="/tags">...<span>22</span></a></li>
 		 
 		</ul>
 	</div>
@@ -756,23 +696,23 @@ asdfasdfasdfafsaf</div>
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2018/02/13/GitKeepSameWithUpStream/" ><i class="fa fa-file-o"></i>GitKeepSameWithUpStream</a>
+      </li>
+    
+      <li>
+        <a href="/2017/09/18/UpperBound/" ><i class="fa fa-file-o"></i>UpperBound</a>
+      </li>
+    
+      <li>
+        <a href="/2017/09/10/函数式编程/" ><i class="fa fa-file-o"></i>函数式编程</a>
+      </li>
+    
+      <li>
         <a href="/2017/09/08/scala隐式转换/" ><i class="fa fa-file-o"></i>scala隐式转换</a>
       </li>
     
       <li>
         <a href="/2017/06/21/ReleasePackageToSonatypeRepo/" ><i class="fa fa-file-o"></i>ReleasePackageToSonatypeRepo</a>
-      </li>
-    
-      <li>
-        <a href="/2017/04/26/深度学习中的几个经典问题/" ><i class="fa fa-file-o"></i>深度学习中的几个经典问题</a>
-      </li>
-    
-      <li>
-        <a href="/2017/04/20/A-Beginner-s-Guide-To-Understanding-Convolutional-Neural-Networks/" ><i class="fa fa-file-o"></i>A Beginner&#39;s Guide To Under...</a>
-      </li>
-    
-      <li>
-        <a href="/2017/04/18/DeepLearningCnn/" ><i class="fa fa-file-o"></i>DeepLearningCnn</a>
       </li>
     
   </ul>
@@ -805,7 +745,7 @@ asdfasdfasdfafsaf</div>
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2017 Zhang ShengShan
+  &copy; 2018 Zhang ShengShan
   
       with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>

@@ -111,6 +111,146 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2016-12-21 </div>
+			<div class="article-title"><a href="/2016/12/21/3-2UVa1586/" >3_2UVa1586</a></div>						
+		</h3>
+	
+
+
+			  <div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="Molar-Mass-ACM-ICPC-sroul-2007-UVa1586"><a href="#Molar-Mass-ACM-ICPC-sroul-2007-UVa1586" class="headerlink" title="Molar Mass ACM/ICPC sroul 2007, UVa1586"></a>Molar Mass ACM/ICPC sroul 2007, UVa1586</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;strings.h&gt;</div><div class="line">#include &lt;ctype.h&gt;</div><div class="line"></div><div class="line">/* </div><div class="line"> * ===  FUNCTION  ======================================================================</div><div class="line"> *         Name:  main</div><div class="line"> *  Description:  </div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"></div><div class="line">/* </div><div class="line"> * ===  FUNCTION  ======================================================================</div><div class="line"> *         Name:  get_g</div><div class="line"> *  Description:  </div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line">float get_g ( char a )</div><div class="line">&#123;</div><div class="line">    switch(a)&#123;</div><div class="line">        case &apos;C&apos;:</div><div class="line">            return 12.01;</div><div class="line">            break;</div><div class="line">        case &apos;H&apos;:</div><div class="line">            return 1.008;</div><div class="line">            break;</div><div class="line">        case &apos;O&apos;:</div><div class="line">            return 16.00;</div><div class="line">            break;</div><div class="line">        case &apos;N&apos;:</div><div class="line">            return 14.01;</div><div class="line">            break;</div><div class="line">        default:</div><div class="line">            return -1.0;</div><div class="line">    &#125;</div><div class="line">&#125;		</div><div class="line">int main ( int argc, char *argv[] ) &#123;</div><div class="line">    char buf[101]=&#123;&#125;; </div><div class="line">    int flag = 0;</div><div class="line">    float sum = 0.0;</div><div class="line">    int i = 0 ;</div><div class="line">    int j = 0;</div><div class="line">    int count = 0;</div><div class="line"></div><div class="line">    while( (scanf(&quot;%s&quot;, buf)!=EOF) )&#123;</div><div class="line">        flag = 0;</div><div class="line">        for (i = 0; buf[i]!=&apos;\0&apos;; i++) &#123;</div><div class="line">            count = 0;</div><div class="line">            for( j=i+1;isdigit(buf[j])&amp;&amp;buf[j];j++ )&#123;</div><div class="line">                count = count * 10 + (buf[j]-&apos;0&apos;);</div><div class="line">            &#125;</div><div class="line">            if (count==0) &#123;</div><div class="line">                count=1;</div><div class="line">            &#125;</div><div class="line">            if (buf[i]!=&apos;C&apos;</div><div class="line">                    &amp;&amp; buf[i]!=&apos;N&apos;</div><div class="line">                    &amp;&amp; buf[i]!=&apos;O&apos;</div><div class="line">                    &amp;&amp; buf[i]!=&apos;H&apos;</div><div class="line">                    ) &#123;</div><div class="line">                flag = 1;</div><div class="line">            &#125;</div><div class="line">            sum += count * get_g(buf[i]);</div><div class="line">            i=j-1;</div><div class="line">        &#125;</div><div class="line">        if (!flag)&#123;</div><div class="line">            printf ( &quot;sum is %f\n&quot;,sum );</div><div class="line">        &#125;else&#123;</div><div class="line">//            printf ( &quot;input error\n&quot; );</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return EXIT_SUCCESS;</div><div class="line">&#125;				/* ----------  end of function main  ---------- */</div></pre></td></tr></table></figure>
+
+	
+	</div>
+</div>
+
+           
+		
+           
+			  
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2016-12-15 </div>
+			<div class="article-title"><a href="/2016/12/15/Spark-Streaming-Programming-Guide/" >Spark Streaming Programming Guide</a></div>						
+		</h3>
+	
+
+
+			  <div class="entry">
+  <div class="row">
+	
+	
+		
+	
+	</div>
+</div>
+
+           
+		
+           
+			  
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2016-12-09 </div>
+			<div class="article-title"><a href="/2016/12/09/17年要读的书和学习的技能/" >17年要读的书和学习的技能</a></div>						
+		</h3>
+	
+
+
+			  <div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="17年要读的书"><a href="#17年要读的书" class="headerlink" title="17年要读的书"></a>17年要读的书</h1><table>
+<thead>
+<tr>
+<th>书籍名称</th>
+<th>目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>算法艺术与信息学竞赛:算法竞赛入门经典(第2版)</td>
+<td>提升算法水平，强化C／C++</td>
+</tr>
+<tr>
+<td>算法竞赛入门经典:训练指南</td>
+<td>提高算法，训练思维</td>
+</tr>
+<tr>
+<td>自己动手写Java虚拟机</td>
+<td>了解JAVA虚拟机原理，提升Golang编程水平</td>
+</tr>
+<tr>
+<td>响应式架构:消息模式Actor实现与Scala、Akka应用集成</td>
+<td>学习并发编程、提升Scala编程水平</td>
+</tr>
+<tr>
+<td><a href="https://github.com/exacity/deeplearningbook-chinese" target="_blank" rel="external">深度学习中文版</a></td>
+<td>学习深度学习，为该项目贡献代码</td>
+</tr>
+<tr>
+<td>Tensorflow实战</td>
+<td>学习tensorflow编写神经网络程序</td>
+</tr>
+<tr>
+<td>分布式实时处理系统：原理、架构与实现</td>
+<td>深入理解分布式程序开发，提升C／C++实战能力</td>
+</tr>
+<tr>
+<td>深度学习：21天实战Caffe</td>
+<td>实战深度学习，提升C／C++编程水平</td>
+</tr>
+</tbody>
+</table>
+<h1 id="17年要学习的技能"><a href="#17年要学习的技能" class="headerlink" title="17年要学习的技能"></a>17年要学习的技能</h1><p>机器学习方向</p>
+<ul>
+<li>DecisionTree</li>
+<li>XgBoost</li>
+<li>SVM </li>
+<li>AdaBoost</li>
+<li>PCA</li>
+<li>LogisticRegresion</li>
+</ul>
+<p>Scala</p>
+<ul>
+<li>Akka</li>
+<li>Actor</li>
+</ul>
+<p>Golang</p>
+<ul>
+<li>Beego</li>
+<li>channel基础</li>
+</ul>
+<p>数学基础</p>
+<ul>
+<li>线性代数</li>
+<li>概率论</li>
+</ul>
+<p>Spark</p>
+<ul>
+<li>Spark mlib</li>
+<li>streaming(redis/kafka/akka/hbase)</li>
+<li>structure streaming</li>
+<li>basic rdd</li>
+</ul>
+
+	
+	</div>
+</div>
+
+           
+		
+           
+			  
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2016-12-09 </div>
 			<div class="article-title"><a href="/2016/12/09/SparkDataFrameLikeSql/" >SparkDataFrameLikeSql</a></div>						
 		</h3>
@@ -312,79 +452,6 @@ DataFrames facilitate practical ML Pipelines, particularly feature transformatio
 
            
 		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2016-08-19 </div>
-			<div class="article-title"><a href="/2016/08/19/Save-DataFrame-into-a-partitioned-table-of-HIVE/" >Save DataFrame into a partitioned table of HIVE</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-	
-		<h1 id="How-to-save-a-spark-DataFrame-as-a-patitioned-hive-table"><a href="#How-to-save-a-spark-DataFrame-as-a-patitioned-hive-table" class="headerlink" title="How to save a spark DataFrame as a patitioned hive table"></a>How to save a spark DataFrame as a patitioned hive table</h1><h2 id="utilise-saveAsTable-method"><a href="#utilise-saveAsTable-method" class="headerlink" title="utilise saveAsTable method"></a>utilise saveAsTable method</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">val conf = new SparkConf().setAppName(&quot;Simple Application&quot;).setMaster(&quot;local&quot;)</div><div class="line">val sc = new SparkContext(conf)</div><div class="line">val sqlContext = new org.apache.spark.sql.SQLContext(sc)</div><div class="line">import sqlContext.implicits._</div><div class="line">val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc)</div><div class="line">hiveContext.sql(&quot;use database&quot;)</div><div class="line"></div><div class="line">val cmd =</div><div class="line">  &quot;&quot;&quot;</div><div class="line">     select</div><div class="line">      col1,</div><div class="line">      col2</div><div class="line">     from</div><div class="line">      table</div><div class="line">  &quot;&quot;&quot;.stripMargin</div><div class="line">val yourDf = hiveContext.sql(cmd)</div><div class="line">yourDf.printSchema()</div><div class="line">yourDf.write.partitionBy(&quot;col2&quot;).saveAsTable(&quot;partitionTableName&quot;)</div></pre></td></tr></table></figure>
-
-	
-	</div>
-</div>
-
-           
-		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2016-08-11 </div>
-			<div class="article-title"><a href="/2016/08/11/SparkPassFunctions/" >SparkPassFunctions</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class MyClass &#123;</div><div class="line">  val field = &quot;Hello&quot;</div><div class="line">  def doStuff(rdd: RDD[String]): RDD[String] = &#123;</div><div class="line">  val field_ = this.field</div><div class="line">  rdd.map(x =&gt; field_ + x)&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-	
-	</div>
-</div>
-
-           
-		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2016-07-26 </div>
-			<div class="article-title"><a href="/2016/07/26/MergeSort/" >MergeSort</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-	
-		<p>归并排序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def msort[A](less: (A, A) =&gt; Boolean)(xs: List[A]): List[A] = &#123; </div><div class="line">    def merge(xs1: List[A], xs2: List[A]): List[A] =</div><div class="line">        if (xs1.isEmpty) xs2</div><div class="line">        else if (xs2.isEmpty) xs1</div><div class="line">        else if (less(xs1.head, xs2.head)) xs1.head :: merge(xs1.tail, xs2) else xs2.head :: merge(xs1, xs2.tail)</div><div class="line">    val n = xs.length/2</div><div class="line">    if (n == 0) xs</div><div class="line">    else merge(msort(less)(xs take n), msort(less)(xs drop n))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果你对python列表的用法比较熟悉的话，可以按照如下的方式理解</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xs take n   // xs[0:n+1]</div><div class="line">xs drop n   // xs[n+1:]</div></pre></td></tr></table></figure>
-<p>msort函数应该按照如下方式进行调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">msort((x: Int, y: Int) =&gt; x &lt; y)(List(5, 7, 1, 3))</div></pre></td></tr></table></figure></p>
-
-	
-	</div>
-</div>
-
-           
-		
 
 		</div>
 
@@ -466,48 +533,48 @@ DataFrames facilitate practical ML Pipelines, particularly feature transformatio
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/highlight/">highlight<span>1</span></a></li>
-		
-			<li><a href="/tags/Spark/">Spark<span>5</span></a></li>
+			<li><a href="/tags/Socket/">Socket<span>1</span></a></li>
 		
 			<li><a href="/tags/简体/">简体<span>1</span></a></li>
 		
-			<li><a href="/tags/maven/">maven<span>1</span></a></li>
-		
-			<li><a href="/tags/竞赛/">竞赛<span>3</span></a></li>
-		
-			<li><a href="/tags/基础/">基础<span>1</span></a></li>
-		
-			<li><a href="/tags/tensorflow/">tensorflow<span>3</span></a></li>
-		
-			<li><a href="/tags/CNN/">CNN<span>1</span></a></li>
-		
-			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
-		
-			<li><a href="/tags/Python/">Python<span>1</span></a></li>
-		
-			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
-		
-			<li><a href="/tags/Scala/">Scala<span>3</span></a></li>
+			<li><a href="/tags/scala/">scala<span>1</span></a></li>
 		
 			<li><a href="/tags/Flink/">Flink<span>1</span></a></li>
 		
-			<li><a href="/tags/English/">English<span>1</span></a></li>
+			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
 		
-			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
+			<li><a href="/tags/Spark/">Spark<span>5</span></a></li>
 		
-			<li><a href="/tags/Socket/">Socket<span>1</span></a></li>
+			<li><a href="/tags/tensorflow/">tensorflow<span>3</span></a></li>
 		
-			<li><a href="/tags/plugins/">plugins<span>2</span></a></li>
-		
-			<li><a href="/tags/scala/">scala<span>1</span></a></li>
+			<li><a href="/tags/git/">git<span>1</span></a></li>
 		
 			<li><a href="/tags/Spark-Streaming/">Spark Streaming<span>1</span></a></li>
 		
+			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
+		
+			<li><a href="/tags/Scala/">Scala<span>4</span></a></li>
+		
+			<li><a href="/tags/Q-A/">Q&amp;A<span>2</span></a></li>
+		
+			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
+		
+			<li><a href="/tags/CNN/">CNN<span>1</span></a></li>
+		
 			<li><a href="/tags/Spark-Scala-Streaming/">Spark Scala Streaming<span>1</span></a></li>
 		
+			<li><a href="/tags/基础/">基础<span>1</span></a></li>
 		
-		   <li><a href="/tags">...<span>21</span></a></li>
+			<li><a href="/tags/竞赛/">竞赛<span>3</span></a></li>
+		
+			<li><a href="/tags/English/">English<span>1</span></a></li>
+		
+			<li><a href="/tags/Python/">Python<span>1</span></a></li>
+		
+			<li><a href="/tags/highlight/">highlight<span>1</span></a></li>
+		
+		
+		   <li><a href="/tags">...<span>22</span></a></li>
 		 
 		</ul>
 	</div>
@@ -520,23 +587,23 @@ DataFrames facilitate practical ML Pipelines, particularly feature transformatio
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2018/02/13/GitKeepSameWithUpStream/" ><i class="fa fa-file-o"></i>GitKeepSameWithUpStream</a>
+      </li>
+    
+      <li>
+        <a href="/2017/09/18/UpperBound/" ><i class="fa fa-file-o"></i>UpperBound</a>
+      </li>
+    
+      <li>
+        <a href="/2017/09/10/函数式编程/" ><i class="fa fa-file-o"></i>函数式编程</a>
+      </li>
+    
+      <li>
         <a href="/2017/09/08/scala隐式转换/" ><i class="fa fa-file-o"></i>scala隐式转换</a>
       </li>
     
       <li>
         <a href="/2017/06/21/ReleasePackageToSonatypeRepo/" ><i class="fa fa-file-o"></i>ReleasePackageToSonatypeRepo</a>
-      </li>
-    
-      <li>
-        <a href="/2017/04/26/深度学习中的几个经典问题/" ><i class="fa fa-file-o"></i>深度学习中的几个经典问题</a>
-      </li>
-    
-      <li>
-        <a href="/2017/04/20/A-Beginner-s-Guide-To-Understanding-Convolutional-Neural-Networks/" ><i class="fa fa-file-o"></i>A Beginner&#39;s Guide To Under...</a>
-      </li>
-    
-      <li>
-        <a href="/2017/04/18/DeepLearningCnn/" ><i class="fa fa-file-o"></i>DeepLearningCnn</a>
       </li>
     
   </ul>
@@ -569,7 +636,7 @@ DataFrames facilitate practical ML Pipelines, particularly feature transformatio
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2017 Zhang ShengShan
+  &copy; 2018 Zhang ShengShan
   
       with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>

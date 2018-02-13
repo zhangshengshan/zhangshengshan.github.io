@@ -111,6 +111,79 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2016-08-19 </div>
+			<div class="article-title"><a href="/2016/08/19/Save-DataFrame-into-a-partitioned-table-of-HIVE/" >Save DataFrame into a partitioned table of HIVE</a></div>						
+		</h3>
+	
+
+
+			  <div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="How-to-save-a-spark-DataFrame-as-a-patitioned-hive-table"><a href="#How-to-save-a-spark-DataFrame-as-a-patitioned-hive-table" class="headerlink" title="How to save a spark DataFrame as a patitioned hive table"></a>How to save a spark DataFrame as a patitioned hive table</h1><h2 id="utilise-saveAsTable-method"><a href="#utilise-saveAsTable-method" class="headerlink" title="utilise saveAsTable method"></a>utilise saveAsTable method</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">val conf = new SparkConf().setAppName(&quot;Simple Application&quot;).setMaster(&quot;local&quot;)</div><div class="line">val sc = new SparkContext(conf)</div><div class="line">val sqlContext = new org.apache.spark.sql.SQLContext(sc)</div><div class="line">import sqlContext.implicits._</div><div class="line">val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc)</div><div class="line">hiveContext.sql(&quot;use database&quot;)</div><div class="line"></div><div class="line">val cmd =</div><div class="line">  &quot;&quot;&quot;</div><div class="line">     select</div><div class="line">      col1,</div><div class="line">      col2</div><div class="line">     from</div><div class="line">      table</div><div class="line">  &quot;&quot;&quot;.stripMargin</div><div class="line">val yourDf = hiveContext.sql(cmd)</div><div class="line">yourDf.printSchema()</div><div class="line">yourDf.write.partitionBy(&quot;col2&quot;).saveAsTable(&quot;partitionTableName&quot;)</div></pre></td></tr></table></figure>
+
+	
+	</div>
+</div>
+
+           
+		
+           
+			  
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2016-08-11 </div>
+			<div class="article-title"><a href="/2016/08/11/SparkPassFunctions/" >SparkPassFunctions</a></div>						
+		</h3>
+	
+
+
+			  <div class="entry">
+  <div class="row">
+	
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class MyClass &#123;</div><div class="line">  val field = &quot;Hello&quot;</div><div class="line">  def doStuff(rdd: RDD[String]): RDD[String] = &#123;</div><div class="line">  val field_ = this.field</div><div class="line">  rdd.map(x =&gt; field_ + x)&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+	
+	</div>
+</div>
+
+           
+		
+           
+			  
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2016-07-26 </div>
+			<div class="article-title"><a href="/2016/07/26/MergeSort/" >MergeSort</a></div>						
+		</h3>
+	
+
+
+			  <div class="entry">
+  <div class="row">
+	
+	
+		<p>归并排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def msort[A](less: (A, A) =&gt; Boolean)(xs: List[A]): List[A] = &#123; </div><div class="line">    def merge(xs1: List[A], xs2: List[A]): List[A] =</div><div class="line">        if (xs1.isEmpty) xs2</div><div class="line">        else if (xs2.isEmpty) xs1</div><div class="line">        else if (less(xs1.head, xs2.head)) xs1.head :: merge(xs1.tail, xs2) else xs2.head :: merge(xs1, xs2.tail)</div><div class="line">    val n = xs.length/2</div><div class="line">    if (n == 0) xs</div><div class="line">    else merge(msort(less)(xs take n), msort(less)(xs drop n))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果你对python列表的用法比较熟悉的话，可以按照如下的方式理解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xs take n   // xs[0:n+1]</div><div class="line">xs drop n   // xs[n+1:]</div></pre></td></tr></table></figure>
+<p>msort函数应该按照如下方式进行调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">msort((x: Int, y: Int) =&gt; x &lt; y)(List(5, 7, 1, 3))</div></pre></td></tr></table></figure></p>
+
+	
+	</div>
+</div>
+
+           
+		
+           
+			  
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2016-07-26 </div>
 			<div class="article-title"><a href="/2016/07/26/ScalaList/" >ScalaList</a></div>						
 		</h3>
@@ -322,99 +395,6 @@
 
            
 		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2014-03-16 </div>
-			<div class="article-title"><a href="/2014/03/16/qna-cn/" title="Frequently asked questions and my answers.">Questions and Answers（中文）</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-           
-              <div class="thumbnail"><a href="/2014/03/16/qna-cn/"><img src="/hexo-theme-freemind/images/qna/qna.jpg" alt="Questions and Answers（中文）"  class="nofancybox"></a>
-           
-		</div>
-	
-	
-		<span class="label label-danger">Q</span> <code>Freemind</code> 这名字有何含义？<br><br><span class="label label-success">A</span> <code>Freemind</code> 命名出自 <a href="http://freemind.pluskid.org/">Pluskid</a> 的博客。这个主题很大程度借鉴了他的博客的布局和样式。<br><br><span class="label label-danger">Q</span> 现在都有这么多 Hexo 的主题了，为啥又要写一个？<br><br><span class="label label-success">A</span> 实际上我这个主题在我使用 Hexo 前已经创建了。我在半年前将博客迁移到 Hexo ，因为我已经习惯了原来的主题，所以顺便把主题也移植了过来。<br><br>
-		<!-- only display read_more button if there's more to display -->
-		<a type="button" href="/2014/03/16/qna-cn/#more" class="btn btn-default more">Read More</a>
-	
-	</div>
-</div>
-
-           
-		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2014-03-16 </div>
-			<div class="article-title"><a href="/2014/03/16/tag-plugins/" title="Introduce tag plugins in freemind.">Tag Plugins</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-           
-              <div class="thumbnail"><a href="/2014/03/16/tag-plugins/"><img src="/hexo-theme-freemind/images/tag-plugins/plugins.jpg" alt="Tag Plugins"  class="nofancybox"></a>
-           
-		</div>
-	
-	
-		<p>The freemind theme offers several new tag plugins, so as to fully take advantages of Bootstrap.</p>
-<p>To use these tag plugins, you need to install <a href="https://github.com/wzpan/hexo-tag-bootstrap">hexo-tag-bootstrap</a> first. In your blog root folder, execute the following command:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-tag-bootstrap --save</div></pre></td></tr></table></figure>
-<p>Then you can use these tag plugins in your blog, as easily as you normally do using hexo tag plugins. </p>
-		<!-- only display read_more button if there's more to display -->
-		<a type="button" href="/2014/03/16/tag-plugins/#more" class="btn btn-default more">Read More</a>
-	
-	</div>
-</div>
-
-           
-		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2014-03-16 </div>
-			<div class="article-title"><a href="/2014/03/16/tag-plugins-cn/" title="Introduce tag plugins in freemind.">Tag Plugins（中文）</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-           
-              <div class="thumbnail"><a href="/2014/03/16/tag-plugins-cn/"><img src="/hexo-theme-freemind/images/tag-plugins/plugins.jpg" alt="Tag Plugins（中文）"  class="nofancybox"></a>
-           
-		</div>
-	
-	
-		<p>Freemind 主题提供了丰富的 tag plugins，以充分利用 Bootstrap 的威力。</p>
-<p>在使用这些 tag plugins 之前，你需要先安装 <a href="https://github.com/wzpan/hexo-tag-bootstrap">hexo-tag-bootstrap</a> 。在你的 Hexo 博客目录，执行下列命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-tag-bootstrap --save</div></pre></td></tr></table></figure>
-<p>然后就可以像使用其他 hexo tag plugins 一样使用这些 Bootstrap tag plugins 了。</p>
-		<!-- only display read_more button if there's more to display -->
-		<a type="button" href="/2014/03/16/tag-plugins-cn/#more" class="btn btn-default more">Read More</a>
-	
-	</div>
-</div>
-
-           
-		
 
 		</div>
 
@@ -496,48 +476,48 @@
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
-		
-			<li><a href="/tags/基础/">基础<span>1</span></a></li>
-		
-			<li><a href="/tags/Flink/">Flink<span>1</span></a></li>
-		
-			<li><a href="/tags/简体/">简体<span>1</span></a></li>
-		
-			<li><a href="/tags/Python/">Python<span>1</span></a></li>
-		
-			<li><a href="/tags/Socket/">Socket<span>1</span></a></li>
-		
-			<li><a href="/tags/CNN/">CNN<span>1</span></a></li>
-		
-			<li><a href="/tags/Spark-Scala-Streaming/">Spark Scala Streaming<span>1</span></a></li>
-		
-			<li><a href="/tags/scala/">scala<span>1</span></a></li>
-		
-			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
-		
-			<li><a href="/tags/Spark-Streaming/">Spark Streaming<span>1</span></a></li>
-		
 			<li><a href="/tags/Q-A/">Q&amp;A<span>2</span></a></li>
-		
-			<li><a href="/tags/Spark/">Spark<span>5</span></a></li>
 		
 			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
 		
-			<li><a href="/tags/maven/">maven<span>1</span></a></li>
+			<li><a href="/tags/Spark/">Spark<span>5</span></a></li>
 		
-			<li><a href="/tags/English/">English<span>1</span></a></li>
+			<li><a href="/tags/git/">git<span>1</span></a></li>
+		
+			<li><a href="/tags/CNN/">CNN<span>1</span></a></li>
 		
 			<li><a href="/tags/plugins/">plugins<span>2</span></a></li>
 		
-			<li><a href="/tags/highlight/">highlight<span>1</span></a></li>
+			<li><a href="/tags/Scala/">Scala<span>4</span></a></li>
 		
-			<li><a href="/tags/Scala/">Scala<span>3</span></a></li>
+			<li><a href="/tags/竞赛/">竞赛<span>3</span></a></li>
 		
-			<li><a href="/tags/tensorflow/">tensorflow<span>3</span></a></li>
+			<li><a href="/tags/Python/">Python<span>1</span></a></li>
+		
+			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
+		
+			<li><a href="/tags/基础/">基础<span>1</span></a></li>
+		
+			<li><a href="/tags/Spark-Streaming/">Spark Streaming<span>1</span></a></li>
+		
+			<li><a href="/tags/scala/">scala<span>1</span></a></li>
+		
+			<li><a href="/tags/maven/">maven<span>1</span></a></li>
+		
+			<li><a href="/tags/Flink/">Flink<span>1</span></a></li>
+		
+			<li><a href="/tags/English/">English<span>1</span></a></li>
+		
+			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
+		
+			<li><a href="/tags/Socket/">Socket<span>1</span></a></li>
+		
+			<li><a href="/tags/简体/">简体<span>1</span></a></li>
+		
+			<li><a href="/tags/Spark-Scala-Streaming/">Spark Scala Streaming<span>1</span></a></li>
 		
 		
-		   <li><a href="/tags">...<span>21</span></a></li>
+		   <li><a href="/tags">...<span>22</span></a></li>
 		 
 		</ul>
 	</div>
@@ -550,23 +530,23 @@
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2018/02/13/GitKeepSameWithUpStream/" ><i class="fa fa-file-o"></i>GitKeepSameWithUpStream</a>
+      </li>
+    
+      <li>
+        <a href="/2017/09/18/UpperBound/" ><i class="fa fa-file-o"></i>UpperBound</a>
+      </li>
+    
+      <li>
+        <a href="/2017/09/10/函数式编程/" ><i class="fa fa-file-o"></i>函数式编程</a>
+      </li>
+    
+      <li>
         <a href="/2017/09/08/scala隐式转换/" ><i class="fa fa-file-o"></i>scala隐式转换</a>
       </li>
     
       <li>
         <a href="/2017/06/21/ReleasePackageToSonatypeRepo/" ><i class="fa fa-file-o"></i>ReleasePackageToSonatypeRepo</a>
-      </li>
-    
-      <li>
-        <a href="/2017/04/26/深度学习中的几个经典问题/" ><i class="fa fa-file-o"></i>深度学习中的几个经典问题</a>
-      </li>
-    
-      <li>
-        <a href="/2017/04/20/A-Beginner-s-Guide-To-Understanding-Convolutional-Neural-Networks/" ><i class="fa fa-file-o"></i>A Beginner&#39;s Guide To Under...</a>
-      </li>
-    
-      <li>
-        <a href="/2017/04/18/DeepLearningCnn/" ><i class="fa fa-file-o"></i>DeepLearningCnn</a>
       </li>
     
   </ul>
@@ -599,7 +579,7 @@
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2017 Zhang ShengShan
+  &copy; 2018 Zhang ShengShan
   
       with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>

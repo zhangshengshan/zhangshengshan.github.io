@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangshengshan.github.io/"/>
-  <updated>2017-09-08T08:27:58.000Z</updated>
+  <updated>2018-02-13T03:11:08.000Z</updated>
   <id>http://zhangshengshan.github.io/</id>
   
   <author>
@@ -14,6 +14,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GitKeepSameWithUpStream</title>
+    <link href="http://zhangshengshan.github.io/2018/02/13/GitKeepSameWithUpStream/"/>
+    <id>http://zhangshengshan.github.io/2018/02/13/GitKeepSameWithUpStream/</id>
+    <published>2018-02-13T01:51:39.000Z</published>
+    <updated>2018-02-13T03:11:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="How-to-Keep-same-with-upstream"><a href="#How-to-Keep-same-with-upstream" class="headerlink" title="How to Keep same with upstream"></a>How to Keep same with upstream</h1><h2 id="Configuring-a-remote-for-a-fork"><a href="#Configuring-a-remote-for-a-fork" class="headerlink" title="Configuring a remote for a fork"></a>Configuring a remote for a fork</h2><p>check current remote repository<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote -v</div></pre></td></tr></table></figure></p>
+<p>Specify a new remote upstream repository that will be synced with the fork.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add upstream https://github.com/tensorflow/tensorflow.git</div></pre></td></tr></table></figure></p>
+<p>check again<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote -v</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git fetch upstream</div><div class="line">git checkout master</div><div class="line">git merge upstream/master</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;How-to-Keep-same-with-upstream&quot;&gt;&lt;a href=&quot;#How-to-Keep-same-with-upstream&quot; class=&quot;headerlink&quot; title=&quot;How to Keep same with upstream&quot;&gt;
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://zhangshengshan.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UpperBound</title>
+    <link href="http://zhangshengshan.github.io/2017/09/18/UpperBound/"/>
+    <id>http://zhangshengshan.github.io/2017/09/18/UpperBound/</id>
+    <published>2017-09-18T09:09:20.000Z</published>
+    <updated>2017-09-18T09:11:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>While upper type bounds limit a type to a subtype of another type, lower type bounds declare a type to be a supertype of another type. The term B &gt;: A expresses that the type parameter B or the abstract type B refer to a supertype of type A. In most cases, A will be the type parameter of the class and B will be the type parameter of a method.</p>
+<p>Here is an example where this is useful:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">trait Node[+B] &#123;</div><div class="line">  def prepend(elem: B): Unit</div><div class="line">&#125;</div><div class="line"></div><div class="line">case class ListNode[+B](h: B, t: Node[B]) extends Node[B] &#123;</div><div class="line">  def prepend(elem: B) = ListNode[B](elem, this)</div><div class="line">  def head: B = h</div><div class="line">  def tail = t</div><div class="line">&#125;</div><div class="line"></div><div class="line">case class Nil[+B]() extends Node[B] &#123;</div><div class="line">  def prepend(elem: B) = ListNode[B](elem, this)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>This program implements a singly-linked list. Nil represents an empty element (i.e. an empty list). class ListNode is a node which contains an element of type B (head) and a reference to the rest of the list (tail). The class Node and its subtypes are covariant because we have +B.</p>
+<p>However, this program does not compile because the parameter elem in prepend is of type B, which we declared covariant. This doesn’t work because functions are contravariant in their parameter types and covariant in their result types.</p>
+<p>To fix this, we need to flip the variance of the type of the parameter elem in prepend. We do this by introducing a new type parameter U that has B as a lower type bound.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">trait Node[+B] &#123;</div><div class="line">  def prepend[U &gt;: B](elem: U)</div><div class="line">&#125;</div><div class="line"></div><div class="line">case class ListNode[+B](h: B, t: Node[B]) extends Node[B] &#123;</div><div class="line">  def prepend[U &gt;: B](elem: U) = ListNode[U](elem, this)</div><div class="line">  def head: B = h</div><div class="line">  def tail = t</div><div class="line">&#125;</div><div class="line"></div><div class="line">case class Nil[+B]() extends Node[B] &#123;</div><div class="line">  def prepend[U &gt;: B](elem: U) = ListNode[U](elem, this)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Now we can do the following:</p>
+<p>trait Mammal<br>case class AfricanSwallow() extends Mammal<br>case class EuropeanSwallow() extends Mammal</p>
+<p>val africanSwallowList= ListNode<a href="AfricanSwallow(">AfricanSwallow</a>, Nil())<br>val mammalList: Node[Mammal] = africanSwallowList<br>mammalList.prepend(new EuropeanSwallow)</p>
+<p>The Node[Mammal] can be assigned the africanSwallowList but then accept EuropeanSwallows.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;While upper type bounds limit a type to a subtype of another type, lower type bounds declare a type to be a supertype of another type. Th
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>函数式编程</title>
+    <link href="http://zhangshengshan.github.io/2017/09/10/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+    <id>http://zhangshengshan.github.io/2017/09/10/函数式编程/</id>
+    <published>2017-09-10T10:04:22.000Z</published>
+    <updated>2017-09-10T10:11:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h1><p>最早接触函数式编程是公司的一位实习生同学介绍的概念，当时在他在PYTHON解释行上</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;函数式编程&quot;&gt;&lt;a href=&quot;#函数式编程&quot; class=&quot;headerlink&quot; title=&quot;函数式编程&quot;&gt;&lt;/a&gt;函数式编程&lt;/h1&gt;&lt;p&gt;最早接触函数式编程是公司的一位实习生同学介绍的概念，当时在他在PYTHON解释行上&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="Scala" scheme="http://zhangshengshan.github.io/tags/Scala/"/>
+    
+  </entry>
   
   <entry>
     <title>scala隐式转换</title>
@@ -591,146 +666,6 @@ asdfasdfasdfafsaf</div>
     
     
       <category term="竞赛" scheme="http://zhangshengshan.github.io/tags/%E7%AB%9E%E8%B5%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>3_2UVa1586</title>
-    <link href="http://zhangshengshan.github.io/2016/12/21/3-2UVa1586/"/>
-    <id>http://zhangshengshan.github.io/2016/12/21/3-2UVa1586/</id>
-    <published>2016-12-20T16:11:06.000Z</published>
-    <updated>2017-02-15T08:07:27.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Molar-Mass-ACM-ICPC-sroul-2007-UVa1586"><a href="#Molar-Mass-ACM-ICPC-sroul-2007-UVa1586" class="headerlink" title="Molar Mass ACM/ICPC sroul 2007, UVa1586"></a>Molar Mass ACM/ICPC sroul 2007, UVa1586</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;strings.h&gt;</div><div class="line">#include &lt;ctype.h&gt;</div><div class="line"></div><div class="line">/* </div><div class="line"> * ===  FUNCTION  ======================================================================</div><div class="line"> *         Name:  main</div><div class="line"> *  Description:  </div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"></div><div class="line">/* </div><div class="line"> * ===  FUNCTION  ======================================================================</div><div class="line"> *         Name:  get_g</div><div class="line"> *  Description:  </div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line">float get_g ( char a )</div><div class="line">&#123;</div><div class="line">    switch(a)&#123;</div><div class="line">        case &apos;C&apos;:</div><div class="line">            return 12.01;</div><div class="line">            break;</div><div class="line">        case &apos;H&apos;:</div><div class="line">            return 1.008;</div><div class="line">            break;</div><div class="line">        case &apos;O&apos;:</div><div class="line">            return 16.00;</div><div class="line">            break;</div><div class="line">        case &apos;N&apos;:</div><div class="line">            return 14.01;</div><div class="line">            break;</div><div class="line">        default:</div><div class="line">            return -1.0;</div><div class="line">    &#125;</div><div class="line">&#125;		</div><div class="line">int main ( int argc, char *argv[] ) &#123;</div><div class="line">    char buf[101]=&#123;&#125;; </div><div class="line">    int flag = 0;</div><div class="line">    float sum = 0.0;</div><div class="line">    int i = 0 ;</div><div class="line">    int j = 0;</div><div class="line">    int count = 0;</div><div class="line"></div><div class="line">    while( (scanf(&quot;%s&quot;, buf)!=EOF) )&#123;</div><div class="line">        flag = 0;</div><div class="line">        for (i = 0; buf[i]!=&apos;\0&apos;; i++) &#123;</div><div class="line">            count = 0;</div><div class="line">            for( j=i+1;isdigit(buf[j])&amp;&amp;buf[j];j++ )&#123;</div><div class="line">                count = count * 10 + (buf[j]-&apos;0&apos;);</div><div class="line">            &#125;</div><div class="line">            if (count==0) &#123;</div><div class="line">                count=1;</div><div class="line">            &#125;</div><div class="line">            if (buf[i]!=&apos;C&apos;</div><div class="line">                    &amp;&amp; buf[i]!=&apos;N&apos;</div><div class="line">                    &amp;&amp; buf[i]!=&apos;O&apos;</div><div class="line">                    &amp;&amp; buf[i]!=&apos;H&apos;</div><div class="line">                    ) &#123;</div><div class="line">                flag = 1;</div><div class="line">            &#125;</div><div class="line">            sum += count * get_g(buf[i]);</div><div class="line">            i=j-1;</div><div class="line">        &#125;</div><div class="line">        if (!flag)&#123;</div><div class="line">            printf ( &quot;sum is %f\n&quot;,sum );</div><div class="line">        &#125;else&#123;</div><div class="line">//            printf ( &quot;input error\n&quot; );</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return EXIT_SUCCESS;</div><div class="line">&#125;				/* ----------  end of function main  ---------- */</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Molar-Mass-ACM-ICPC-sroul-2007-UVa1586&quot;&gt;&lt;a href=&quot;#Molar-Mass-ACM-ICPC-sroul-2007-UVa1586&quot; class=&quot;headerlink&quot; title=&quot;Molar Mass ACM/I
-    
-    </summary>
-    
-      <category term="C/C++" scheme="http://zhangshengshan.github.io/categories/C-C/"/>
-    
-    
-      <category term="竞赛" scheme="http://zhangshengshan.github.io/tags/%E7%AB%9E%E8%B5%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spark Streaming Programming Guide</title>
-    <link href="http://zhangshengshan.github.io/2016/12/15/Spark-Streaming-Programming-Guide/"/>
-    <id>http://zhangshengshan.github.io/2016/12/15/Spark-Streaming-Programming-Guide/</id>
-    <published>2016-12-15T15:58:03.000Z</published>
-    <updated>2017-02-15T08:08:05.000Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Spark" scheme="http://zhangshengshan.github.io/categories/Spark/"/>
-    
-    
-      <category term="Spark Streaming" scheme="http://zhangshengshan.github.io/tags/Spark-Streaming/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>17年要读的书和学习的技能</title>
-    <link href="http://zhangshengshan.github.io/2016/12/09/17%E5%B9%B4%E8%A6%81%E8%AF%BB%E7%9A%84%E4%B9%A6%E5%92%8C%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%8A%80%E8%83%BD/"/>
-    <id>http://zhangshengshan.github.io/2016/12/09/17年要读的书和学习的技能/</id>
-    <published>2016-12-09T10:14:36.000Z</published>
-    <updated>2017-03-17T13:07:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="17年要读的书"><a href="#17年要读的书" class="headerlink" title="17年要读的书"></a>17年要读的书</h1><table>
-<thead>
-<tr>
-<th>书籍名称</th>
-<th>目的</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>算法艺术与信息学竞赛:算法竞赛入门经典(第2版)</td>
-<td>提升算法水平，强化C／C++</td>
-</tr>
-<tr>
-<td>算法竞赛入门经典:训练指南</td>
-<td>提高算法，训练思维</td>
-</tr>
-<tr>
-<td>自己动手写Java虚拟机</td>
-<td>了解JAVA虚拟机原理，提升Golang编程水平</td>
-</tr>
-<tr>
-<td>响应式架构:消息模式Actor实现与Scala、Akka应用集成</td>
-<td>学习并发编程、提升Scala编程水平</td>
-</tr>
-<tr>
-<td><a href="https://github.com/exacity/deeplearningbook-chinese" target="_blank" rel="external">深度学习中文版</a></td>
-<td>学习深度学习，为该项目贡献代码</td>
-</tr>
-<tr>
-<td>Tensorflow实战</td>
-<td>学习tensorflow编写神经网络程序</td>
-</tr>
-<tr>
-<td>分布式实时处理系统：原理、架构与实现</td>
-<td>深入理解分布式程序开发，提升C／C++实战能力</td>
-</tr>
-<tr>
-<td>深度学习：21天实战Caffe</td>
-<td>实战深度学习，提升C／C++编程水平</td>
-</tr>
-</tbody>
-</table>
-<h1 id="17年要学习的技能"><a href="#17年要学习的技能" class="headerlink" title="17年要学习的技能"></a>17年要学习的技能</h1><p>机器学习方向</p>
-<ul>
-<li>DecisionTree</li>
-<li>XgBoost</li>
-<li>SVM </li>
-<li>AdaBoost</li>
-<li>PCA</li>
-<li>LogisticRegresion</li>
-</ul>
-<p>Scala</p>
-<ul>
-<li>Akka</li>
-<li>Actor</li>
-</ul>
-<p>Golang</p>
-<ul>
-<li>Beego</li>
-<li>channel基础</li>
-</ul>
-<p>数学基础</p>
-<ul>
-<li>线性代数</li>
-<li>概率论</li>
-</ul>
-<p>Spark</p>
-<ul>
-<li>Spark mlib</li>
-<li>streaming(redis/kafka/akka/hbase)</li>
-<li>structure streaming</li>
-<li>basic rdd</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;17年要读的书&quot;&gt;&lt;a href=&quot;#17年要读的书&quot; class=&quot;headerlink&quot; title=&quot;17年要读的书&quot;&gt;&lt;/a&gt;17年要读的书&lt;/h1&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;书籍名称&lt;/th&gt;
-&lt;th&gt;目的&lt;/th&gt;
-&lt;/tr&gt;
-
-    
-    </summary>
-    
-      <category term="学习" scheme="http://zhangshengshan.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
     
   </entry>
   
