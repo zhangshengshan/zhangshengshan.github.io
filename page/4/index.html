@@ -112,6 +112,40 @@
 	<!-- display as entry -->	
 		<h3 class="title">
 			<div class="date"> 2016-08-19 </div>
+			<div class="article-title"><a href="/2016/08/19/Spark-2-0-Introduction/" >Spark 2.0 Introduction</a></div>						
+		</h3>
+	
+
+
+			  <div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="Spark-2-0-MLib-Introduction"><a href="#Spark-2-0-MLib-Introduction" class="headerlink" title="Spark 2.0 MLib Introduction"></a>Spark 2.0 MLib Introduction</h1><p>As of Spark 2.0, the RDD-based APIs in the spark.mllib package have entered maintenance mode. The primary Machine Learning API for Spark is now the DataFrame-based API in the spark.ml package.</p>
+<p>Spark2.0 ,在spark.mllib中的基于RDD的机器学习APIs将会进入维护模式。现在机器学习的主要的API基于DataFrame,位于spark.ml中。</p>
+<p>What are the implications?</p>
+<pre><code>MLlib will still support the RDD-based API in spark.mllib with bug fixes.
+MLlib will not add new features to the RDD-based API.
+In the Spark 2.x releases, MLlib will add features to the DataFrames-based API to reach feature parity with the RDD-based API.
+After reaching feature parity (roughly estimated for Spark 2.2), the RDD-based API will be deprecated.
+The RDD-based API is expected to be removed in Spark 3.0.
+</code></pre><p>Why is MLlib switching to the DataFrame-based API?</p>
+<pre><code>DataFrames provide a more user-friendly API than RDDs. The many benefits of DataFrames include Spark Datasources, SQL/DataFrame queries, Tungsten and Catalyst optimizations, and uniform APIs across languages.
+The DataFrame-based API for MLlib provides a uniform API across ML algorithms and across multiple languages.
+DataFrames facilitate practical ML Pipelines, particularly feature transformations. See the Pipelines guide for details.
+</code></pre>
+	
+	</div>
+</div>
+
+           
+		
+           
+			  
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2016-08-19 </div>
 			<div class="article-title"><a href="/2016/08/19/Save-DataFrame-into-a-partitioned-table-of-HIVE/" >Save DataFrame into a partitioned table of HIVE</a></div>						
 		</h3>
 	
@@ -366,35 +400,6 @@
 
            
 		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2014-03-16 </div>
-			<div class="article-title"><a href="/2014/03/16/qna/" title="Frequently asked questions and my answers.">Questions and Answers</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-           
-              <div class="thumbnail"><a href="/2014/03/16/qna/"><img src="/hexo-theme-freemind/images/qna/qna.jpg" alt="Questions and Answers"  class="nofancybox"></a>
-           
-		</div>
-	
-	
-		<span class="label label-danger">Q</span> What does <code>Freemind</code> stands for?<br><br><span class="label label-success">A</span> <code>Freemind</code> is named after <a href="http://freemind.pluskid.org/">Pluskid’s blog</a>. This theme is greatly inspired by his blog layouts and stylesheets.<br><br><span class="label label-danger">Q</span> There’re already so many themes for Hexo. Why create this one?<br><br><span class="label label-success">A</span> In fact I created this theme before I turned to use Hexo. I switched to Hexo about half an year ago, including my theme, since I have already got used to it and don’t wanna change it for now.<br><br>
-		<!-- only display read_more button if there's more to display -->
-		<a type="button" href="/2014/03/16/qna/#more" class="btn btn-default more">Read More</a>
-	
-	</div>
-</div>
-
-           
-		
 
 		</div>
 
@@ -476,48 +481,48 @@
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Python/">Python<span>1</span></a></li>
-		
-			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
-		
-			<li><a href="/tags/Spark/">Spark<span>5</span></a></li>
-		
-			<li><a href="/tags/Q-A/">Q&amp;A<span>2</span></a></li>
-		
-			<li><a href="/tags/git/">git<span>1</span></a></li>
-		
-			<li><a href="/tags/maven/">maven<span>1</span></a></li>
-		
-			<li><a href="/tags/highlight/">highlight<span>1</span></a></li>
-		
-			<li><a href="/tags/scala/">scala<span>1</span></a></li>
-		
-			<li><a href="/tags/Flink/">Flink<span>1</span></a></li>
+			<li><a href="/tags/竞赛/">竞赛<span>3</span></a></li>
 		
 			<li><a href="/tags/简体/">简体<span>1</span></a></li>
 		
-			<li><a href="/tags/English/">English<span>1</span></a></li>
+			<li><a href="/tags/Socket/">Socket<span>1</span></a></li>
 		
-			<li><a href="/tags/plugins/">plugins<span>2</span></a></li>
-		
-			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
+			<li><a href="/tags/Python/">Python<span>1</span></a></li>
 		
 			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
 		
-			<li><a href="/tags/CNN/">CNN<span>1</span></a></li>
+			<li><a href="/tags/maven/">maven<span>1</span></a></li>
+		
+			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
 		
 			<li><a href="/tags/Spark-Streaming/">Spark Streaming<span>1</span></a></li>
 		
-			<li><a href="/tags/tensorflow/">tensorflow<span>3</span></a></li>
+			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
 		
 			<li><a href="/tags/Spark-Scala-Streaming/">Spark Scala Streaming<span>1</span></a></li>
 		
-			<li><a href="/tags/竞赛/">竞赛<span>3</span></a></li>
+			<li><a href="/tags/Q-A/">Q&amp;A<span>2</span></a></li>
 		
-			<li><a href="/tags/Socket/">Socket<span>1</span></a></li>
+			<li><a href="/tags/Scala/">Scala<span>4</span></a></li>
+		
+			<li><a href="/tags/Tensorflow/">Tensorflow<span>1</span></a></li>
+		
+			<li><a href="/tags/CNN/">CNN<span>1</span></a></li>
+		
+			<li><a href="/tags/English/">English<span>1</span></a></li>
+		
+			<li><a href="/tags/Flink/">Flink<span>1</span></a></li>
+		
+			<li><a href="/tags/tensorflow/">tensorflow<span>3</span></a></li>
+		
+			<li><a href="/tags/scala/">scala<span>1</span></a></li>
+		
+			<li><a href="/tags/基础/">基础<span>1</span></a></li>
+		
+			<li><a href="/tags/plugins/">plugins<span>2</span></a></li>
 		
 		
-		   <li><a href="/tags">...<span>22</span></a></li>
+		   <li><a href="/tags">...<span>23</span></a></li>
 		 
 		</ul>
 	</div>
@@ -528,6 +533,10 @@
 <div class="widget">
   <h4>Recent Posts</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2018/02/13/Install-cuda9-0-cudnn7-0-tensorflow1-5-onUbuntu16-04-GTX1080TI/" ><i class="fa fa-file-o"></i>Install_cuda9.0_cudnn7.0_te...</a>
+      </li>
     
       <li>
         <a href="/2018/02/13/GitKeepSameWithUpStream/" ><i class="fa fa-file-o"></i>GitKeepSameWithUpStream</a>
@@ -543,10 +552,6 @@
     
       <li>
         <a href="/2017/09/08/scala隐式转换/" ><i class="fa fa-file-o"></i>scala隐式转换</a>
-      </li>
-    
-      <li>
-        <a href="/2017/06/21/ReleasePackageToSonatypeRepo/" ><i class="fa fa-file-o"></i>ReleasePackageToSonatypeRepo</a>
       </li>
     
   </ul>

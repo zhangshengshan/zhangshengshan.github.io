@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangshengshan.github.io/"/>
-  <updated>2018-02-13T03:13:38.000Z</updated>
+  <updated>2018-02-13T03:20:54.000Z</updated>
   <id>http://zhangshengshan.github.io/</id>
   
   <author>
@@ -14,6 +14,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Install_cuda9.0_cudnn7.0_tensorflow1.5_onUbuntu16.04_GTX1080TI</title>
+    <link href="http://zhangshengshan.github.io/2018/02/13/Install-cuda9-0-cudnn7-0-tensorflow1-5-onUbuntu16-04-GTX1080TI/"/>
+    <id>http://zhangshengshan.github.io/2018/02/13/Install-cuda9-0-cudnn7-0-tensorflow1-5-onUbuntu16-04-GTX1080TI/</id>
+    <published>2018-02-13T03:15:49.000Z</published>
+    <updated>2018-02-13T03:20:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="How-to-install-tensorflow1-5-on-Ubuntu16-04-with-support-of-cuda9-0-and-cudnn7-0"><a href="#How-to-install-tensorflow1-5-on-Ubuntu16-04-with-support-of-cuda9-0-and-cudnn7-0" class="headerlink" title="How to install tensorflow1.5 on Ubuntu16.04 with support of cuda9.0 and cudnn7.0"></a>How to install tensorflow1.5 on Ubuntu16.04 with support of cuda9.0 and cudnn7.0</h1><h2 id="检查各个版本"><a href="#检查各个版本" class="headerlink" title="检查各个版本"></a>检查各个版本</h2><h2 id="卸载之前安装的NVIDIA驱动和cuda以及cudnn"><a href="#卸载之前安装的NVIDIA驱动和cuda以及cudnn" class="headerlink" title="卸载之前安装的NVIDIA驱动和cuda以及cudnn"></a>卸载之前安装的NVIDIA驱动和cuda以及cudnn</h2><h2 id="安装cuda"><a href="#安装cuda" class="headerlink" title="安装cuda"></a>安装cuda</h2><h2 id="安装cudnn"><a href="#安装cudnn" class="headerlink" title="安装cudnn"></a>安装cudnn</h2><h2 id="安装tensorflow"><a href="#安装tensorflow" class="headerlink" title="安装tensorflow"></a>安装tensorflow</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;How-to-install-tensorflow1-5-on-Ubuntu16-04-with-support-of-cuda9-0-and-cudnn7-0&quot;&gt;&lt;a href=&quot;#How-to-install-tensorflow1-5-on-Ubuntu16
+    
+    </summary>
+    
+    
+      <category term="Tensorflow" scheme="http://zhangshengshan.github.io/tags/Tensorflow/"/>
+    
+  </entry>
   
   <entry>
     <title>GitKeepSameWithUpStream</title>
@@ -636,29 +656,6 @@ asdfasdfasdfafsaf</div>
     <summary type="html">
     
       &lt;p&gt;inspired by my wife, and i got the code below&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/
-    
-    </summary>
-    
-      <category term="C/C++" scheme="http://zhangshengshan.github.io/categories/C-C/"/>
-    
-    
-      <category term="竞赛" scheme="http://zhangshengshan.github.io/tags/%E7%AB%9E%E8%B5%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>UVa1225</title>
-    <link href="http://zhangshengshan.github.io/2016/12/21/UVa1225/"/>
-    <id>http://zhangshengshan.github.io/2016/12/21/UVa1225/</id>
-    <published>2016-12-21T14:37:52.000Z</published>
-    <updated>2017-02-15T08:08:19.000Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;strings.h&gt;</div><div class="line">int main ( int argc, char *argv[] )</div><div class="line">&#123;</div><div class="line">    int a[10]=&#123;0&#125;;</div><div class="line">    int temp = 0;</div><div class="line">    int i =0;</div><div class="line">    int num=0;</div><div class="line">    while(1==scanf(&quot;%d&quot;,&amp;num))&#123;</div><div class="line">        memset(a,0,sizeof(a));</div><div class="line">        for (i = 1; i &lt;= num; i++) &#123;</div><div class="line">            temp = i;</div><div class="line">            do &#123;</div><div class="line">                a[temp%10]++;</div><div class="line">                temp = temp/10;</div><div class="line">            &#125; while(temp);</div><div class="line">        &#125;</div><div class="line">        for (i = 0; i &lt; 9; i++) &#123;</div><div class="line">            printf ( &quot;%d &quot;,a[i] );           /* code */</div><div class="line">        &#125;</div><div class="line">        printf ( &quot;%d\n&quot;, a[i] );</div><div class="line">    &#125;</div><div class="line">    return EXIT_SUCCESS;</div><div class="line">&#125;				/* ----------  end of function main  ---------- */</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/di
     
     </summary>
     
