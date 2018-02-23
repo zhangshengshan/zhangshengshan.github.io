@@ -112,12 +112,12 @@
 	  		
 
 	  <p>Call-by-value has the advantage that it avoids repeated evaluation of arguments.<br>Call-by-name has the advantage that it avoids evaluation of arguments when the<br>parameter is not used at all by the function. Call-by-value is usually more efficient<br>than call-by-name, but a call-by-value evaluation might loop where a call-by-name<br>evaluation would terminate. Consider:</p>
-<p>Call-by-value 的优势在于避免不断的计算参数。而call-by-name的优势在于如果一个函数根本就不会用到的参数，那么也不会被计算，与call-by-value恰好相反。下面的例子展示了一个Call-by-value会不停循环但是Call-by-name会停止的例子。</p>
+<p>Call-by-value &#x7684;&#x4F18;&#x52BF;&#x5728;&#x4E8E;&#x907F;&#x514D;&#x4E0D;&#x65AD;&#x7684;&#x8BA1;&#x7B97;&#x53C2;&#x6570;&#x3002;&#x800C;call-by-name&#x7684;&#x4F18;&#x52BF;&#x5728;&#x4E8E;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x6839;&#x672C;&#x5C31;&#x4E0D;&#x4F1A;&#x7528;&#x5230;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x4E5F;&#x4E0D;&#x4F1A;&#x88AB;&#x8BA1;&#x7B97;&#xFF0C;&#x4E0E;call-by-value&#x6070;&#x597D;&#x76F8;&#x53CD;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x5C55;&#x793A;&#x4E86;&#x4E00;&#x4E2A;Call-by-value&#x4F1A;&#x4E0D;&#x505C;&#x5FAA;&#x73AF;&#x4F46;&#x662F;Call-by-name&#x4F1A;&#x505C;&#x6B62;&#x7684;&#x4F8B;&#x5B50;&#x3002;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">scala&gt; def loop: Int = loop</div><div class="line">loop: Int</div><div class="line">scala&gt; def first(x: Int, y: Int) = x</div><div class="line">first: (Int,Int)Int</div></pre></td></tr></table></figure>
-<p>Then first(1, loop) reduces with call-by-name to 1, whereas the same term reduces with call-by-value repeatedly to itself, hence evaluation does not terminate.<br>first(1, loop)<br>→ first(1, loop)<br>→ first(1, loop)<br>→ …<br>上面的例子，之所以不停的循环的原因就是,y 被声明为 Call-by-value，因而，按照上面的说法，无论是否这个参数会被用到，该参数都会被计算，所以会不停的循环。</p>
+<p>Then first(1, loop) reduces with call-by-name to 1, whereas the same term reduces with call-by-value repeatedly to itself, hence evaluation does not terminate.<br>first(1, loop)<br>&#x2192; first(1, loop)<br>&#x2192; first(1, loop)<br>&#x2192; &#x2026;<br>&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x4E4B;&#x6240;&#x4EE5;&#x4E0D;&#x505C;&#x7684;&#x5FAA;&#x73AF;&#x7684;&#x539F;&#x56E0;&#x5C31;&#x662F;,y &#x88AB;&#x58F0;&#x660E;&#x4E3A; Call-by-value&#xFF0C;&#x56E0;&#x800C;&#xFF0C;&#x6309;&#x7167;&#x4E0A;&#x9762;&#x7684;&#x8BF4;&#x6CD5;&#xFF0C;&#x65E0;&#x8BBA;&#x662F;&#x5426;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x4F1A;&#x88AB;&#x7528;&#x5230;&#xFF0C;&#x8BE5;&#x53C2;&#x6570;&#x90FD;&#x4F1A;&#x88AB;&#x8BA1;&#x7B97;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x4E0D;&#x505C;&#x7684;&#x5FAA;&#x73AF;&#x3002;</p>
 <p>Scala uses call-by-value by default, but it switches to call-by-name evaluation if the<br>parameter type is preceded by =&gt;.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">scala&gt; def constOne(x: Int, y: =&gt; Int) = 1</div><div class="line">constOne: (Int,=&gt; Int)Int</div><div class="line">scala&gt; constOne(1, loop)</div><div class="line">unnamed0: Int = 1</div><div class="line">scala&gt; constOne(loop, 2) // gives an infinite loop.</div></pre></td></tr></table></figure></p>
-<p>constOne(1,loop) 会停止，y被声明为Call-by-name, 所以当没有用到这个参数的时候,则不会被计算，因此不会陷入无限循环。<br>constOne(loop,2) 则恰好相反。</p>
-<p>本文示例 来自于  《ScalaByExample》,感谢原作者。</p>
+<p>constOne(1,loop) &#x4F1A;&#x505C;&#x6B62;&#xFF0C;y&#x88AB;&#x58F0;&#x660E;&#x4E3A;Call-by-name, &#x6240;&#x4EE5;&#x5F53;&#x6CA1;&#x6709;&#x7528;&#x5230;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x65F6;&#x5019;,&#x5219;&#x4E0D;&#x4F1A;&#x88AB;&#x8BA1;&#x7B97;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x4F1A;&#x9677;&#x5165;&#x65E0;&#x9650;&#x5FAA;&#x73AF;&#x3002;<br>constOne(loop,2) &#x5219;&#x6070;&#x597D;&#x76F8;&#x53CD;&#x3002;</p>
+<p>&#x672C;&#x6587;&#x793A;&#x4F8B; &#x6765;&#x81EA;&#x4E8E;  &#x300A;ScalaByExample&#x300B;,&#x611F;&#x8C22;&#x539F;&#x4F5C;&#x8005;&#x3002;</p>
 	  
 	</div>
 
@@ -289,7 +289,22 @@
 	 }
 	 var path = "/" + search_path;
      searchFunc(path, 'local-search-input', 'local-search-result');
-   </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+   </script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
    </html>

@@ -111,7 +111,7 @@
 	<div class="mypage">		
 	  		
 
-	  <p>inspired by my wife, and i got the code below<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;strings.h&gt;</div><div class="line">int main ( int argc, char *argv[] )</div><div class="line">&#123;</div><div class="line">    char buf[81];</div><div class="line">    int i = 0;</div><div class="line">    memset(buf,0,sizeof(buf));</div><div class="line">    while(scanf(&quot;%s&quot;,buf)!=EOF)&#123;</div><div class="line">        for(i=1;i&lt;strlen(buf);i++)&#123;</div><div class="line">            if ( strlen(buf)%i==0 )&#123;</div><div class="line">                if (strncmp(buf,buf+i,strlen(buf)-i)==0) &#123;</div><div class="line">                    printf ( &quot; k is %d\n&quot;,i );</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if(i==strlen(buf))&#123;</div><div class="line">            printf ( &quot;k is %d\n&quot;,i );</div><div class="line">        &#125;</div><div class="line">        memset(buf,0,sizeof(buf));</div><div class="line">    &#125;</div><div class="line">    return EXIT_SUCCESS;</div></pre></td></tr></table></figure></p>
+	  <p>inspired by my wife, and i got the code below<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;strings.h&gt;</div><div class="line">int main ( int argc, char *argv[] )</div><div class="line">{</div><div class="line">    char buf[81];</div><div class="line">    int i = 0;</div><div class="line">    memset(buf,0,sizeof(buf));</div><div class="line">    while(scanf(&quot;%s&quot;,buf)!=EOF){</div><div class="line">        for(i=1;i&lt;strlen(buf);i++){</div><div class="line">            if ( strlen(buf)%i==0 ){</div><div class="line">                if (strncmp(buf,buf+i,strlen(buf)-i)==0) {</div><div class="line">                    printf ( &quot; k is %d\n&quot;,i );</div><div class="line">                    break;</div><div class="line">                }</div><div class="line">            }</div><div class="line">        }</div><div class="line">        if(i==strlen(buf)){</div><div class="line">            printf ( &quot;k is %d\n&quot;,i );</div><div class="line">        }</div><div class="line">        memset(buf,0,sizeof(buf));</div><div class="line">    }</div><div class="line">    return EXIT_SUCCESS;</div></pre></td></tr></table></figure></p>
 	  
 	</div>
 
@@ -283,7 +283,22 @@
 	 }
 	 var path = "/" + search_path;
      searchFunc(path, 'local-search-input', 'local-search-result');
-   </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+   </script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
    </html>

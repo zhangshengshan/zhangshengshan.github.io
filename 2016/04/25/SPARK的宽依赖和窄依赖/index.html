@@ -6,7 +6,7 @@
   <title>SPARK的宽依赖和窄依赖 | Zhangshengshan&#39;s Blog</title>
   <meta name="author" content="Zhang ShengShan">
   
-  <meta name="description" content="spark 的各种不同的transformation操作,可以根据是否依赖父RDDs的所有partision分为‘窄依赖’和‘宽依赖’,简单的说,有shuffle操作的就是宽依赖,而没有shuffle操作的就是窄依赖。对于窄依赖,spark会尽量将他们划分为同一个stage,而宽依赖则会称为另外的s">
+  <meta name="description" content="spark &amp;#x7684;&amp;#x5404;&amp;#x79CD;&amp;#x4E0D;&amp;#x540C;&amp;#x7684;transformation&amp;#x64CD;&amp;#x4F5C;,&amp;#x53EF;&amp;#x4EE5;&amp;#x6839;&amp;#x636E;&amp;#x662F;&amp;#x5426;&amp;#x4F9D;&amp;#x8D56;&amp;">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -111,7 +111,7 @@
 	<div class="mypage">		
 	  		
 
-	  <p>spark 的各种不同的transformation操作,可以根据是否依赖父RDDs的所有partision分为‘窄依赖’和‘宽依赖’,简单的说,有shuffle操作的就是宽依赖,而没有shuffle操作的就是窄依赖。<br>对于窄依赖,spark会尽量将他们划分为同一个stage,而宽依赖则会称为另外的stage。</p>
+	  <p>spark &#x7684;&#x5404;&#x79CD;&#x4E0D;&#x540C;&#x7684;transformation&#x64CD;&#x4F5C;,&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x662F;&#x5426;&#x4F9D;&#x8D56;&#x7236;RDDs&#x7684;&#x6240;&#x6709;partision&#x5206;&#x4E3A;&#x2018;&#x7A84;&#x4F9D;&#x8D56;&#x2019;&#x548C;&#x2018;&#x5BBD;&#x4F9D;&#x8D56;&#x2019;,&#x7B80;&#x5355;&#x7684;&#x8BF4;,&#x6709;shuffle&#x64CD;&#x4F5C;&#x7684;&#x5C31;&#x662F;&#x5BBD;&#x4F9D;&#x8D56;,&#x800C;&#x6CA1;&#x6709;shuffle&#x64CD;&#x4F5C;&#x7684;&#x5C31;&#x662F;&#x7A84;&#x4F9D;&#x8D56;&#x3002;<br>&#x5BF9;&#x4E8E;&#x7A84;&#x4F9D;&#x8D56;,spark&#x4F1A;&#x5C3D;&#x91CF;&#x5C06;&#x4ED6;&#x4EEC;&#x5212;&#x5206;&#x4E3A;&#x540C;&#x4E00;&#x4E2A;stage,&#x800C;&#x5BBD;&#x4F9D;&#x8D56;&#x5219;&#x4F1A;&#x79F0;&#x4E3A;&#x53E6;&#x5916;&#x7684;stage&#x3002;</p>
 	  
 	</div>
 
@@ -283,7 +283,22 @@
 	 }
 	 var path = "/" + search_path;
      searchFunc(path, 'local-search-input', 'local-search-result');
-   </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+   </script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
    </html>

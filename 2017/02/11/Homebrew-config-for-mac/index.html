@@ -6,8 +6,7 @@
   <title>Homebrew_config_for_mac | Zhangshengshan&#39;s Blog</title>
   <meta name="author" content="Zhang ShengShan">
   
-  <meta name="description" content="MAC 上面的brew速度非常慢，尝试如下方式可以加速homebrew安装软件的速度
-12345678cd &amp;quot;$(brew --repo)&amp;quot;git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/hom">
+  <meta name="description" content="MAC &amp;#x4E0A;&amp;#x9762;&amp;#x7684;brew&amp;#x901F;&amp;#x5EA6;&amp;#x975E;&amp;#x5E38;&amp;#x6162;&amp;#xFF0C;&amp;#x5C1D;&amp;#x8BD5;&amp;#x5982;&amp;#x4E0B;&amp;#x65B9;&amp;#x5F0F;&amp;#x53EF;&amp;#x4EE5;&amp;#x52A">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -112,7 +111,7 @@
 	<div class="mypage">		
 	  		
 
-	  <p>MAC 上面的brew速度非常慢，尝试如下方式可以加速homebrew安装软件的速度</p>
+	  <p>MAC &#x4E0A;&#x9762;&#x7684;brew&#x901F;&#x5EA6;&#x975E;&#x5E38;&#x6162;&#xFF0C;&#x5C1D;&#x8BD5;&#x5982;&#x4E0B;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x52A0;&#x901F;homebrew&#x5B89;&#x88C5;&#x8F6F;&#x4EF6;&#x7684;&#x901F;&#x5EA6;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">cd &quot;$(brew --repo)&quot;</div><div class="line">git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git</div><div class="line"></div><div class="line">cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;</div><div class="line">git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git</div><div class="line"></div><div class="line">brew update</div></pre></td></tr></table></figure>
 	  
 	</div>
@@ -277,7 +276,22 @@
 	 }
 	 var path = "/" + search_path;
      searchFunc(path, 'local-search-input', 'local-search-result');
-   </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+   </script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
    </html>

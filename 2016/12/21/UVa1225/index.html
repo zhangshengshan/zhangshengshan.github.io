@@ -111,7 +111,7 @@
 	<div class="mypage">		
 	  		
 
-	  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;strings.h&gt;</div><div class="line">int main ( int argc, char *argv[] )</div><div class="line">&#123;</div><div class="line">    int a[10]=&#123;0&#125;;</div><div class="line">    int temp = 0;</div><div class="line">    int i =0;</div><div class="line">    int num=0;</div><div class="line">    while(1==scanf(&quot;%d&quot;,&amp;num))&#123;</div><div class="line">        memset(a,0,sizeof(a));</div><div class="line">        for (i = 1; i &lt;= num; i++) &#123;</div><div class="line">            temp = i;</div><div class="line">            do &#123;</div><div class="line">                a[temp%10]++;</div><div class="line">                temp = temp/10;</div><div class="line">            &#125; while(temp);</div><div class="line">        &#125;</div><div class="line">        for (i = 0; i &lt; 9; i++) &#123;</div><div class="line">            printf ( &quot;%d &quot;,a[i] );           /* code */</div><div class="line">        &#125;</div><div class="line">        printf ( &quot;%d\n&quot;, a[i] );</div><div class="line">    &#125;</div><div class="line">    return EXIT_SUCCESS;</div><div class="line">&#125;				/* ----------  end of function main  ---------- */</div></pre></td></tr></table></figure>
+	  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;strings.h&gt;</div><div class="line">int main ( int argc, char *argv[] )</div><div class="line">{</div><div class="line">    int a[10]={0};</div><div class="line">    int temp = 0;</div><div class="line">    int i =0;</div><div class="line">    int num=0;</div><div class="line">    while(1==scanf(&quot;%d&quot;,&amp;num)){</div><div class="line">        memset(a,0,sizeof(a));</div><div class="line">        for (i = 1; i &lt;= num; i++) {</div><div class="line">            temp = i;</div><div class="line">            do {</div><div class="line">                a[temp%10]++;</div><div class="line">                temp = temp/10;</div><div class="line">            } while(temp);</div><div class="line">        }</div><div class="line">        for (i = 0; i &lt; 9; i++) {</div><div class="line">            printf ( &quot;%d &quot;,a[i] );           /* code */</div><div class="line">        }</div><div class="line">        printf ( &quot;%d\n&quot;, a[i] );</div><div class="line">    }</div><div class="line">    return EXIT_SUCCESS;</div><div class="line">}				/* ----------  end of function main  ---------- */</div></pre></td></tr></table></figure>
 	  
 	</div>
 
@@ -283,7 +283,22 @@
 	 }
 	 var path = "/" + search_path;
      searchFunc(path, 'local-search-input', 'local-search-result');
-   </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+   </script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
    </html>

@@ -111,7 +111,7 @@
 	<div class="mypage">		
 	  		
 
-	  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">from tensorflow.examples.tutorials.mnist import input_data</div><div class="line">mnist = input_data.read_data_sets(&apos;MNIST_data&apos;, one_hot=True)</div><div class="line"></div><div class="line">import tensorflow as tf</div><div class="line">sess = tf.InteractiveSession()</div><div class="line"></div><div class="line"></div><div class="line">#None 表示这里可能存在很多个样本, 784=28*28表示共有784个像素点</div><div class="line">#y_表示与x对应的label, 由于采用的是one_hot编码的所以是10维</div><div class="line">x = tf.placeholder(tf.float32, shape=[None, 784])</div><div class="line">y_ = tf.placeholder(tf.float32, shape=[None, 10])</div><div class="line"></div><div class="line"></div><div class="line">W = tf.Variable(tf.zeros([784,10]))</div><div class="line">b = tf.Variable(tf.zeros([10]))</div><div class="line"></div><div class="line"></div><div class="line">sess.run(tf.global_variables_initializer())</div><div class="line"># 假设 有X个样本，那么 (X*784) * (784*10) = (X*10) </div><div class="line">y = tf.matmul(x,W) + b</div><div class="line"></div><div class="line"></div><div class="line">cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(y, y_))</div></pre></td></tr></table></figure>
+	  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">from tensorflow.examples.tutorials.mnist import input_data</div><div class="line">mnist = input_data.read_data_sets(&apos;MNIST_data&apos;, one_hot=True)</div><div class="line"></div><div class="line">import tensorflow as tf</div><div class="line">sess = tf.InteractiveSession()</div><div class="line"></div><div class="line"></div><div class="line">#None &#x8868;&#x793A;&#x8FD9;&#x91CC;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x5F88;&#x591A;&#x4E2A;&#x6837;&#x672C;, 784=28*28&#x8868;&#x793A;&#x5171;&#x6709;784&#x4E2A;&#x50CF;&#x7D20;&#x70B9;</div><div class="line">#y_&#x8868;&#x793A;&#x4E0E;x&#x5BF9;&#x5E94;&#x7684;label, &#x7531;&#x4E8E;&#x91C7;&#x7528;&#x7684;&#x662F;one_hot&#x7F16;&#x7801;&#x7684;&#x6240;&#x4EE5;&#x662F;10&#x7EF4;</div><div class="line">x = tf.placeholder(tf.float32, shape=[None, 784])</div><div class="line">y_ = tf.placeholder(tf.float32, shape=[None, 10])</div><div class="line"></div><div class="line"></div><div class="line">W = tf.Variable(tf.zeros([784,10]))</div><div class="line">b = tf.Variable(tf.zeros([10]))</div><div class="line"></div><div class="line"></div><div class="line">sess.run(tf.global_variables_initializer())</div><div class="line"># &#x5047;&#x8BBE; &#x6709;X&#x4E2A;&#x6837;&#x672C;&#xFF0C;&#x90A3;&#x4E48; (X*784) * (784*10) = (X*10) </div><div class="line">y = tf.matmul(x,W) + b</div><div class="line"></div><div class="line"></div><div class="line">cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(y, y_))</div></pre></td></tr></table></figure>
 	  
 	</div>
 
@@ -283,7 +283,22 @@
 	 }
 	 var path = "/" + search_path;
      searchFunc(path, 'local-search-input', 'local-search-result');
-   </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+   </script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
    </html>

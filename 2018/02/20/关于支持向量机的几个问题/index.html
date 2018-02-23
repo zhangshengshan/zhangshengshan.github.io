@@ -6,12 +6,8 @@
   <title>关于支持向量机的几个问题 | Zhangshengshan&#39;s Blog</title>
   <meta name="author" content="Zhang ShengShan">
   
-  <meta name="description" content="关于支持向量机的几个问题
-支持向量机的原始问题为啥要转换为对偶问题求解
-为啥要进行拉格朗日方法求对偶问题，是否还有其他的方法
-KKT条件的作用是什么
-SMO算法的作用是啥, 从一些列的对偶变量中挑选出两个进行求解，原则是什么，为什么要挑选违反KKT条件最严重的点？
-什么样的函数成为核函数，支持向量机">
+  <meta name="description" content="&amp;#x5173;&amp;#x4E8E;&amp;#x652F;&amp;#x6301;&amp;#x5411;&amp;#x91CF;&amp;#x673A;&amp;#x7684;&amp;#x51E0;&amp;#x4E2A;&amp;#x95EE;&amp;#x9898;
+&amp;#x652F;&amp;#x6301;&amp;#x5411;&amp;#x91CF;&amp;#x673A;&amp;#x7684;&amp;#x53">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -116,16 +112,16 @@ SMO算法的作用是啥, 从一些列的对偶变量中挑选出两个进行求
 	<div class="mypage">		
 	  		
 
-	  <h1 id="关于支持向量机的几个问题"><a href="#关于支持向量机的几个问题" class="headerlink" title="关于支持向量机的几个问题"></a>关于支持向量机的几个问题</h1><ul>
-<li>支持向量机的原始问题为啥要转换为对偶问题求解</li>
-<li>为啥要进行拉格朗日方法求对偶问题，是否还有其他的方法</li>
-<li>KKT条件的作用是什么</li>
-<li>SMO算法的作用是啥, 从一些列的对偶变量中挑选出两个进行求解，原则是什么，为什么要挑选违反KKT条件最严重的点？</li>
-<li>什么样的函数成为核函数，支持向量机引入核函数的目的是什么？</li>
-<li>引入软间隔的损失函数怎么写，正则项是什么？</li>
-<li>为啥Hinge损失函数能够保证支持向量机的解的稀疏性</li>
-<li>支持向量回归的损失函数是什么？</li>
-<li>高斯核的gamma的含义是什么，怎么理解？</li>
+	  <h1 id="&#x5173;&#x4E8E;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x7684;&#x51E0;&#x4E2A;&#x95EE;&#x9898;"><a href="#&#x5173;&#x4E8E;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x7684;&#x51E0;&#x4E2A;&#x95EE;&#x9898;" class="headerlink" title="&#x5173;&#x4E8E;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x7684;&#x51E0;&#x4E2A;&#x95EE;&#x9898;"></a>&#x5173;&#x4E8E;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x7684;&#x51E0;&#x4E2A;&#x95EE;&#x9898;</h1><ul>
+<li>&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x7684;&#x539F;&#x59CB;&#x95EE;&#x9898;&#x4E3A;&#x5565;&#x8981;&#x8F6C;&#x6362;&#x4E3A;&#x5BF9;&#x5076;&#x95EE;&#x9898;&#x6C42;&#x89E3;</li>
+<li>&#x4E3A;&#x5565;&#x8981;&#x8FDB;&#x884C;&#x62C9;&#x683C;&#x6717;&#x65E5;&#x65B9;&#x6CD5;&#x6C42;&#x5BF9;&#x5076;&#x95EE;&#x9898;&#xFF0C;&#x662F;&#x5426;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x65B9;&#x6CD5;</li>
+<li>KKT&#x6761;&#x4EF6;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x4EC0;&#x4E48;</li>
+<li>SMO&#x7B97;&#x6CD5;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x5565;, &#x4ECE;&#x4E00;&#x4E9B;&#x5217;&#x7684;&#x5BF9;&#x5076;&#x53D8;&#x91CF;&#x4E2D;&#x6311;&#x9009;&#x51FA;&#x4E24;&#x4E2A;&#x8FDB;&#x884C;&#x6C42;&#x89E3;&#xFF0C;&#x539F;&#x5219;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x6311;&#x9009;&#x8FDD;&#x53CD;KKT&#x6761;&#x4EF6;&#x6700;&#x4E25;&#x91CD;&#x7684;&#x70B9;&#xFF1F;</li>
+<li>&#x4EC0;&#x4E48;&#x6837;&#x7684;&#x51FD;&#x6570;&#x6210;&#x4E3A;&#x6838;&#x51FD;&#x6570;&#xFF0C;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x5F15;&#x5165;&#x6838;&#x51FD;&#x6570;&#x7684;&#x76EE;&#x7684;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</li>
+<li>&#x5F15;&#x5165;&#x8F6F;&#x95F4;&#x9694;&#x7684;&#x635F;&#x5931;&#x51FD;&#x6570;&#x600E;&#x4E48;&#x5199;&#xFF0C;&#x6B63;&#x5219;&#x9879;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</li>
+<li>&#x4E3A;&#x5565;Hinge&#x635F;&#x5931;&#x51FD;&#x6570;&#x80FD;&#x591F;&#x4FDD;&#x8BC1;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x7684;&#x89E3;&#x7684;&#x7A00;&#x758F;&#x6027;</li>
+<li>&#x652F;&#x6301;&#x5411;&#x91CF;&#x56DE;&#x5F52;&#x7684;&#x635F;&#x5931;&#x51FD;&#x6570;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</li>
+<li>&#x9AD8;&#x65AF;&#x6838;&#x7684;gamma&#x7684;&#x542B;&#x4E49;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x600E;&#x4E48;&#x7406;&#x89E3;&#xFF1F;</li>
 </ul>
 	  
 	</div>
@@ -135,9 +131,9 @@ SMO算法的作用是啥, 从一些列的对偶变量中挑选出两个进行求
 	<div class="pagination">
 <ul class="pagination">
 	 
-		
-          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-        
+				
+    	<li class="prev"><a href="/2018/02/23/Latex/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
@@ -282,7 +278,22 @@ SMO算法的作用是啥, 从一些列的对偶变量中挑选出两个进行求
 	 }
 	 var path = "/" + search_path;
      searchFunc(path, 'local-search-input', 'local-search-result');
-   </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+   </script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
    </html>
