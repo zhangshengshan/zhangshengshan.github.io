@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangshengshan.github.io/"/>
-  <updated>2018-02-14T02:27:11.000Z</updated>
+  <updated>2018-02-22T03:27:57.000Z</updated>
   <id>http://zhangshengshan.github.io/</id>
   
   <author>
@@ -16,14 +16,46 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>关于支持向量机的几个问题</title>
+    <link href="http://zhangshengshan.github.io/2018/02/20/%E5%85%B3%E4%BA%8E%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%E7%9A%84%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98/"/>
+    <id>http://zhangshengshan.github.io/2018/02/20/关于支持向量机的几个问题/</id>
+    <published>2018-02-20T04:31:18.000Z</published>
+    <updated>2018-02-22T03:27:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="关于支持向量机的几个问题"><a href="#关于支持向量机的几个问题" class="headerlink" title="关于支持向量机的几个问题"></a>关于支持向量机的几个问题</h1><ul>
+<li>支持向量机的原始问题为啥要转换为对偶问题求解</li>
+<li>为啥要进行拉格朗日方法求对偶问题，是否还有其他的方法</li>
+<li>KKT条件的作用是什么</li>
+<li>SMO算法的作用是啥, 从一些列的对偶变量中挑选出两个进行求解，原则是什么，为什么要挑选违反KKT条件最严重的点？</li>
+<li>什么样的函数成为核函数，支持向量机引入核函数的目的是什么？</li>
+<li>引入软间隔的损失函数怎么写，正则项是什么？</li>
+<li>为啥Hinge损失函数能够保证支持向量机的解的稀疏性</li>
+<li>支持向量回归的损失函数是什么？</li>
+<li>高斯核的gamma的含义是什么，怎么理解？</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;关于支持向量机的几个问题&quot;&gt;&lt;a href=&quot;#关于支持向量机的几个问题&quot; class=&quot;headerlink&quot; title=&quot;关于支持向量机的几个问题&quot;&gt;&lt;/a&gt;关于支持向量机的几个问题&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;支持向量机的原始问题为啥要转换为对偶问题求解&lt;/
+    
+    </summary>
+    
+    
+      <category term="SVM" scheme="http://zhangshengshan.github.io/tags/SVM/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Install_cuda9.0_cudnn7.0_tensorflow1.5_onUbuntu16.04_GTX1080TI</title>
     <link href="http://zhangshengshan.github.io/2018/02/13/Install-cuda9-0-cudnn7-0-tensorflow1-5-onUbuntu16-04-GTX1080TI/"/>
     <id>http://zhangshengshan.github.io/2018/02/13/Install-cuda9-0-cudnn7-0-tensorflow1-5-onUbuntu16-04-GTX1080TI/</id>
     <published>2018-02-13T03:15:49.000Z</published>
-    <updated>2018-02-14T02:27:11.000Z</updated>
+    <updated>2018-02-23T02:53:10.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="How-to-install-tensorflow1-5-on-Ubuntu16-04-with-support-of-cuda9-0-and-cudnn7-0"><a href="#How-to-install-tensorflow1-5-on-Ubuntu16-04-with-support-of-cuda9-0-and-cudnn7-0" class="headerlink" title="How to install tensorflow1.5 on Ubuntu16.04 with support of cuda9.0 and cudnn7.0"></a>How to install tensorflow1.5 on Ubuntu16.04 with support of cuda9.0 and cudnn7.0</h1><h2 id="1安装文档阅读"><a href="#1安装文档阅读" class="headerlink" title="1安装文档阅读"></a>1安装文档阅读</h2><p>安装tensorflow首先要登陆tensorflow的官方文档，阅读对应的知道文档<a href="https://www.tensorflow.org/install/install_linux" target="_blank" rel="external">Install On Ubuntu</a><br><img src="/myimages/WX20180213-143853.png" alt="安装文档图片"><br><strong>注意由于文档上面写的是9.0版本，目前nvidia官方的Cuda版本为9.1，最好是采用和tensorflow文档对应的9.0版本，太新的版本可能存在各种未知的问题，在实际安装的过程中，笔者最开始选择9.1版本，遇到各种问题，最终选择和官网一致的版本。</strong></p>
-<h2 id="2按照文档安装Cuda9-0"><a href="#2按照文档安装Cuda9-0" class="headerlink" title="2按照文档安装Cuda9.0"></a>2按照文档安装Cuda9.0</h2><p><img src="/myimages/WX20180213-145246.png" alt="Cuda安装文档"><br><strong>在实际安装过程中，遇到了gcc版本太高的问题，后来仔细对照了图中的系统需要发现，经过验证的版本是Kernel4.4 和gcc-4.3.1, 我解决的方案是下载gcc源代码自行安装，源码安装gcc 的过程可以参照网上参考资料和gcc官方文档，在此不再赘述</strong><br><img src="/myimages/WX20180213-150211.png" alt="安装过程"><br><strong>图片中截图安装前后都需要进行一定的验证操作，过程请参照官方文档，这里不再赘述</strong></p>
+    <content type="html"><![CDATA[<h1 id="How-to-install-tensorflow1-5-on-Ubuntu16-04-with-support-of-cuda9-0-and-cudnn7-0"><a href="#How-to-install-tensorflow1-5-on-Ubuntu16-04-with-support-of-cuda9-0-and-cudnn7-0" class="headerlink" title="How to install tensorflow1.5 on Ubuntu16.04 with support of cuda9.0 and cudnn7.0"></a>How to install tensorflow1.5 on Ubuntu16.04 with support of cuda9.0 and cudnn7.0</h1><h2 id="1安装文档阅读"><a href="#1安装文档阅读" class="headerlink" title="1安装文档阅读"></a>1安装文档阅读</h2><p>安装tensorflow首先要登陆tensorflow的官方文档，阅读对应的指导文档<a href="https://www.tensorflow.org/install/install_linux" target="_blank" rel="external">Install On Ubuntu</a><br><img src="/myimages/WX20180213-143853.png" alt="安装文档图片"><br><strong>注意由于文档上面写的是9.0版本，目前nvidia官方的Cuda版本为9.1，最好是采用和tensorflow文档对应的9.0版本，太新的版本可能存在各种未知的问题，在实际安装的过程中，笔者最开始选择9.1版本，遇到各种问题，最终选择和官网一致的版本得以解决。</strong></p>
+<h2 id="2按照文档安装Cuda9-0"><a href="#2按照文档安装Cuda9-0" class="headerlink" title="2按照文档安装Cuda9.0"></a>2按照文档安装Cuda9.0</h2><p><img src="/myimages/WX20180213-145246.png" alt="Cuda安装文档"><br><strong>在实际安装过程中，遇到了gcc版本太高的报错，后来仔细对照了图中的系统需要发现，经过验证的版本是Kernel4.4 和gcc-4.3.1, 我解决的方案是下载gcc源代码自行安装，源码安装gcc 的过程可以参照网上参考资料和gcc官方文档，在此不再赘述</strong><br><img src="/myimages/WX20180213-150211.png" alt="安装过程"><br><strong>图片中截图安装前后都需要进行一定的验证操作，过程请参照官方文档，这里不再赘述</strong></p>
 <h2 id="安装cudnn"><a href="#安装cudnn" class="headerlink" title="安装cudnn"></a>安装cudnn</h2><p>首先要注意下载正确的版本的cudnn, <strong><a href="https://developer.nvidia.com/rdp/cudnn-download#a-collapse705-9" target="_blank" rel="external">Download cuDNN v7.0.5 (Dec 5, 2017), for CUDA 9.0</a></strong>,然后选择阅读对应的安装文档<a href="http://developer2.download.nvidia.com/compute/machine-learning/cudnn/secure/v7.0.5/prod/Doc/cuDNN-Installation-Guide.pdf?qO7ppZ7ZUZxNrI9KhtEHSndOL-IiLg4UwcWdFcYc2D2AYPJLJha2jvJp7bJO-Dl4Xa3ONYIKhWtLIHTbyr4tfoXndb53sK7SMtODAEwQlZgbYRsPE3wb2qwAGZH6E1fVW6CO1qeO2u_tZTLKe1zKbRCc10Gi8WpCaeyIlGPhLFuHI0qc8uX2eyEaGwVZfAaFkA" target="_blank" rel="external">cuDNN Install Guide</a><br><img src="/myimages/WX20180214-095916.png" alt="Download cuDNN"><br><img src="/myimages/WX20180214-100208.png" alt="Install&amp;Verify"></p>
 <h2 id="安装tensorflow"><a href="#安装tensorflow" class="headerlink" title="安装tensorflow"></a>安装tensorflow</h2><p>之前有过从源码安装Tensorflow的精力，比较复杂，问题比较多，所以不太建议大家选择这种方式，笔者偏好使用Anaconda进行Python开发环境的管理，所以这里讲述Anaconda安装的过程，主要参照Tensorflow安装的官方文档，这里截取出安装tensorflow 的关键步骤。 Ubuntu上安装Anaconda的过程比较简单，不再赘述。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#首先创建python3.5的环境</div><div class="line">conda create -n tensorflow pip python=3.5</div><div class="line">#激活环境</div><div class="line">source activate tensorflow</div><div class="line">#安装支持GPU的Tensorflow1.5版本</div><div class="line">pip install --ignore-installed https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.5.0-cp35-cp35m-linux_x86_64.whl</div></pre></td></tr></table></figure></p>
 <p>在安装过程中可能会报错，提示缺少某些python的安装包，此时根据提示信息，安装相应的安装包即可。<br>在安装完成以后需要验证是否正确安装，在python Shell中输入如下指令即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Python</div><div class="line">import tensorflow as tf</div><div class="line">hello = tf.constant(&apos;Hello, TensorFlow!&apos;)</div><div class="line">sess = tf.Session()</div><div class="line">print(sess.run(hello))</div></pre></td></tr></table></figure></p>
@@ -651,29 +683,6 @@ asdfasdfasdfafsaf</div>
     
     
       <category term="VIM" scheme="http://zhangshengshan.github.io/tags/VIM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>UVa455</title>
-    <link href="http://zhangshengshan.github.io/2016/12/21/UVa455/"/>
-    <id>http://zhangshengshan.github.io/2016/12/21/UVa455/</id>
-    <published>2016-12-21T15:44:56.000Z</published>
-    <updated>2017-02-15T08:08:22.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>inspired by my wife, and i got the code below<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;strings.h&gt;</div><div class="line">int main ( int argc, char *argv[] )</div><div class="line">&#123;</div><div class="line">    char buf[81];</div><div class="line">    int i = 0;</div><div class="line">    memset(buf,0,sizeof(buf));</div><div class="line">    while(scanf(&quot;%s&quot;,buf)!=EOF)&#123;</div><div class="line">        for(i=1;i&lt;strlen(buf);i++)&#123;</div><div class="line">            if ( strlen(buf)%i==0 )&#123;</div><div class="line">                if (strncmp(buf,buf+i,strlen(buf)-i)==0) &#123;</div><div class="line">                    printf ( &quot; k is %d\n&quot;,i );</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if(i==strlen(buf))&#123;</div><div class="line">            printf ( &quot;k is %d\n&quot;,i );</div><div class="line">        &#125;</div><div class="line">        memset(buf,0,sizeof(buf));</div><div class="line">    &#125;</div><div class="line">    return EXIT_SUCCESS;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;inspired by my wife, and i got the code below&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/
-    
-    </summary>
-    
-      <category term="C/C++" scheme="http://zhangshengshan.github.io/categories/C-C/"/>
-    
-    
-      <category term="竞赛" scheme="http://zhangshengshan.github.io/tags/%E7%AB%9E%E8%B5%9B/"/>
     
   </entry>
   

@@ -3,15 +3,20 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>Save DataFrame into a partitioned table of HIVE | Zhangshengshan&#39;s Blog</title>
+  <title>关于支持向量机的几个问题 | Zhangshengshan&#39;s Blog</title>
   <meta name="author" content="Zhang ShengShan">
   
-  <meta name="description" content="How to save a spark DataFrame as a patitioned hive tableutilise saveAsTable method123456789101112131415161718val conf = new SparkConf().setAppName(&amp;qu">
+  <meta name="description" content="关于支持向量机的几个问题
+支持向量机的原始问题为啥要转换为对偶问题求解
+为啥要进行拉格朗日方法求对偶问题，是否还有其他的方法
+KKT条件的作用是什么
+SMO算法的作用是啥, 从一些列的对偶变量中挑选出两个进行求解，原则是什么，为什么要挑选违反KKT条件最严重的点？
+什么样的函数成为核函数，支持向量机">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Save DataFrame into a partitioned table of HIVE"/>
+  <meta property="og:title" content="关于支持向量机的几个问题"/>
   <meta property="og:site_name" content="Zhangshengshan&#39;s Blog"/>
 
   
@@ -91,7 +96,7 @@
 
 	
 		<div class="page-header page-header-inverse ">		
-			<h1 class="title title-inverse "> Save DataFrame into a partitioned table of HIVE</h1>
+			<h1 class="title title-inverse "> 关于支持向量机的几个问题</h1>
 		</div>		
 	
 
@@ -111,7 +116,17 @@
 	<div class="mypage">		
 	  		
 
-	  <h1 id="How-to-save-a-spark-DataFrame-as-a-patitioned-hive-table"><a href="#How-to-save-a-spark-DataFrame-as-a-patitioned-hive-table" class="headerlink" title="How to save a spark DataFrame as a patitioned hive table"></a>How to save a spark DataFrame as a patitioned hive table</h1><h2 id="utilise-saveAsTable-method"><a href="#utilise-saveAsTable-method" class="headerlink" title="utilise saveAsTable method"></a>utilise saveAsTable method</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">val conf = new SparkConf().setAppName(&quot;Simple Application&quot;).setMaster(&quot;local&quot;)</div><div class="line">val sc = new SparkContext(conf)</div><div class="line">val sqlContext = new org.apache.spark.sql.SQLContext(sc)</div><div class="line">import sqlContext.implicits._</div><div class="line">val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc)</div><div class="line">hiveContext.sql(&quot;use database&quot;)</div><div class="line"></div><div class="line">val cmd =</div><div class="line">  &quot;&quot;&quot;</div><div class="line">     select</div><div class="line">      col1,</div><div class="line">      col2</div><div class="line">     from</div><div class="line">      table</div><div class="line">  &quot;&quot;&quot;.stripMargin</div><div class="line">val yourDf = hiveContext.sql(cmd)</div><div class="line">yourDf.printSchema()</div><div class="line">yourDf.write.partitionBy(&quot;col2&quot;).saveAsTable(&quot;partitionTableName&quot;)</div></pre></td></tr></table></figure>
+	  <h1 id="关于支持向量机的几个问题"><a href="#关于支持向量机的几个问题" class="headerlink" title="关于支持向量机的几个问题"></a>关于支持向量机的几个问题</h1><ul>
+<li>支持向量机的原始问题为啥要转换为对偶问题求解</li>
+<li>为啥要进行拉格朗日方法求对偶问题，是否还有其他的方法</li>
+<li>KKT条件的作用是什么</li>
+<li>SMO算法的作用是啥, 从一些列的对偶变量中挑选出两个进行求解，原则是什么，为什么要挑选违反KKT条件最严重的点？</li>
+<li>什么样的函数成为核函数，支持向量机引入核函数的目的是什么？</li>
+<li>引入软间隔的损失函数怎么写，正则项是什么？</li>
+<li>为啥Hinge损失函数能够保证支持向量机的解的稀疏性</li>
+<li>支持向量回归的损失函数是什么？</li>
+<li>高斯核的gamma的含义是什么，怎么理解？</li>
+</ul>
 	  
 	</div>
 
@@ -120,14 +135,14 @@
 	<div class="pagination">
 <ul class="pagination">
 	 
-				
-    	<li class="prev"><a href="/2016/08/19/Spark-2-0-Introduction/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-  		
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/2016/08/11/SparkPassFunctions/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/2018/02/13/Install-cuda9-0-cudnn7-0-tensorflow1-5-onUbuntu16-04-GTX1080TI/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -166,7 +181,7 @@
   <h2 class="title">Comments</h2>
 
   
-  	 <div class="ds-thread" data-thread-key="2016/08/19/Save-DataFrame-into-a-partitioned-table-of-HIVE/" data-title="Save DataFrame into a partitioned table of HIVE" data-url="http://zhangshengshan.github.io/2016/08/19/Save-DataFrame-into-a-partitioned-table-of-HIVE/"></div>  
+  	 <div class="ds-thread" data-thread-key="2018/02/20/关于支持向量机的几个问题/" data-title="关于支持向量机的几个问题" data-url="http://zhangshengshan.github.io/2018/02/20/关于支持向量机的几个问题/"></div>  
   
 </section>
 
@@ -180,23 +195,12 @@
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2016-08-19 
+	2018-02-20 
 	</div>
 	
 
 	<!-- categories -->
     
-	<div class="meta-widget">
-	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
-    <ul id="categorys" class="tag_box list-unstyled collapse in">
-          
-  <li>
-    <li><a href="/categories/Spark/">Spark<span>8</span></a></li>
-  </li>
-
-    </ul>
-	</div>
-	
 
 	<!-- tags -->
 	
@@ -204,18 +208,13 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Spark/">Spark<span>5</span></a></li>
+  <li><a href="/tags/SVM/">SVM<span>1</span></a></li>
     </ul>
 	</div>
 		
 
 	<!-- toc -->
 	<div class="meta-widget">
-	
-	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
-	   <div id="toc" class="toc collapse in">
-			<ol class="toc-article"><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#How-to-save-a-spark-DataFrame-as-a-patitioned-hive-table"><span class="toc-article-text">How to save a spark DataFrame as a patitioned hive table</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#utilise-saveAsTable-method"><span class="toc-article-text">utilise saveAsTable method</span></a></li></ol></li></ol>
-		</div>
 	
 	</div>
 	
