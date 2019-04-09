@@ -4,6 +4,24 @@
   
     
     <entry>
+      <title><![CDATA[ScalaList是线程安全的吗？]]></title>
+      <url>http://zhangshengshan.github.io/2019/04/09/ScalaList%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%90%97%EF%BC%9F/</url>
+      <content type="html"><![CDATA[<h1 id="Scala-List&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x5417;&#xFF1F;"><a href="#Scala-List&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x5417;&#xFF1F;" class="headerlink" title="Scala List&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x5417;&#xFF1F;"></a>Scala List&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x5417;&#xFF1F;</h1><h1 id="&#x5982;&#x679C;&#x4E0D;&#x662F;&#x7684;&#x8BDD;&#xFF0C;-&#x662F;&#x5426;&#x80FD;&#x591F;&#x6784;&#x9020;&#x4E00;&#x4E2A;&#x5C0F;&#x7684;DEMO&#x8BC1;&#x660E;&#x4ED6;&#x4E0D;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;"><a href="#&#x5982;&#x679C;&#x4E0D;&#x662F;&#x7684;&#x8BDD;&#xFF0C;-&#x662F;&#x5426;&#x80FD;&#x591F;&#x6784;&#x9020;&#x4E00;&#x4E2A;&#x5C0F;&#x7684;DEMO&#x8BC1;&#x660E;&#x4ED6;&#x4E0D;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;" class="headerlink" title="&#x5982;&#x679C;&#x4E0D;&#x662F;&#x7684;&#x8BDD;&#xFF0C; &#x662F;&#x5426;&#x80FD;&#x591F;&#x6784;&#x9020;&#x4E00;&#x4E2A;&#x5C0F;&#x7684;DEMO&#x8BC1;&#x660E;&#x4ED6;&#x4E0D;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;"></a>&#x5982;&#x679C;&#x4E0D;&#x662F;&#x7684;&#x8BDD;&#xFF0C; &#x662F;&#x5426;&#x80FD;&#x591F;&#x6784;&#x9020;&#x4E00;&#x4E2A;&#x5C0F;&#x7684;DEMO&#x8BC1;&#x660E;&#x4ED6;&#x4E0D;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;</h1>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[是现成安全的吗？]]></title>
+      <url>http://zhangshengshan.github.io/2019/04/09/%E6%98%AF%E7%8E%B0%E6%88%90%E5%AE%89%E5%85%A8%E7%9A%84%E5%90%97%EF%BC%9F/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JVM性能监控]]></title>
+      <url>http://zhangshengshan.github.io/2018/07/27/JVM%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/</url>
+      <content type="html"><![CDATA[<h1 id="JVM&#x6027;&#x80FD;&#x76D1;&#x63A7;"><a href="#JVM&#x6027;&#x80FD;&#x76D1;&#x63A7;" class="headerlink" title="JVM&#x6027;&#x80FD;&#x76D1;&#x63A7;"></a>JVM&#x6027;&#x80FD;&#x76D1;&#x63A7;</h1>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JVMGC]]></title>
       <url>http://zhangshengshan.github.io/2018/07/25/JVMGC/</url>
       <content type="html"><![CDATA[<h1 id="JVM-GC"><a href="#JVM-GC" class="headerlink" title="JVM GC"></a>JVM GC</h1><h2 id="OopMap-&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;"><a href="#OopMap-&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;" class="headerlink" title="OopMap &#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;"></a>OopMap &#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</h2><p>HotSpot &#x91C7;&#x7528;OopMap &#x6765;&#x8BB0;&#x5F55;&#x5F15;&#x7528;&#x4F4D;&#x7F6E;&#xFF0C;&#x5728;OopMap &#x7684;&#x5E2E;&#x52A9;&#x4E0B;&#xFF0C;HotSpot &#x53EF;&#x4EE5;&#x5FEB;&#x901F;&#x7684;&#x5B8C;&#x6210;GC Roots&#x679A;&#x4E3E;&#x3002;</p>
@@ -31,6 +49,9 @@
 <li>&#x505C;&#x987F;&#x53EF;&#x9884;&#x6D4B;&#x3002;&#x907F;&#x514D;&#x6BCF;&#x6B21;&#x56DE;&#x6536;&#x5806;&#x7684;&#x6574;&#x4F53;&#x7684;&#x7A7A;&#x95F4;&#xFF0C;&#x53EF;&#x4EE5;&#x6BCF;&#x4E00;&#x4E2A;Region&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x4EF7;&#x503C;&#x7684;&#x5927;&#x5C0F;&#x3002; </li>
 </ul>
 <h2 id="Remember-Set-&#x4F5C;&#x7528;"><a href="#Remember-Set-&#x4F5C;&#x7528;" class="headerlink" title="Remember Set &#x4F5C;&#x7528;"></a>Remember Set &#x4F5C;&#x7528;</h2><p>&#x6BCF;&#x4E00;&#x4E2A;Region  &#x5BF9;&#x5E94;&#x4E00;&#x4E2A;Remember Set. &#x5728;&#x5BF9;Reference &#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x8BFB;&#x5199;&#x7684;&#x65F6;&#x5019;&#xFF0C; JVM&#x4F1A;&#x4E2D;&#x65AD;&#x5199;&#x64CD;&#x4F5C;&#xFF0C; &#x5728;&#x88AB;&#x5E94;&#x7528;&#x5BF9;&#x8C61;&#x7684;Region &#x7684;&#x5BF9;&#x8C61;&#x7684;RSet&#x4E2D;&#x8BB0;&#x5F55;&#x4E0A;&#x548C;&#x4ED6;&#x6709;&#x5173;&#x7CFB;&#x7684;&#x5176;&#x4ED6;&#x7684;Region&#x4FE1;&#x606F;&#x3002; &#x8FD9;&#x6837;&#x5728;GCroots&#x6807;&#x8BB0;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x907F;&#x514D;&#x6574;&#x4E2A;&#x5806;&#x7684;&#x626B;&#x63CF;&#x3002;</p>
+<h2 id="&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x6CC4;&#x9732;&#x5BFC;&#x81F4;OutOfMemory&#x5F02;&#x5E38;"><a href="#&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x6CC4;&#x9732;&#x5BFC;&#x81F4;OutOfMemory&#x5F02;&#x5E38;" class="headerlink" title="&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x6CC4;&#x9732;&#x5BFC;&#x81F4;OutOfMemory&#x5F02;&#x5E38;"></a>&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x6CC4;&#x9732;&#x5BFC;&#x81F4;OutOfMemory&#x5F02;&#x5E38;</h2><ul>
+<li>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x4F1A;&#x5360;&#x7528;&#x5B83;&#x52A0;&#x8F7D;&#x7684;&#x6240;&#x6709;&#x7C7B;&#x548C;&#x5B83;&#x4EEC;&#x6240;&#x6709;&#x7684;&#x9759;&#x6001;&#x57DF;&#x3002;&#x9759;&#x6001;&#x57DF;&#x901A;&#x5E38;&#x542B;&#x6709;&#x7F13;&#x5B58;&#x3001;&#x5355;&#x4F8B;&#x5BF9;&#x8C61;&#x548C;&#x4E0D;&#x540C;&#x7684;&#x914D;&#x7F6E;&#x4EE5;&#x53CA;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x72B6;&#x6001;&#x3002;&#x5373;&#x4F7F;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6CA1;&#x6709;&#x4E00;&#x4E9B;&#x5927;&#x7684;&#x9759;&#x6001;&#x7F13;&#x5B58;&#xFF0C;&#x8FD9;&#x4E5F;&#x4E0D;&#x610F;&#x5473;&#x7740;&#x4F60;&#x4F7F;&#x7528;&#x7684;&#x6846;&#x67B6;&#x4E0D;&#x5360;&#x7528;&#x7740;&#x5B83;&#x4EEC;&#xFF08;&#x5982;Log4J&#x662F;&#x4E00;&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x7F6A;&#x9B41;&#x7978;&#x9996;,&#x56E0;&#x4E3A;&#x5B83;&#x901A;&#x5E38;&#x662F;&#x653E;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7C7B;&#x8DEF;&#x5F84;&#x4E2D;)&#x3002;&#x8FD9;&#x5C31;&#x8BF4;&#x660E;&#x4E86;&#x4E3A;&#x4EC0;&#x4E48;&#x52A0;&#x8F7D;&#x5668;&#x6CC4;&#x9732;&#x7684;&#x4EE3;&#x4EF7;&#x4F1A;&#x5F88;&#x5927;&#x3002;</li>
+</ul>
 ]]></content>
     </entry>
     
@@ -926,16 +947,6 @@ DataFrames facilitate practical ML Pipelines, particularly feature transformatio
     </entry>
     
     <entry>
-      <title><![CDATA[Lorem Ipsum]]></title>
-      <url>http://zhangshengshan.github.io/2014/03/15/lorem-ipsum/</url>
-      <content type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p><img src="/hexo-theme-freemind/images/lorem-ipsum/lorem-ipsum.jpg" alt="Lorem Ipsum"></p>
-<a id="more"></a>
-<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Code Highlight]]></title>
       <url>http://zhangshengshan.github.io/2014/03/15/code-highlight/</url>
       <content type="html"><![CDATA[<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// C</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">{</div><div class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World\n&quot;</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">}</div></pre></td></tr></table></figure>
@@ -954,6 +965,16 @@ DataFrames facilitate practical ML Pipelines, particularly feature transformatio
 <h2 id="php"><a href="#php" class="headerlink" title="php"></a>php</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?</span>=<span class="string">&quot;Hello world\n&quot;</span> <span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
 <h2 id="Pascal"><a href="#Pascal" class="headerlink" title="Pascal"></a>Pascal</h2><figure class="highlight pascal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Program</span> HelloWorld;</div><div class="line"></div><div class="line"><span class="keyword">Begin</span></div><div class="line">  Writeln (<span class="string">&apos;Hello World!&apos;</span>);</div><div class="line"><span class="keyword">End</span>.</div></pre></td></tr></table></figure>
 <h2 id="Delphi"><a href="#Delphi" class="headerlink" title="Delphi"></a>Delphi</h2><figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Delphi, thanks to C0derr</span></div><div class="line"><span class="keyword">program</span> Project1;</div><div class="line"><span class="keyword">uses</span></div><div class="line">  qdialogs;</div><div class="line"><span class="keyword">const</span></div><div class="line">  s=<span class="string">&apos;Hello, World!&apos;</span>;</div><div class="line"><span class="keyword">begin</span></div><div class="line">  showmessage(s);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Lorem Ipsum]]></title>
+      <url>http://zhangshengshan.github.io/2014/03/15/lorem-ipsum/</url>
+      <content type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p><img src="/hexo-theme-freemind/images/lorem-ipsum/lorem-ipsum.jpg" alt="Lorem Ipsum"></p>
+<a id="more"></a>
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
 ]]></content>
     </entry>
     
