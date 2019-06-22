@@ -4,6 +4,12 @@
   
     
     <entry>
+      <title><![CDATA[基础概率分布]]></title>
+      <url>http://zhangshengshan.github.io/2019/06/22/%E5%9F%BA%E7%A1%80%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/</url>
+      <content type="html"><![CDATA[<h1 id="t&#x5206;&#x5E03;"><a href="#t&#x5206;&#x5E03;" class="headerlink" title="t&#x5206;&#x5E03;"></a>t&#x5206;&#x5E03;</h1><h1 id="&#x5361;&#x65B9;&#x5206;&#x5E03;"><a href="#&#x5361;&#x65B9;&#x5206;&#x5E03;" class="headerlink" title="&#x5361;&#x65B9;&#x5206;&#x5E03;"></a>&#x5361;&#x65B9;&#x5206;&#x5E03;</h1><h1 id="F&#x5206;&#x5E03;"><a href="#F&#x5206;&#x5E03;" class="headerlink" title="F&#x5206;&#x5E03;"></a>F&#x5206;&#x5E03;</h1>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[reflction_on_data_develop_ahout_4_years]]></title>
       <url>http://zhangshengshan.github.io/2019/05/30/reflction-on-data-develop-ahout-4-years/</url>
       <content type="html"><![CDATA[<p># </p>
@@ -110,27 +116,27 @@
 <td>c</td>
 </tr>
 <tr>
-<td>JVM</td>
+<td>&#x300A;JVM                 &#x300B;</td>
 <td>b</td>
 <td>c</td>
 </tr>
 <tr>
-<td>JAVA&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x300A;JAVA&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
 <td>b</td>
 <td>c</td>
 </tr>
 <tr>
-<td>Hbase&#x6743;&#x5A01;&#x6307;&#x5357;</td>
+<td>&#x300A;Hbase&#x6743;&#x5A01;&#x6307;&#x5357;</td>
 <td>b</td>
 <td>c</td>
 </tr>
 <tr>
-<td>&#x56FE;&#x89E3;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;</td>
+<td>&#x300A;&#x56FE;&#x89E3;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;</td>
 <td>b</td>
 <td>c</td>
 </tr>
 <tr>
-<td>&#x7A0B;&#x5E8F;&#x5458;&#x7684;&#x6570;&#x636E;&#x4E4B;&#x4E8C;</td>
+<td>&#x300A;&#x7A0B;&#x5E8F;&#x5458;&#x7684;&#x6570;&#x636E;&#x4E4B;&#x4E8C;</td>
 <td>b</td>
 <td>c</td>
 </tr>
