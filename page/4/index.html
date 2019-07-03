@@ -112,6 +112,29 @@
 	<!-- display as entry -->	
 		<h3 class="title">
 			<div class="date"> 2017-01-04 </div>
+			<div class="article-title"><a href="/2017/01/04/Deep-MNIST-for-Experts/" >Deep MNIST for Experts</a></div>						
+		</h3>
+	
+
+
+			  <div class="entry">
+  <div class="row">
+	
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">from tensorflow.examples.tutorials.mnist import input_data</div><div class="line">mnist = input_data.read_data_sets(&apos;MNIST_data&apos;, one_hot=True)</div><div class="line"></div><div class="line">import tensorflow as tf</div><div class="line">sess = tf.InteractiveSession()</div><div class="line"></div><div class="line"></div><div class="line">#None &#x8868;&#x793A;&#x8FD9;&#x91CC;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x5F88;&#x591A;&#x4E2A;&#x6837;&#x672C;, 784=28*28&#x8868;&#x793A;&#x5171;&#x6709;784&#x4E2A;&#x50CF;&#x7D20;&#x70B9;</div><div class="line">#y_&#x8868;&#x793A;&#x4E0E;x&#x5BF9;&#x5E94;&#x7684;label, &#x7531;&#x4E8E;&#x91C7;&#x7528;&#x7684;&#x662F;one_hot&#x7F16;&#x7801;&#x7684;&#x6240;&#x4EE5;&#x662F;10&#x7EF4;</div><div class="line">x = tf.placeholder(tf.float32, shape=[None, 784])</div><div class="line">y_ = tf.placeholder(tf.float32, shape=[None, 10])</div><div class="line"></div><div class="line"></div><div class="line">W = tf.Variable(tf.zeros([784,10]))</div><div class="line">b = tf.Variable(tf.zeros([10]))</div><div class="line"></div><div class="line"></div><div class="line">sess.run(tf.global_variables_initializer())</div><div class="line"># &#x5047;&#x8BBE; &#x6709;X&#x4E2A;&#x6837;&#x672C;&#xFF0C;&#x90A3;&#x4E48; (X*784) * (784*10) = (X*10) </div><div class="line">y = tf.matmul(x,W) + b</div><div class="line"></div><div class="line"></div><div class="line">cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(y, y_))</div></pre></td></tr></table></figure>
+
+	
+	</div>
+</div>
+
+           
+		
+           
+			  
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2017-01-04 </div>
 			<div class="article-title"><a href="/2017/01/04/Google-面试宝典/" >Google 面试宝典</a></div>						
 		</h3>
 	
@@ -426,29 +449,6 @@
 
            
 		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2016-12-05 </div>
-			<div class="article-title"><a href="/2016/12/05/save-spark-rdd-into-Mysql/" >save spark rdd into Mysql</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import java.util.Properties</div><div class="line">val target_df = targetRdd.toDF()</div><div class="line">val prop = new Properties()</div><div class="line">prop.put(&quot;user&quot;, &quot;username&quot;)</div><div class="line">prop.put(&quot;password&quot;, &quot;password&quot;)</div><div class="line">ret_df.write.mode(&quot;append&quot;).jdbc(&quot;jdbc:mysql://host:port/database&quot;,&quot;table&quot;,prop)</div></pre></td></tr></table></figure>
-
-	
-	</div>
-</div>
-
-           
-		
 
 		</div>
 
@@ -530,45 +530,45 @@
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Tensorflow/">Tensorflow<span>1</span></a></li>
-		
-			<li><a href="/tags/竞赛/">竞赛<span>3</span></a></li>
-		
-			<li><a href="/tags/Spark/">Spark<span>5</span></a></li>
-		
-			<li><a href="/tags/SVM/">SVM<span>1</span></a></li>
-		
-			<li><a href="/tags/Q-A/">Q&amp;A<span>2</span></a></li>
-		
-			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
-		
-			<li><a href="/tags/tensorflow/">tensorflow<span>3</span></a></li>
-		
-			<li><a href="/tags/JVM/">JVM<span>1</span></a></li>
-		
-			<li><a href="/tags/Python/">Python<span>1</span></a></li>
-		
-			<li><a href="/tags/Flink/">Flink<span>1</span></a></li>
+			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
 		
 			<li><a href="/tags/Socket/">Socket<span>1</span></a></li>
 		
+			<li><a href="/tags/JVM/">JVM<span>1</span></a></li>
+		
+			<li><a href="/tags/竞赛/">竞赛<span>3</span></a></li>
+		
 			<li><a href="/tags/Spark-Streaming/">Spark Streaming<span>1</span></a></li>
-		
-			<li><a href="/tags/maven/">maven<span>1</span></a></li>
-		
-			<li><a href="/tags/Spark-Scala-Streaming/">Spark Scala Streaming<span>1</span></a></li>
-		
-			<li><a href="/tags/Scala-并发编程/">Scala, 并发编程<span>1</span></a></li>
 		
 			<li><a href="/tags/CNN/">CNN<span>1</span></a></li>
 		
-			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
+			<li><a href="/tags/GIT/">GIT<span>1</span></a></li>
 		
-			<li><a href="/tags/plugins/">plugins<span>2</span></a></li>
+			<li><a href="/tags/ML/">ML<span>1</span></a></li>
 		
-			<li><a href="/tags/English/">English<span>1</span></a></li>
+			<li><a href="/tags/tensorflow/">tensorflow<span>3</span></a></li>
+		
+			<li><a href="/tags/SVM/">SVM<span>1</span></a></li>
+		
+			<li><a href="/tags/Tensorflow/">Tensorflow<span>1</span></a></li>
 		
 			<li><a href="/tags/JVM-GC/">JVM,GC<span>1</span></a></li>
+		
+			<li><a href="/tags/简体/">简体<span>1</span></a></li>
+		
+			<li><a href="/tags/Python/">Python<span>1</span></a></li>
+		
+			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
+		
+			<li><a href="/tags/data/">data<span>1</span></a></li>
+		
+			<li><a href="/tags/scala/">scala<span>1</span></a></li>
+		
+			<li><a href="/tags/Q-A/">Q&amp;A<span>2</span></a></li>
+		
+			<li><a href="/tags/Scala/">Scala<span>6</span></a></li>
+		
+			<li><a href="/tags/maven/">maven<span>1</span></a></li>
 		
 		
 		   <li><a href="/tags">...<span>30</span></a></li>
@@ -584,6 +584,10 @@
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2019/07/03/聊聊Scala判等/" ><i class="fa fa-file-o"></i>聊聊Scala判等</a>
+      </li>
+    
+      <li>
         <a href="/2019/06/22/基础概率分布/" ><i class="fa fa-file-o"></i>基础概率分布</a>
       </li>
     
@@ -597,10 +601,6 @@
     
       <li>
         <a href="/2019/04/23/Scala并发编程读书笔记/" ><i class="fa fa-file-o"></i>Scala并发编程读书笔记</a>
-      </li>
-    
-      <li>
-        <a href="/2019/04/09/ScalaList是线程安全的吗？/" ><i class="fa fa-file-o"></i>ScalaList是线程安全的吗？</a>
       </li>
     
   </ul>
@@ -670,7 +670,22 @@
 	 }
 	 var path = "/" + search_path;
      searchFunc(path, 'local-search-input', 'local-search-result');
-   </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+   </script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
    </html>

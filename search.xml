@@ -4,6 +4,12 @@
   
     
     <entry>
+      <title><![CDATA[聊聊Scala判等]]></title>
+      <url>http://zhangshengshan.github.io/2019/07/03/%E8%81%8A%E8%81%8AScala%E5%88%A4%E7%AD%89/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[基础概率分布]]></title>
       <url>http://zhangshengshan.github.io/2019/06/22/%E5%9F%BA%E7%A1%80%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/</url>
       <content type="html"><![CDATA[<h2 id="&#x7EBF;&#x6027;&#x56DE;&#x5F52;&#x7684;&#x57FA;&#x672C;&#x5047;&#x8BBE;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;"><a href="#&#x7EBF;&#x6027;&#x56DE;&#x5F52;&#x7684;&#x57FA;&#x672C;&#x5047;&#x8BBE;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;" class="headerlink" title="&#x7EBF;&#x6027;&#x56DE;&#x5F52;&#x7684;&#x57FA;&#x672C;&#x5047;&#x8BBE;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;"></a>&#x7EBF;&#x6027;&#x56DE;&#x5F52;&#x7684;&#x57FA;&#x672C;&#x5047;&#x8BBE;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</h2><ul>
@@ -37,28 +43,13 @@
 </thead>
 <tbody>
 <tr>
-<td>&#x300A;Scala&#x7F16;&#x7A0B;&#x300B;</td>
-<td>Done</td>
-<td>c</td>
-</tr>
-<tr>
-<td>&#x300A;Scala&#x96C6;&#x5408;&#x6280;&#x672F;&#x624B;&#x518C;&#x300B;</td>
-<td>b</td>
-<td>c</td>
-</tr>
-<tr>
 <td>&#x300A;&#x7CBE;&#x901A;&#x7279;&#x5F81;&#x5DE5;&#x7A0B;&#x300B;</td>
 <td>b</td>
 <td>c</td>
 </tr>
 <tr>
 <td>&#x300A;Python&#x7EDF;&#x8BA1;&#x5206;&#x6790;&#x300B;</td>
-<td>b</td>
-<td>c</td>
-</tr>
-<tr>
-<td>&#x300A;Scala&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x300B;</td>
-<td>b</td>
+<td>Done</td>
 <td>c</td>
 </tr>
 <tr>
@@ -97,11 +88,6 @@
 <td>c</td>
 </tr>
 <tr>
-<td>&#x300A;Scala&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x300B;</td>
-<td>b</td>
-<td>c</td>
-</tr>
-<tr>
 <td>&#x300A;Spring&#x5B9E;&#x6218;&#x300B;</td>
 <td>b</td>
 <td>c</td>
@@ -112,9 +98,34 @@
 <td>c</td>
 </tr>
 <tr>
-<td>&#x300A;Scala&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x300B;</td>
-<td>Done</td>
+<td>&#x300A;JVM&#x300B;</td>
+<td>b</td>
 <td>c</td>
+</tr>
+<tr>
+<td>&#x300A;JAVA&#x6027;&#x80FD;&#x8C03;&#x4F18;&#x300B;</td>
+<td>b</td>
+<td>c</td>
+</tr>
+<tr>
+<td>&#x300A;Hbase&#x6743;&#x5A01;&#x6307;&#x5357;&#x300B;</td>
+<td>b</td>
+<td>c</td>
+</tr>
+<tr>
+<td>&#x300A;&#x56FE;&#x89E3;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x300B;</td>
+<td>b</td>
+<td>c</td>
+</tr>
+<tr>
+<td>&#x300A;&#x7A0B;&#x5E8F;&#x5458;&#x7684;&#x6570;&#x636E;&#x4E4B;&#x4E8C;&#x300B;</td>
+<td>b</td>
+<td>c</td>
+</tr>
+<tr>
+<td>&#x300A;Scala&#x96C6;&#x5408;&#x6280;&#x672F;&#x624B;&#x518C;&#x300B;</td>
+<td>Done</td>
+<td>&#x804A;&#x804A;Scala&#x5224;&#x7B49;</td>
 </tr>
 <tr>
 <td>&#x300A;&#x9AD8;&#x6027;&#x80FD;Scala&#x300B;</td>
@@ -122,38 +133,23 @@
 <td>c</td>
 </tr>
 <tr>
-<td>&#x300A;JVM                 &#x300B;</td>
+<td>&#x300A;Scala&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x300B;</td>
 <td>b</td>
 <td>c</td>
 </tr>
 <tr>
-<td>&#x300A;JAVA&#x6027;&#x80FD;&#x8C03;&#x4F18;</td>
+<td>&#x300A;Scala&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x300B;</td>
 <td>b</td>
 <td>c</td>
 </tr>
 <tr>
-<td>&#x300A;Hbase&#x6743;&#x5A01;&#x6307;&#x5357;</td>
-<td>b</td>
+<td>&#x300A;Scala&#x7F16;&#x7A0B;&#x300B;</td>
+<td>Done</td>
 <td>c</td>
 </tr>
 <tr>
-<td>&#x300A;&#x56FE;&#x89E3;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;</td>
-<td>b</td>
-<td>c</td>
-</tr>
-<tr>
-<td>&#x300A;&#x7A0B;&#x5E8F;&#x5458;&#x7684;&#x6570;&#x636E;&#x4E4B;&#x4E8C;</td>
-<td>b</td>
-<td>c</td>
-</tr>
-<tr>
-<td>a</td>
-<td>b</td>
-<td>c</td>
-</tr>
-<tr>
-<td>a</td>
-<td>b</td>
+<td>&#x300A;Scala&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x300B;</td>
+<td>Done</td>
 <td>c</td>
 </tr>
 </tbody>
