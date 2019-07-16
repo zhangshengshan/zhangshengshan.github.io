@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangshengshan.github.io/"/>
-  <updated>2019-07-15T07:40:07.963Z</updated>
+  <updated>2019-07-16T05:04:25.638Z</updated>
   <id>http://zhangshengshan.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://zhangshengshan.github.io/2019/07/10/FpInScala%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <id>http://zhangshengshan.github.io/2019/07/10/FpInScala读书笔记/</id>
     <published>2019-07-10T04:43:42.000Z</published>
-    <updated>2019-07-15T07:40:07.963Z</updated>
+    <updated>2019-07-16T05:04:25.638Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>FoldLeft&#x548C;FoldRight&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;</li>
@@ -35,6 +35,8 @@
 <li>List hasSubSequence &#x5982;&#x4F55;&#x8BBE;&#x8BA1;</li>
 <li>&#x300A;&#x804A;&#x804A;Scala&#x7684;&#x578B;&#x53D8;&#x300B;</li>
 <li>by name&#x548C;by value&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;</li>
+<li>Scala&#x4E3A;&#x5565;&#x8981;&#x5B9A;&#x4E49;Stream?</li>
+<li>&#x5982;&#x4F55;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;fib Stream</li>
 </ul>
 ]]></content>
     

@@ -126,6 +126,8 @@ FoldRight &amp;#x5982;&amp;#x4F5">
 <li>List hasSubSequence &#x5982;&#x4F55;&#x8BBE;&#x8BA1;</li>
 <li>&#x300A;&#x804A;&#x804A;Scala&#x7684;&#x578B;&#x53D8;&#x300B;</li>
 <li>by name&#x548C;by value&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;</li>
+<li>Scala&#x4E3A;&#x5565;&#x8981;&#x5B9A;&#x4E49;Stream?</li>
+<li>&#x5982;&#x4F55;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;fib Stream</li>
 </ul>
 	  
 	</div>
@@ -282,7 +284,22 @@ FoldRight &amp;#x5982;&amp;#x4F5">
 	 }
 	 var path = "/" + search_path;
      searchFunc(path, 'local-search-input', 'local-search-result');
-   </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+   </script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
    </html>
