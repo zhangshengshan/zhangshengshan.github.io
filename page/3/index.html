@@ -111,6 +111,62 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2017-09-18 </div>
+			<div class="article-title"><a href="/2017/09/18/UpperBound/" >UpperBound</a></div>						
+		</h3>
+	
+
+
+			  <div class="entry">
+  <div class="row">
+	
+	
+		<p>While upper type bounds limit a type to a subtype of another type, lower type bounds declare a type to be a supertype of another type. The term B &gt;: A expresses that the type parameter B or the abstract type B refer to a supertype of type A. In most cases, A will be the type parameter of the class and B will be the type parameter of a method.</p>
+<p>Here is an example where this is useful:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">trait Node[+B] {</div><div class="line">  def prepend(elem: B): Unit</div><div class="line">}</div><div class="line"></div><div class="line">case class ListNode[+B](h: B, t: Node[B]) extends Node[B] {</div><div class="line">  def prepend(elem: B) = ListNode[B](elem, this)</div><div class="line">  def head: B = h</div><div class="line">  def tail = t</div><div class="line">}</div><div class="line"></div><div class="line">case class Nil[+B]() extends Node[B] {</div><div class="line">  def prepend(elem: B) = ListNode[B](elem, this)</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>This program implements a singly-linked list. Nil represents an empty element (i.e. an empty list). class ListNode is a node which contains an element of type B (head) and a reference to the rest of the list (tail). The class Node and its subtypes are covariant because we have +B.</p>
+<p>However, this program does not compile because the parameter elem in prepend is of type B, which we declared covariant. This doesn&#x2019;t work because functions are contravariant in their parameter types and covariant in their result types.</p>
+<p>To fix this, we need to flip the variance of the type of the parameter elem in prepend. We do this by introducing a new type parameter U that has B as a lower type bound.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">trait Node[+B] {</div><div class="line">  def prepend[U &gt;: B](elem: U)</div><div class="line">}</div><div class="line"></div><div class="line">case class ListNode[+B](h: B, t: Node[B]) extends Node[B] {</div><div class="line">  def prepend[U &gt;: B](elem: U) = ListNode[U](elem, this)</div><div class="line">  def head: B = h</div><div class="line">  def tail = t</div><div class="line">}</div><div class="line"></div><div class="line">case class Nil[+B]() extends Node[B] {</div><div class="line">  def prepend[U &gt;: B](elem: U) = ListNode[U](elem, this)</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>Now we can do the following:</p>
+<p>trait Mammal<br>case class AfricanSwallow() extends Mammal<br>case class EuropeanSwallow() extends Mammal</p>
+<p>val africanSwallowList= ListNode<a href="AfricanSwallow(">AfricanSwallow</a>, Nil())<br>val mammalList: Node[Mammal] = africanSwallowList<br>mammalList.prepend(new EuropeanSwallow)</p>
+<p>The Node[Mammal] can be assigned the africanSwallowList but then accept EuropeanSwallows.</p>
+
+	
+	</div>
+</div>
+
+           
+		
+           
+			  
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2017-09-10 </div>
+			<div class="article-title"><a href="/2017/09/10/函数式编程/" >函数式编程</a></div>						
+		</h3>
+	
+
+
+			  <div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;"><a href="#&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;" class="headerlink" title="&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;"></a>&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;</h1><p>&#x6700;&#x65E9;&#x63A5;&#x89E6;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x662F;&#x516C;&#x53F8;&#x7684;&#x4E00;&#x4F4D;&#x5B9E;&#x4E60;&#x751F;&#x540C;&#x5B66;&#x4ECB;&#x7ECD;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x5F53;&#x65F6;&#x5728;&#x4ED6;&#x5728;PYTHON&#x89E3;&#x91CA;&#x884C;&#x4E0A;</p>
+
+	
+	</div>
+</div>
+
+           
+		
+           
+			  
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2017-09-08 </div>
 			<div class="article-title"><a href="/2017/09/08/scala隐式转换/" >scala隐式转换</a></div>						
 		</h3>
@@ -425,101 +481,6 @@
 
            
 		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2017-02-11 </div>
-			<div class="article-title"><a href="/2017/02/11/Homebrew-config-for-mac/" >Homebrew_config_for_mac</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-	
-		<p>MAC &#x4E0A;&#x9762;&#x7684;brew&#x901F;&#x5EA6;&#x975E;&#x5E38;&#x6162;&#xFF0C;&#x5C1D;&#x8BD5;&#x5982;&#x4E0B;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x52A0;&#x901F;homebrew&#x5B89;&#x88C5;&#x8F6F;&#x4EF6;&#x7684;&#x901F;&#x5EA6;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">cd &quot;$(brew --repo)&quot;</div><div class="line">git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git</div><div class="line"></div><div class="line">cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;</div><div class="line">git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git</div><div class="line"></div><div class="line">brew update</div></pre></td></tr></table></figure>
-
-	
-	</div>
-</div>
-
-           
-		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2017-01-25 </div>
-			<div class="article-title"><a href="/2017/01/25/test/" >test</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-	
-		<h1 id="aa"><a href="#aa" class="headerlink" title="aa"></a>aa</h1><h2 id="bb"><a href="#bb" class="headerlink" title="bb"></a>bb</h2><ul>
-<li>asdf</li>
-<li>asdf</li>
-<li>asdf</li>
-<li>asdf</li>
-<li>asdf</li>
-</ul>
-<h2 id="cc"><a href="#cc" class="headerlink" title="cc"></a>cc</h2><h3 id="ccc"><a href="#ccc" class="headerlink" title="ccc"></a>ccc</h3><p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
-<p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-<p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-<p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-<p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
-<p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
-<a class="btn btn-default" href="http://hahack.com" target="_blank" rel="external">hahack</a>
-<a class="btn btn-primary" href="http://hahack.com" target="_blank" rel="external">hahack</a>
-<a class="btn btn-success" href="http://hahack.com" target="_blank" rel="external">hahack</a>
-<a class="btn btn-warning" href="http://hahack.com" target="_blank" rel="external">hahack</a>
-<a class="btn btn-danger" href="http://hahack.com" target="_blank" rel="external">hahack</a>
-<a class="btn btn-info" href="http://www.baidu.com" target="_blank" rel="external">baidu</a>
-<span class="label label-default">default</span>
-<span class="label label-warning">warinng</span>
-<span class="label label-success">success</span>
-<span class="label label-danger">danger</span>
-<span class="label label-primary">primary</span>
-<span class="label label-info">info</span>
-<p class="text-info">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa </p>
-<p class="text-info">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa </p>
-<a class="btn btn-default" href="http://hahack.com" target="_blank" rel="external">asdfasdfasdfasdf</a>
-<a class="btn btn-success" href="http://hahack.com" target="_blank" rel="external">text</a>
-<a class="btn btn-default" href="http://github.com" target="_blank" rel="external">asdfasdfasdf</a>
-<div class="alert alert-info"><i class="fa fa-info"></i>  asdfasdfassfdsfssfasdf
-adsfasdfadsfasfadsfafdasfd
-asdfasdfasdfafsaf</div>
-<div class="alert alert-info"><i class="fa fa-info"></i>  asdfasdfasdfassdf</div>
-<div class="alert alert-info"><i class="fa fa-info"></i>  asdfasdfasdfassdf</div>
-<div class="alert alert-info"><i class="fa fa-info"></i>  asdfasdfasdfassdf</div>
-<div class="alert alert-info"><i class="fa fa-info"></i>  asdfasdfasdfassdf</div>
-<div class="alert alert-info"><i class="fa fa-info"></i>  asdfasdfasdfassdf</div>
-<p><img src="https://adeshpande3.github.io/assets/Cover.png" alt="avatar"></p>
-<h1 id="asdf"><a href="#asdf" class="headerlink" title="asdf"></a>asdf</h1><p><a href="http://www.baidu.com" target="_blank" rel="external">asdf</a>]</p>
-<ul>
-<li>asdf</li>
-<li>asdf</li>
-<li>asdf</li>
-<li>as</li>
-<li>dfa</li>
-<li>sdf</li>
-<li>asdf<br>-</li>
-</ul>
-
-	
-	</div>
-</div>
-
-           
-		
 
 		</div>
 
@@ -601,45 +562,45 @@ asdfasdfasdfafsaf</div>
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Scala-并发编程/">Scala, 并发编程<span>1</span></a></li>
+			<li><a href="/tags/Flink/">Flink<span>1</span></a></li>
 		
 			<li><a href="/tags/JVM-GC/">JVM,GC<span>1</span></a></li>
 		
-			<li><a href="/tags/基础/">基础<span>1</span></a></li>
-		
-			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
-		
-			<li><a href="/tags/Socket/">Socket<span>1</span></a></li>
-		
-			<li><a href="/tags/maven/">maven<span>1</span></a></li>
-		
-			<li><a href="/tags/Python/">Python<span>1</span></a></li>
-		
-			<li><a href="/tags/ML/">ML<span>1</span></a></li>
-		
-			<li><a href="/tags/Flink/">Flink<span>1</span></a></li>
-		
-			<li><a href="/tags/JVM/">JVM<span>1</span></a></li>
-		
-			<li><a href="/tags/Spark-Scala-Streaming/">Spark Scala Streaming<span>1</span></a></li>
-		
-			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
-		
-			<li><a href="/tags/SVM/">SVM<span>1</span></a></li>
-		
-			<li><a href="/tags/data/">data<span>1</span></a></li>
-		
-			<li><a href="/tags/Spark-Streaming/">Spark Streaming<span>1</span></a></li>
+			<li><a href="/tags/English/">English<span>1</span></a></li>
 		
 			<li><a href="/tags/scala/">scala<span>1</span></a></li>
 		
 			<li><a href="/tags/CNN/">CNN<span>1</span></a></li>
 		
-			<li><a href="/tags/Q-A/">Q&amp;A<span>2</span></a></li>
+			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
+		
+			<li><a href="/tags/Python/">Python<span>1</span></a></li>
+		
+			<li><a href="/tags/JVM/">JVM<span>1</span></a></li>
 		
 			<li><a href="/tags/GIT/">GIT<span>1</span></a></li>
 		
+			<li><a href="/tags/plugins/">plugins<span>2</span></a></li>
+		
 			<li><a href="/tags/tensorflow/">tensorflow<span>3</span></a></li>
+		
+			<li><a href="/tags/Spark-Streaming/">Spark Streaming<span>1</span></a></li>
+		
+			<li><a href="/tags/基础/">基础<span>1</span></a></li>
+		
+			<li><a href="/tags/ML/">ML<span>1</span></a></li>
+		
+			<li><a href="/tags/data/">data<span>1</span></a></li>
+		
+			<li><a href="/tags/简体/">简体<span>1</span></a></li>
+		
+			<li><a href="/tags/Spark/">Spark<span>5</span></a></li>
+		
+			<li><a href="/tags/Tensorflow/">Tensorflow<span>1</span></a></li>
+		
+			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
+		
+			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
 		
 		
 		   <li><a href="/tags">...<span>30</span></a></li>
@@ -655,6 +616,14 @@ asdfasdfasdfafsaf</div>
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2019/07/25/通俗语言解释Monad-1/" ><i class="fa fa-file-o"></i>通俗语言解释Monad</a>
+      </li>
+    
+      <li>
+        <a href="/2019/07/25/通俗语言解释Monad/" ><i class="fa fa-file-o"></i>通俗语言解释Monad</a>
+      </li>
+    
+      <li>
         <a href="/2019/07/10/FpInScala读书笔记/" ><i class="fa fa-file-o"></i>FpInScala读书笔记</a>
       </li>
     
@@ -664,14 +633,6 @@ asdfasdfasdfafsaf</div>
     
       <li>
         <a href="/2019/06/22/基础概率分布/" ><i class="fa fa-file-o"></i>基础概率分布</a>
-      </li>
-    
-      <li>
-        <a href="/2019/05/30/reflction-on-data-develop-ahout-4-years/" ><i class="fa fa-file-o"></i>reflction_on_data_develop_a...</a>
-      </li>
-    
-      <li>
-        <a href="/2019/05/22/读书清单/" ><i class="fa fa-file-o"></i>读书清单</a>
       </li>
     
   </ul>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangshengshan.github.io/"/>
-  <updated>2019-07-25T09:35:42.451Z</updated>
+  <updated>2019-07-25T09:38:37.786Z</updated>
   <id>http://zhangshengshan.github.io/</id>
   
   <author>
@@ -16,11 +16,41 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>通俗语言解释Monad</title>
+    <link href="http://zhangshengshan.github.io/2019/07/25/%E9%80%9A%E4%BF%97%E8%AF%AD%E8%A8%80%E8%A7%A3%E9%87%8AMonad-1/"/>
+    <id>http://zhangshengshan.github.io/2019/07/25/通俗语言解释Monad-1/</id>
+    <published>2019-07-25T09:38:21.000Z</published>
+    <updated>2019-07-25T09:38:37.786Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="Scala" scheme="http://zhangshengshan.github.io/tags/Scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>通俗语言解释Monad</title>
+    <link href="http://zhangshengshan.github.io/2019/07/25/%E9%80%9A%E4%BF%97%E8%AF%AD%E8%A8%80%E8%A7%A3%E9%87%8AMonad/"/>
+    <id>http://zhangshengshan.github.io/2019/07/25/通俗语言解释Monad/</id>
+    <published>2019-07-25T09:38:12.000Z</published>
+    <updated>2019-07-25T09:38:12.138Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>FpInScala读书笔记</title>
     <link href="http://zhangshengshan.github.io/2019/07/10/FpInScala%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <id>http://zhangshengshan.github.io/2019/07/10/FpInScala读书笔记/</id>
     <published>2019-07-10T04:43:42.000Z</published>
-    <updated>2019-07-25T09:35:42.451Z</updated>
+    <updated>2019-07-25T09:39:45.995Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>FoldLeft&#x548C;FoldRight&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;</li>
@@ -44,7 +74,7 @@
 <p>&#x76EE;&#x524D;&#x5DF2;&#x7ECF;&#x9605;&#x8BFB;&#x4E86;&#x7B2C;&#x4E00;&#x90E8;&#x5206;&#xFF08;1-6&#x7AE0;&#xFF09;&#xFF0C; &#x53EF;&#x4EE5;&#x8BF4;&#x7B2C;&#x4E00;&#x5230;&#x516D;&#x7AE0;&#x53EF;&#x4EE5;&#x7ED9;&#x8BFB;&#x8005;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x76F4;&#x89C2;&#x7684;&#x611F;&#x53D7;&#xFF0C; &#x8BA9;&#x8BFB;&#x8005;&#x5728;&#x8111;&#x6D77;&#x91CC;&#x6709;&#x4E00;&#x4E2A;&#x5370;&#x8C61;&#xFF0C; &#x4EC0;&#x4E48;&#x662F;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#xFF0C;&#x521D;&#x6B65;&#x4F53;&#x5473;&#x4E00;&#x4E9B;&#x51FD;&#x6570;&#x7F16;&#x7A0B;&#x7684;&#x4F18;&#x52BF;&#xFF0C; &#x6BD4;&#x5982;&#x6A21;&#x5757;&#x5316;&#xFF0C;&#x53EF;&#x590D;&#x7528;&#xFF0C;&#x907F;&#x514D;&#x526F;&#x4F5C;&#x7528;&#x7B49;&#x3002;&#x5C55;&#x793A;&#x4E86; map flatMap&#x7B49;&#x8FD9;&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x7B97;&#x5B50;&#x80CC;&#x540E;&#x7684;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x5F0F;&#x3002; </p>
 <p>&#x76EE;&#x524D;&#x6B63;&#x5728;&#x9605;&#x8BFB;&#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#xFF0C; &#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#x53EF;&#x4EE5;&#x770B;&#x505A;&#x662F;&#x901A;&#x8FC7;&#x6848;&#x4F8B;&#x6765;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x7684;&#x4F18;&#x52BF;&#xFF0C;&#x5728;&#x9605;&#x8BFB;&#x7684;&#x8FC7;&#x7A0B;&#x4E4B;&#x4E2D;&#xFF0C;&#x5DF2;&#x7ECF;&#x7A0D;&#x5FAE;&#x80FD;&#x591F;&#x611F;&#x53D7;&#x5230;&#x70B9;&#x96BE;&#x5EA6;&#xFF0C;&#x4E0D;&#x662F;&#x5F88;&#x597D;&#x7406;&#x89E3;&#x3002; </p>
 <p>&#x672C;&#x4E66;&#x5FAA;&#x5E8F;&#x6E10;&#x8FDB;&#xFF0C;&#x5E26;&#x9886;&#x4F60;&#x62BD;&#x4E1D;&#x5265;&#x8327;&#xFF0C;&#x771F;&#x795E;&#x4E66;&#x4E5F;&#xFF01;</p>
-<h2 id="Monoid-Monad-Functor"><a href="#Monoid-Monad-Functor" class="headerlink" title="Monoid Monad Functor"></a>Monoid Monad Functor</h2><h2 id="&#x2013;-Functor-&#x5C31;&#x662F;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5728;&#x5BB9;&#x5668;&#x4E0A;&#x8FDB;&#x884C;map&#x64CD;&#x4F5C;&#x7684;&#x63A5;&#x53E3;&#x7684;&#x6807;&#x51C6;"><a href="#&#x2013;-Functor-&#x5C31;&#x662F;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5728;&#x5BB9;&#x5668;&#x4E0A;&#x8FDB;&#x884C;map&#x64CD;&#x4F5C;&#x7684;&#x63A5;&#x53E3;&#x7684;&#x6807;&#x51C6;" class="headerlink" title="&#x2013; Functor &#x5C31;&#x662F;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5728;&#x5BB9;&#x5668;&#x4E0A;&#x8FDB;&#x884C;map&#x64CD;&#x4F5C;&#x7684;&#x63A5;&#x53E3;&#x7684;&#x6807;&#x51C6;"></a>&#x2013; Functor &#x5C31;&#x662F;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5728;&#x5BB9;&#x5668;&#x4E0A;&#x8FDB;&#x884C;map&#x64CD;&#x4F5C;&#x7684;&#x63A5;&#x53E3;&#x7684;&#x6807;&#x51C6;</h2><p><a href="https://blog.knoldus.com/monads-are-they-really-that-complicated/" target="_blank" rel="external">&#x7B80;&#x7EC3;&#x89E3;&#x91CA;Functor Monoid Monad&#x7684;&#x542B;&#x4E49;&#x7684;&#x6587;&#x7AE0;</a><br><a href="https://thedet.wordpress.com/2012/04/28/functors-monads-applicatives-can-be-so-simple/" target="_blank" rel="external">&#x53E6;&#x4E00;&#x7BC7;&#x53C2;&#x8003;</a></p>
+<h2 id="Monoid-Monad-Functor"><a href="#Monoid-Monad-Functor" class="headerlink" title="Monoid Monad Functor"></a>Monoid Monad Functor</h2><h2 id="&#x2013;-Functor-&#x5C31;&#x662F;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5728;&#x5BB9;&#x5668;&#x4E0A;&#x8FDB;&#x884C;map&#x64CD;&#x4F5C;&#x7684;&#x63A5;&#x53E3;&#x7684;&#x6807;&#x51C6;"><a href="#&#x2013;-Functor-&#x5C31;&#x662F;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5728;&#x5BB9;&#x5668;&#x4E0A;&#x8FDB;&#x884C;map&#x64CD;&#x4F5C;&#x7684;&#x63A5;&#x53E3;&#x7684;&#x6807;&#x51C6;" class="headerlink" title="&#x2013; Functor &#x5C31;&#x662F;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5728;&#x5BB9;&#x5668;&#x4E0A;&#x8FDB;&#x884C;map&#x64CD;&#x4F5C;&#x7684;&#x63A5;&#x53E3;&#x7684;&#x6807;&#x51C6;"></a>&#x2013; Functor &#x5C31;&#x662F;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5728;&#x5BB9;&#x5668;&#x4E0A;&#x8FDB;&#x884C;map&#x64CD;&#x4F5C;&#x7684;&#x63A5;&#x53E3;&#x7684;&#x6807;&#x51C6;</h2><p><a href="https://blog.knoldus.com/monads-are-they-really-that-complicated/" target="_blank" rel="external">&#x7B80;&#x7EC3;&#x89E3;&#x91CA;Functor Monoid Monad&#x7684;&#x542B;&#x4E49;&#x7684;&#x6587;&#x7AE0;</a><br><a href="https://thedet.wordpress.com/2012/04/28/functors-monads-applicatives-can-be-so-simple/" target="_blank" rel="external">&#x53E6;&#x4E00;&#x7BC7;&#x53C2;&#x8003;</a><br><a href="https://www.slideshare.net/knoldus/functors-applicatives-and-monads-in-scala" target="_blank" rel="external">Monad Slide</a></p>
 ]]></content>
     
     <summary type="html">
@@ -561,56 +591,6 @@
     
     
       <category term="git" scheme="http://zhangshengshan.github.io/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>UpperBound</title>
-    <link href="http://zhangshengshan.github.io/2017/09/18/UpperBound/"/>
-    <id>http://zhangshengshan.github.io/2017/09/18/UpperBound/</id>
-    <published>2017-09-18T09:09:20.000Z</published>
-    <updated>2017-09-18T09:11:03.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>While upper type bounds limit a type to a subtype of another type, lower type bounds declare a type to be a supertype of another type. The term B &gt;: A expresses that the type parameter B or the abstract type B refer to a supertype of type A. In most cases, A will be the type parameter of the class and B will be the type parameter of a method.</p>
-<p>Here is an example where this is useful:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">trait Node[+B] {</div><div class="line">  def prepend(elem: B): Unit</div><div class="line">}</div><div class="line"></div><div class="line">case class ListNode[+B](h: B, t: Node[B]) extends Node[B] {</div><div class="line">  def prepend(elem: B) = ListNode[B](elem, this)</div><div class="line">  def head: B = h</div><div class="line">  def tail = t</div><div class="line">}</div><div class="line"></div><div class="line">case class Nil[+B]() extends Node[B] {</div><div class="line">  def prepend(elem: B) = ListNode[B](elem, this)</div><div class="line">}</div></pre></td></tr></table></figure>
-<p>This program implements a singly-linked list. Nil represents an empty element (i.e. an empty list). class ListNode is a node which contains an element of type B (head) and a reference to the rest of the list (tail). The class Node and its subtypes are covariant because we have +B.</p>
-<p>However, this program does not compile because the parameter elem in prepend is of type B, which we declared covariant. This doesn&#x2019;t work because functions are contravariant in their parameter types and covariant in their result types.</p>
-<p>To fix this, we need to flip the variance of the type of the parameter elem in prepend. We do this by introducing a new type parameter U that has B as a lower type bound.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">trait Node[+B] {</div><div class="line">  def prepend[U &gt;: B](elem: U)</div><div class="line">}</div><div class="line"></div><div class="line">case class ListNode[+B](h: B, t: Node[B]) extends Node[B] {</div><div class="line">  def prepend[U &gt;: B](elem: U) = ListNode[U](elem, this)</div><div class="line">  def head: B = h</div><div class="line">  def tail = t</div><div class="line">}</div><div class="line"></div><div class="line">case class Nil[+B]() extends Node[B] {</div><div class="line">  def prepend[U &gt;: B](elem: U) = ListNode[U](elem, this)</div><div class="line">}</div></pre></td></tr></table></figure>
-<p>Now we can do the following:</p>
-<p>trait Mammal<br>case class AfricanSwallow() extends Mammal<br>case class EuropeanSwallow() extends Mammal</p>
-<p>val africanSwallowList= ListNode<a href="AfricanSwallow(">AfricanSwallow</a>, Nil())<br>val mammalList: Node[Mammal] = africanSwallowList<br>mammalList.prepend(new EuropeanSwallow)</p>
-<p>The Node[Mammal] can be assigned the africanSwallowList but then accept EuropeanSwallows.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;While upper type bounds limit a type to a subtype of another type, lower type bounds declare a type to be a supertype of another type. Th
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>函数式编程</title>
-    <link href="http://zhangshengshan.github.io/2017/09/10/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
-    <id>http://zhangshengshan.github.io/2017/09/10/函数式编程/</id>
-    <published>2017-09-10T10:04:22.000Z</published>
-    <updated>2017-09-10T10:11:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;"><a href="#&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;" class="headerlink" title="&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;"></a>&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;</h1><p>&#x6700;&#x65E9;&#x63A5;&#x89E6;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x662F;&#x516C;&#x53F8;&#x7684;&#x4E00;&#x4F4D;&#x5B9E;&#x4E60;&#x751F;&#x540C;&#x5B66;&#x4ECB;&#x7ECD;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x5F53;&#x65F6;&#x5728;&#x4ED6;&#x5728;PYTHON&#x89E3;&#x91CA;&#x884C;&#x4E0A;</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;&amp;#x51FD;&amp;#x6570;&amp;#x5F0F;&amp;#x7F16;&amp;#x7A0B;&quot;&gt;&lt;a href=&quot;#&amp;#x51FD;&amp;#x6570;&amp;#x5F0F;&amp;#x7F16;&amp;#x7A0B;&quot; class=&quot;headerlink&quot; title=&quot;&amp;#x51FD;&amp;#x6
-    
-    </summary>
-    
-    
-      <category term="Scala" scheme="http://zhangshengshan.github.io/tags/Scala/"/>
     
   </entry>
   
