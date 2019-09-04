@@ -111,6 +111,52 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2016-12-21 </div>
+			<div class="article-title"><a href="/2016/12/21/UVa1225/" >UVa1225</a></div>						
+		</h3>
+	
+
+
+			  <div class="entry">
+  <div class="row">
+	
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;strings.h&gt;</div><div class="line">int main ( int argc, char *argv[] )</div><div class="line">{</div><div class="line">    int a[10]={0};</div><div class="line">    int temp = 0;</div><div class="line">    int i =0;</div><div class="line">    int num=0;</div><div class="line">    while(1==scanf(&quot;%d&quot;,&amp;num)){</div><div class="line">        memset(a,0,sizeof(a));</div><div class="line">        for (i = 1; i &lt;= num; i++) {</div><div class="line">            temp = i;</div><div class="line">            do {</div><div class="line">                a[temp%10]++;</div><div class="line">                temp = temp/10;</div><div class="line">            } while(temp);</div><div class="line">        }</div><div class="line">        for (i = 0; i &lt; 9; i++) {</div><div class="line">            printf ( &quot;%d &quot;,a[i] );           /* code */</div><div class="line">        }</div><div class="line">        printf ( &quot;%d\n&quot;, a[i] );</div><div class="line">    }</div><div class="line">    return EXIT_SUCCESS;</div><div class="line">}				/* ----------  end of function main  ---------- */</div></pre></td></tr></table></figure>
+
+	
+	</div>
+</div>
+
+           
+		
+           
+			  
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2016-12-21 </div>
+			<div class="article-title"><a href="/2016/12/21/3-2UVa1586/" >3_2UVa1586</a></div>						
+		</h3>
+	
+
+
+			  <div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="Molar-Mass-ACM-ICPC-sroul-2007-UVa1586"><a href="#Molar-Mass-ACM-ICPC-sroul-2007-UVa1586" class="headerlink" title="Molar Mass ACM/ICPC sroul 2007, UVa1586"></a>Molar Mass ACM/ICPC sroul 2007, UVa1586</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;strings.h&gt;</div><div class="line">#include &lt;ctype.h&gt;</div><div class="line"></div><div class="line">/* </div><div class="line"> * ===  FUNCTION  ======================================================================</div><div class="line"> *         Name:  main</div><div class="line"> *  Description:  </div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"></div><div class="line">/* </div><div class="line"> * ===  FUNCTION  ======================================================================</div><div class="line"> *         Name:  get_g</div><div class="line"> *  Description:  </div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line">float get_g ( char a )</div><div class="line">{</div><div class="line">    switch(a){</div><div class="line">        case &apos;C&apos;:</div><div class="line">            return 12.01;</div><div class="line">            break;</div><div class="line">        case &apos;H&apos;:</div><div class="line">            return 1.008;</div><div class="line">            break;</div><div class="line">        case &apos;O&apos;:</div><div class="line">            return 16.00;</div><div class="line">            break;</div><div class="line">        case &apos;N&apos;:</div><div class="line">            return 14.01;</div><div class="line">            break;</div><div class="line">        default:</div><div class="line">            return -1.0;</div><div class="line">    }</div><div class="line">}		</div><div class="line">int main ( int argc, char *argv[] ) {</div><div class="line">    char buf[101]={}; </div><div class="line">    int flag = 0;</div><div class="line">    float sum = 0.0;</div><div class="line">    int i = 0 ;</div><div class="line">    int j = 0;</div><div class="line">    int count = 0;</div><div class="line"></div><div class="line">    while( (scanf(&quot;%s&quot;, buf)!=EOF) ){</div><div class="line">        flag = 0;</div><div class="line">        for (i = 0; buf[i]!=&apos;\0&apos;; i++) {</div><div class="line">            count = 0;</div><div class="line">            for( j=i+1;isdigit(buf[j])&amp;&amp;buf[j];j++ ){</div><div class="line">                count = count * 10 + (buf[j]-&apos;0&apos;);</div><div class="line">            }</div><div class="line">            if (count==0) {</div><div class="line">                count=1;</div><div class="line">            }</div><div class="line">            if (buf[i]!=&apos;C&apos;</div><div class="line">                    &amp;&amp; buf[i]!=&apos;N&apos;</div><div class="line">                    &amp;&amp; buf[i]!=&apos;O&apos;</div><div class="line">                    &amp;&amp; buf[i]!=&apos;H&apos;</div><div class="line">                    ) {</div><div class="line">                flag = 1;</div><div class="line">            }</div><div class="line">            sum += count * get_g(buf[i]);</div><div class="line">            i=j-1;</div><div class="line">        }</div><div class="line">        if (!flag){</div><div class="line">            printf ( &quot;sum is %f\n&quot;,sum );</div><div class="line">        }else{</div><div class="line">//            printf ( &quot;input error\n&quot; );</div><div class="line">        }</div><div class="line">    }</div><div class="line">    return EXIT_SUCCESS;</div><div class="line">}				/* ----------  end of function main  ---------- */</div></pre></td></tr></table></figure>
+
+	
+	</div>
+</div>
+
+           
+		
+           
+			  
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2016-12-15 </div>
 			<div class="article-title"><a href="/2016/12/15/Spark-Streaming-Programming-Guide/" >Spark Streaming Programming Guide</a></div>						
 		</h3>
@@ -395,63 +441,6 @@
 
            
 		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2016-08-19 </div>
-			<div class="article-title"><a href="/2016/08/19/Spark-2-0-Introduction/" >Spark 2.0 Introduction</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-	
-		<h1 id="Spark-2-0-MLib-Introduction"><a href="#Spark-2-0-MLib-Introduction" class="headerlink" title="Spark 2.0 MLib Introduction"></a>Spark 2.0 MLib Introduction</h1><p>As of Spark 2.0, the RDD-based APIs in the spark.mllib package have entered maintenance mode. The primary Machine Learning API for Spark is now the DataFrame-based API in the spark.ml package.</p>
-<p>Spark2.0 ,&#x5728;spark.mllib&#x4E2D;&#x7684;&#x57FA;&#x4E8E;RDD&#x7684;&#x673A;&#x5668;&#x5B66;&#x4E60;APIs&#x5C06;&#x4F1A;&#x8FDB;&#x5165;&#x7EF4;&#x62A4;&#x6A21;&#x5F0F;&#x3002;&#x73B0;&#x5728;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7684;&#x4E3B;&#x8981;&#x7684;API&#x57FA;&#x4E8E;DataFrame,&#x4F4D;&#x4E8E;spark.ml&#x4E2D;&#x3002;</p>
-<p>What are the implications?</p>
-<pre><code>MLlib will still support the RDD-based API in spark.mllib with bug fixes.
-MLlib will not add new features to the RDD-based API.
-In the Spark 2.x releases, MLlib will add features to the DataFrames-based API to reach feature parity with the RDD-based API.
-After reaching feature parity (roughly estimated for Spark 2.2), the RDD-based API will be deprecated.
-The RDD-based API is expected to be removed in Spark 3.0.
-</code></pre><p>Why is MLlib switching to the DataFrame-based API?</p>
-<pre><code>DataFrames provide a more user-friendly API than RDDs. The many benefits of DataFrames include Spark Datasources, SQL/DataFrame queries, Tungsten and Catalyst optimizations, and uniform APIs across languages.
-The DataFrame-based API for MLlib provides a uniform API across ML algorithms and across multiple languages.
-DataFrames facilitate practical ML Pipelines, particularly feature transformations. See the Pipelines guide for details.
-</code></pre>
-	
-	</div>
-</div>
-
-           
-		
-           
-			  
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2016-08-19 </div>
-			<div class="article-title"><a href="/2016/08/19/Save-DataFrame-into-a-partitioned-table-of-HIVE/" >Save DataFrame into a partitioned table of HIVE</a></div>						
-		</h3>
-	
-
-
-			  <div class="entry">
-  <div class="row">
-	
-	
-		<h1 id="How-to-save-a-spark-DataFrame-as-a-patitioned-hive-table"><a href="#How-to-save-a-spark-DataFrame-as-a-patitioned-hive-table" class="headerlink" title="How to save a spark DataFrame as a patitioned hive table"></a>How to save a spark DataFrame as a patitioned hive table</h1><h2 id="utilise-saveAsTable-method"><a href="#utilise-saveAsTable-method" class="headerlink" title="utilise saveAsTable method"></a>utilise saveAsTable method</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">val conf = new SparkConf().setAppName(&quot;Simple Application&quot;).setMaster(&quot;local&quot;)</div><div class="line">val sc = new SparkContext(conf)</div><div class="line">val sqlContext = new org.apache.spark.sql.SQLContext(sc)</div><div class="line">import sqlContext.implicits._</div><div class="line">val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc)</div><div class="line">hiveContext.sql(&quot;use database&quot;)</div><div class="line"></div><div class="line">val cmd =</div><div class="line">  &quot;&quot;&quot;</div><div class="line">     select</div><div class="line">      col1,</div><div class="line">      col2</div><div class="line">     from</div><div class="line">      table</div><div class="line">  &quot;&quot;&quot;.stripMargin</div><div class="line">val yourDf = hiveContext.sql(cmd)</div><div class="line">yourDf.printSchema()</div><div class="line">yourDf.write.partitionBy(&quot;col2&quot;).saveAsTable(&quot;partitionTableName&quot;)</div></pre></td></tr></table></figure>
-
-	
-	</div>
-</div>
-
-           
-		
 
 		</div>
 
@@ -533,48 +522,48 @@ DataFrames facilitate practical ML Pipelines, particularly feature transformatio
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Spark-Streaming/">Spark Streaming<span>1</span></a></li>
-		
-			<li><a href="/tags/繁體/">繁體<span>1</span></a></li>
-		
-			<li><a href="/tags/highlight/">highlight<span>1</span></a></li>
-		
-			<li><a href="/tags/maven/">maven<span>1</span></a></li>
-		
-			<li><a href="/tags/plugins/">plugins<span>2</span></a></li>
-		
-			<li><a href="/tags/SVM/">SVM<span>1</span></a></li>
-		
-			<li><a href="/tags/Scala/">Scala<span>8</span></a></li>
-		
-			<li><a href="/tags/Spark/">Spark<span>5</span></a></li>
+			<li><a href="/tags/maven-gradle/">maven gradle<span>1</span></a></li>
 		
 			<li><a href="/tags/Spark-DataFrame/">Spark DataFrame<span>1</span></a></li>
 		
-			<li><a href="/tags/简体/">简体<span>1</span></a></li>
+			<li><a href="/tags/maven/">maven<span>1</span></a></li>
 		
-			<li><a href="/tags/Spark-Scala-Streaming/">Spark Scala Streaming<span>1</span></a></li>
+			<li><a href="/tags/ML/">ML<span>1</span></a></li>
 		
-			<li><a href="/tags/基础/">基础<span>1</span></a></li>
+			<li><a href="/tags/plugins/">plugins<span>2</span></a></li>
 		
-			<li><a href="/tags/JVM-GC/">JVM,GC<span>1</span></a></li>
+			<li><a href="/tags/Spark/">Spark<span>5</span></a></li>
 		
-			<li><a href="/tags/Python/">Python<span>1</span></a></li>
+			<li><a href="/tags/Spark-Streaming/">Spark Streaming<span>1</span></a></li>
 		
-			<li><a href="/tags/scala/">scala<span>1</span></a></li>
-		
-			<li><a href="/tags/data/">data<span>1</span></a></li>
-		
-			<li><a href="/tags/Scala-并发编程/">Scala, 并发编程<span>1</span></a></li>
+			<li><a href="/tags/JVM/">JVM<span>1</span></a></li>
 		
 			<li><a href="/tags/GIT/">GIT<span>1</span></a></li>
 		
 			<li><a href="/tags/Tensorflow/">Tensorflow<span>1</span></a></li>
 		
-			<li><a href="/tags/JVM/">JVM<span>1</span></a></li>
+			<li><a href="/tags/CNN/">CNN<span>1</span></a></li>
+		
+			<li><a href="/tags/Q-A/">Q&amp;A<span>2</span></a></li>
+		
+			<li><a href="/tags/git/">git<span>1</span></a></li>
+		
+			<li><a href="/tags/Python/">Python<span>1</span></a></li>
+		
+			<li><a href="/tags/Scala-并发编程/">Scala, 并发编程<span>1</span></a></li>
+		
+			<li><a href="/tags/简体/">简体<span>1</span></a></li>
+		
+			<li><a href="/tags/VIM/">VIM<span>1</span></a></li>
+		
+			<li><a href="/tags/tensorflow/">tensorflow<span>3</span></a></li>
+		
+			<li><a href="/tags/JVM-GC/">JVM,GC<span>1</span></a></li>
+		
+			<li><a href="/tags/SVM/">SVM<span>1</span></a></li>
 		
 		
-		   <li><a href="/tags">...<span>30</span></a></li>
+		   <li><a href="/tags">...<span>31</span></a></li>
 		 
 		</ul>
 	</div>
@@ -587,6 +576,14 @@ DataFrames facilitate practical ML Pipelines, particularly feature transformatio
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2019/09/04/gradel2maven/" ><i class="fa fa-file-o"></i>gradel2maven</a>
+      </li>
+    
+      <li>
+        <a href="/2019/08/06/ScalaTest/" ><i class="fa fa-file-o"></i>ScalaTest</a>
+      </li>
+    
+      <li>
         <a href="/2019/07/25/通俗语言解释Monad-1/" ><i class="fa fa-file-o"></i>通俗语言解释Monad</a>
       </li>
     
@@ -596,14 +593,6 @@ DataFrames facilitate practical ML Pipelines, particularly feature transformatio
     
       <li>
         <a href="/2019/07/10/FpInScala读书笔记/" ><i class="fa fa-file-o"></i>FpInScala读书笔记</a>
-      </li>
-    
-      <li>
-        <a href="/2019/07/03/聊聊Scala判等/" ><i class="fa fa-file-o"></i>聊聊Scala判等</a>
-      </li>
-    
-      <li>
-        <a href="/2019/06/22/基础概率分布/" ><i class="fa fa-file-o"></i>基础概率分布</a>
       </li>
     
   </ul>
@@ -673,7 +662,22 @@ DataFrames facilitate practical ML Pipelines, particularly feature transformatio
 	 }
 	 var path = "/" + search_path;
      searchFunc(path, 'local-search-input', 'local-search-result');
-   </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+   </script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
    </html>
